@@ -1,0 +1,35 @@
+*,*::before,*::after{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    overflow-y: hidden;
+    font-family: serif;
+    text-align: center;
+}
+header{
+    height:5rem;
+    margin:2rem auto;
+    width:100vw;
+}
+header>h1{
+    font-size:3rem;
+    color:#2b0a86;
+}
+header>p{
+    font-size: 1.7rem;
+    padding:1rem;
+    color: #000000;
+}
+.middle-part{
+    margin:1rem auto;
+    display: grid;
+    padding:1rem;
+    min-height: fit-content;
+    width:30rem;
+    border: 1px solid black;
+    place-content: center;
+    font-size: 1.5rem;
+}

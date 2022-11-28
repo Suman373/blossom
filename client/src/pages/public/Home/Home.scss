@@ -1,0 +1,14 @@
+@use '../../../utils/variables';
+
+.banner-wrapper{
+
+    .navbar{
+        background:variables.$positive;
+        display: flex;
+        justify-content: center;
+    }
+    .banner-title{
+        color:variables.$positive;
+        text-align: center;
+    }
+}

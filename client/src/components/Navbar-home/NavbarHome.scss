@@ -1,0 +1,44 @@
+@use '../../utils/variables';
+
+.navbar-home{
+    height:5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &>a{
+        font-size: 2.2rem;
+        color:#000000;
+    }
+
+    ul{
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        font-size: 1.35rem;
+
+        li>a{
+            color:#000000;
+            padding:0.5rem;
+            margin:0.8rem;
+
+            &:hover{
+                text-shadow: 0 -2px 10px #f8f839;
+            }
+        }
+    }
+
+    .user-block{
+
+        button{
+            outline: 1px solid grey;
+            border-radius: 0.5rem;
+            border:none;
+            cursor: pointer;
+            background: variables.$blue-light;
+            font-size: 1.25rem;
+            color:#ffffff;
+            padding:0.5rem 0.7rem;
+        }
+    }
+}

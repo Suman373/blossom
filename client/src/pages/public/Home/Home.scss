@@ -1,14 +1,94 @@
 @use '../../../utils/variables';
 
 .banner-wrapper{
-
-    .navbar{
-        background:variables.$positive;
-        display: flex;
-        justify-content: center;
-    }
-    .banner-title{
-        color:variables.$positive;
+    // min-height: 100vh;
+    display: grid;
+    place-content: center;
+    padding:0.5rem;
+    gap:2rem;
+    margin:2rem 0;
+    .banner-slogan{
+        height:20rem;
+        width:fit-content;
+        display: grid;
+        place-content: center;
+        margin:1rem auto;
         text-align: center;
+        h1{
+            font-size: 2.5rem;
+            font-weight:800;
+            margin:1rem;
+        }
+        p{
+            font-size: 1.5rem;
+        }
+        button{
+            padding:0.6rem 0.8rem;
+            width:fit-content;
+            cursor:pointer;
+            background: variables.$blue-light;
+            color:#ffffff;
+            font-size: 1.4rem;
+            margin:1rem;
+            outline: none;
+            border:none;
+            border-radius: 0.4rem;
+            box-shadow: 0 0 6px variables.$shadow;
+
+            &:hover{
+                transform: scale(1.006);
+                opacity: 0.8;
+            }
+        }
+    }
+    .banner-illustration{
+        min-height:25rem;
+        border-radius: 1rem;
+        box-shadow: 0 3px 18px variables.$shadow;
+        width:100%;
+        display: grid;
+        place-content: center;
+        position:relative;
+        .icons-container{
+            width: fit-content;
+            margin:0.5rem;
+            padding:1rem;
+            i{
+                font-size: 2.5rem;
+                margin:1rem;
+                padding:0.5rem;
+
+                &:nth-child(1){
+                    color:variables.$warning;
+                }
+                &:nth-child(2){
+                    color:variables.$positive;
+                }
+                &:nth-child(3){
+                    color:variables.$blue-accent;
+                }
+            }
+        }
+
+        .illustration-caption{
+            width:50%;
+            padding:1rem;
+            margin:0 2rem;
+            h1{
+                font-size: 2rem;
+                margin:1rem 0;
+                font-weight: 800;
+            }
+            p{
+                font-size: 1.4rem;
+            }
+        }
+        img{
+            height:100%;
+            width:25rem;
+            position:absolute;
+            right:1rem;
+            top:0rem;
+        }
     }
 }

@@ -7,6 +7,7 @@
     padding:0.5rem;
     gap:2rem;
     margin:2rem 0;
+    z-index: 100;
     .banner-slogan{
         height:20rem;
         width:fit-content;
@@ -95,11 +96,37 @@
 
 .platform-wrapper{
     min-height: 100vh;
-    display: grid;
-    place-content: center;
+    margin:1rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding:0.5rem;
     gap:2rem;
-    margin:2rem 0;
-    background: variables.$shadow;
-    background:black;
+    position: relative;
+    border-radius: 1rem;
+    background: variables.$fallback;
+
+    h1{
+        font-size: 2rem;
+        text-align: center;
+    }
+    .our-platform{
+        height:30rem;
+        width:50%;
+        // background:variables.$blue-light;
+
+
+        .platform-card{
+            width:fit-content;
+            margin:1rem auto;
+            height:fit-content;
+            padding:1rem;
+            // background-color: variables.$body-bg;
+
+            p{
+                font-size: 1.3rem;
+                color:variables.$blue-accent;
+            }
+        }
+    }
 }

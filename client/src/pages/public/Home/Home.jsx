@@ -12,7 +12,7 @@ const Home = () => {
         <>
             <Container>
                 <NavbarHome />
-                <Box className="banner-wrapper" sx={{ bgcolor: '#ffffff', height: '100vh' }}>
+                <Box className="banner-wrapper">
                     <section className="banner-slogan">
                         <h1>
                             Your Go-to Fundraising Platform
@@ -48,12 +48,18 @@ const Home = () => {
                         <img src={givetakeheart} alt="give-take-heart" />
                     </section>
                 </Box>
-                <Box className="platform-wrapper" sx={{ bgcolor: '#ffffff', height: '100vh' }}>
+                <Box className="platform-wrapper">
                     <section className="our-platform">
-
+                        <h1>An onboarding experience</h1>
+                        <div className="platform-card">
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit dolore neque natus eveniet a officia quibusdam magni maiores consequuntur ad!</p>
+                        </div>
                     </section>
-                    <section className="platform-illustration">
-
+                    <section className="our-platform">
+                        <h1>Optimized to any device</h1>
+                        <div className="platform-card">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium dolores corrupti dignissimos sed possimus tenetur similique quis libero cumque veritatis?</p>
+                        </div>
                     </section>
                 </Box>
             </Container>

@@ -6,6 +6,8 @@ import NavbarHome from '../../../components/Navbar-home/NavbarHome';
 import { SiFsecure, SiWebmoney } from 'react-icons/si';
 import { FaHandshake } from 'react-icons/fa';
 import givetakeheart from '../../../assets/give-take-heart.webp';
+import donatebox from '../../../assets/donate-box.webp';
+import devices from '../../../assets/devices-compatibility.webp';
 
 const Home = () => {
     return (
@@ -53,12 +55,20 @@ const Home = () => {
                         <h1>An onboarding experience</h1>
                         <div className="platform-card">
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit dolore neque natus eveniet a officia quibusdam magni maiores consequuntur ad!</p>
+                            {/* <ul>
+                                <li><p>Android</p></li>
+                                <li>IOS</li>
+                                <li>Windows</li>
+                                <li>Mac os</li>
+                            </ul> */}
+                            <img src={donatebox} alt="donate-box" />
                         </div>
                     </section>
                     <section className="our-platform">
                         <h1>Optimized to any device</h1>
                         <div className="platform-card">
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium dolores corrupti dignissimos sed possimus tenetur similique quis libero cumque veritatis?</p>
+                            <img src={devices} alt="device-compatibility" />
                         </div>
                     </section>
                 </Box>

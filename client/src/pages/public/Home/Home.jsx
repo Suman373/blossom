@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Home.scss';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
@@ -8,8 +8,18 @@ import { FaHandshake } from 'react-icons/fa';
 import givetakeheart from '../../../assets/give-take-heart.webp';
 import donatebox from '../../../assets/donate-box.webp';
 import devices from '../../../assets/devices-compatibility.webp';
+import BlueButton from '../../../components/BlueButton/BlueButton';
 
 const Home = () => {
+
+    const getStarted= ()=>{
+        alert("To excited for getting started? ");
+    }
+
+    const moreFromUs = ()=>{
+        alert("You want more? ");
+    }
+
     return (
         <>
             <Container>
@@ -24,12 +34,12 @@ const Home = () => {
                         </p>
 
                         <div>
-                            <button>
-                                Get started
-                            </button>
-                            <button>
-                                More from us
-                            </button>
+                            <BlueButton
+                                text={"Get started"}
+                                handleClick={getStarted}/>
+                            <BlueButton
+                                text={"More from us"}
+                                handleClick={moreFromUs}/>
                         </div>
                     </section>
                     <section className="banner-illustration">
@@ -55,12 +65,6 @@ const Home = () => {
                         <h1>An onboarding experience</h1>
                         <div className="platform-card">
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit dolore neque natus eveniet a officia quibusdam magni maiores consequuntur ad!</p>
-                            {/* <ul>
-                                <li><p>Android</p></li>
-                                <li>IOS</li>
-                                <li>Windows</li>
-                                <li>Mac os</li>
-                            </ul> */}
                             <img src={donatebox} alt="donate-box" />
                         </div>
                     </section>

@@ -1,0 +1,63 @@
+@use '../../utils/variables';
+
+.user-navbar{
+    background: #ffffff !important;
+    box-shadow: none !important;
+    height: 6rem;
+
+    div{
+        display:flex;
+        width:100%;
+        height:100%;
+    }
+
+    ul{
+        width:60%;
+        height:100%;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        list-style: none;
+        // background:variables.$blue-accent;
+
+        li a{
+            font-size: 1.45rem;
+            margin:0 1rem;
+            color:variables.$sooth-black;
+
+            &:hover{
+                border-bottom: 4px solid variables.$shadow;
+                border-radius: 0.2rem;
+                color:variables.$shadow;
+            }
+            &:visited{
+                font-style: oblique;
+            }
+        }
+        #logo{
+            font-size: 2rem;
+            color:variables.$blue-light;
+            &:hover{
+                border-bottom:none;
+            }
+        }
+    }
+
+    .icon-control{
+        height:100%;
+        width:40%;
+        // background: sandybrown;
+        position: relative;
+
+        img{
+            position:absolute;
+            right:2rem;
+            top:1.4rem;
+
+            height:3.5rem;
+            width:3.5rem;
+            border-radius: 50%;
+            box-shadow:  0 0 5px variables.$shadow;
+        }
+    }
+}

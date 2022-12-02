@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom'
 import './Home.scss';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
@@ -11,9 +12,11 @@ import devices from '../../../assets/devices-compatibility.webp';
 import BlueButton from '../../../components/BlueButton/BlueButton';
 
 const Home = () => {
+    // navigator
+    const navigate = useNavigate();
 
     const getStarted= ()=>{
-        alert("To excited for getting started? ");
+        navigate('/userhome');
     }
 
     const moreFromUs = ()=>{

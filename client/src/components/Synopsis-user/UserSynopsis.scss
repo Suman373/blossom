@@ -1,0 +1,15 @@
+@use '../../utils/variables';
+
+.synopsis{
+        width:90%;
+        height:20rem;
+        margin:1rem auto;
+        box-shadow: 0 0 3px variables.$shadow;
+        border-radius: 1rem;
+
+        header{
+            height:4rem;
+            margin:0.5rem auto;
+            width:calc(100% - 1rem);
+        }
+}

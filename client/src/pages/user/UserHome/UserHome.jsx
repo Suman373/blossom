@@ -1,17 +1,19 @@
 import React from 'react';
 import './UserHome.scss';
-import UserNavbar from '../../../components/Navbar-usr/UserNavbar';
+import UserNavbar from '../../../components/Navbar-user/UserNavbar';
+import UserSynopsis from '../../../components/Synopsis-user/UserSynopsis';
+import FundRaise from '../../../components/FundRaise-user/FundRaise';
 
 const UserHome = () => {
   return (
-    <main>
-        {/* Navbar of user goes here */}
+    <main className='user-home-container'>
         <UserNavbar/>
 
-        {/*Template goes here*/}
-
+        {/*User synopsis goes here*/}
+        <UserSynopsis/>
         
         {/* Recent events goes here with search and filter*/}
+        <FundRaise/>
 
     </main>
   )

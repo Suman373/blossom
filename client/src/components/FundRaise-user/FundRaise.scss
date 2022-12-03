@@ -6,4 +6,31 @@
     margin: 1rem auto;
     box-shadow: 0 0 3px variables.$shadow;
     border-radius: 1rem;
+
+    header{
+        height:5rem;
+        width:100%;
+        margin:2rem auto;
+        // background: orange;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .search-field{
+            margin-left:1rem;
+            border-radius: 1rem;
+            width:20rem;
+        }
+    }
+
+    .fund-list-container{
+        min-height: 25rem;
+        background-color:variables.$body-bg;
+        width:100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+
+    }
 }

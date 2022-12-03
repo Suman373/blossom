@@ -6,10 +6,97 @@
         margin:1rem auto;
         box-shadow: 0 0 3px variables.$shadow;
         border-radius: 1rem;
-
+        // background: variables.$body-bg;
+        
         header{
             height:4rem;
             margin:0.5rem auto;
             width:calc(100% - 1rem);
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+            // background: variables.$body-bg;
+
+            h1{
+                margin:1rem 2rem;
+                font-size: 1.65rem;
+                color:variables.$sooth-black;
+
+                // user level
+                span{
+                    color:variables.$sooth-black;
+                    margin: 0 1rem;
+                    padding:0.5rem;
+                    font-size: 1rem;
+                    border-radius: 0.65rem;
+                }
+                .bronze{
+                    background: variables.$bronze;
+                    color:#ffffff;
+                }
+
+                .gold{
+                    background: variables.$gold;
+                    color:variables.$sooth-black;
+                }
+
+                .platinum{
+                    background:variables.$platinum;
+                    color:variables.$sooth-black;
+                }
+            }
+
+            .usage-period{
+                width:fit-content;
+                margin:1rem;
+                
+                p{
+                    font-size: 1.2rem;
+                    padding:0.8rem;
+                }
+            }   
         }
+
+        .welcome{
+            height:3rem;
+            width:100%;
+            padding:0.5rem;
+            p{
+                font-size: 1.2rem;
+                margin:0 2rem;
+                color:variables.$sooth-black;
+            }
+        }
+
+        .user-data-container{
+            height:7rem;
+            width:100%;
+            margin:1rem auto;
+            display: flex;
+            justify-content: space-evenly;
+
+            .data-box{
+                height:100%;
+                width:20%;
+                display: grid;
+                place-content: center;
+                gap:1rem;
+                background: variables.$body-bg;
+                color:variables.$sooth-black;
+                box-shadow: 0 0 8px variables.$fallback;
+                border-radius: 0.85rem;
+
+                h1{
+                    font-size: 1.1rem;
+                    background:variables.$light-grey;
+                    padding:0.65rem;
+                    border-radius: 0.6rem;
+                }
+                p{
+                    font-size:1.25rem;
+                    text-align: center;
+                }
+            }
+        }
+
 }

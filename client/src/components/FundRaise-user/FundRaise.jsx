@@ -12,20 +12,19 @@ const FundRaise = () => {
   return (
     <section className="fund-raise-container">
       <header>
-        <h1>FUND RAISE</h1>
           <TextField
             id="outlined-search"
-            color="secondary"
+            className="search-field"
             value={fundRaiseSearch}
             onChange={(e) => setFundRaiseSearch(e.target.value)}
-            label="Search field"
             type="search"
+            label="Search field"
           />
       </header>
 
       <section className="fund-list-container">
         <h1>Lists of Funds</h1>
-        <ul>
+        <ul className='fund-list'>
           {
             funds?.length>0?
               funds.map((fund,index)=>(
@@ -39,7 +38,7 @@ const FundRaise = () => {
               ))
               :
               <>
-                <p>No fund rasises available</p>
+                <p className='no-fund-raise-message'>No fund raises available</p>
               </>
           }
         </ul>

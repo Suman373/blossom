@@ -3,10 +3,13 @@ import './FundRaise.scss';
 import { TextField } from '@mui/material';
 import { useState } from 'react';
 import Fund from '../Fund/Fund';
-import GreyButton from '../GreyButton/GreyButton';
 import BlueButton from '../BlueButton/BlueButton';
+import { useNavigate } from 'react-router-dom';
 
 const FundRaise = () => {
+
+  // const navigator
+  const navigate = useNavigate();
 
   const [fundRaiseSearch, setFundRaiseSearch] = useState("");
 
@@ -14,9 +17,9 @@ const FundRaise = () => {
 
 
   // adding new event button click
-  const addNewEvent = (e) => {
+  const addNewFundRaise = (e) => {
     e.preventDefault();
-    alert("You want to add event");
+    navigate('/userhome/new-fundraise');
   }
 
   return (
@@ -31,8 +34,8 @@ const FundRaise = () => {
           label="Search fund raise"
         />
         <BlueButton
-           text={"Add new event"}
-           addNewEvent={addNewEvent}
+           text={"Add new fundraise"}
+           handleClick={addNewFundRaise}
         />
 
       </header>
@@ -45,6 +48,7 @@ const FundRaise = () => {
               funds.map((fund, index) => (
                 fund?.toLowerCase().includes((fundRaiseSearch.toLowerCase())) ?
                   <Fund
+                    key={index}
                     fund={fund}
                     />
                   :

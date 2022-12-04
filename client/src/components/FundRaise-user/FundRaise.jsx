@@ -2,6 +2,7 @@ import React from 'react';
 import './FundRaise.scss';
 import { TextField } from '@mui/material';
 import { useState } from 'react';
+import Fund from '../Fund/Fund';
 
 const FundRaise = () => {
 
@@ -40,10 +41,9 @@ const FundRaise = () => {
             funds?.length > 0 ?
               funds.map((fund, index) => (
                 fund?.toLowerCase().includes((fundRaiseSearch.toLowerCase())) ?
-                  <li
-                    key={index}>
-                    {fund}
-                  </li>
+                  <Fund
+                    fund={fund}
+                    />
                   :
                   ""
               ))

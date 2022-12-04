@@ -1,0 +1,111 @@
+@use '../../utils/variables';
+
+.fund-item {
+    height: 12rem;
+    width: 25rem;
+    margin: 1rem auto;
+    background: white;
+    box-shadow: 0 0 5px variables.$fallback;
+    border-radius: 1rem;
+
+    .fund-header {
+        height: 3rem;
+        // background: rebeccapurple;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0.5rem auto;
+
+        h1 {
+            padding: 0.4rem 0;
+            font-size: 1.3rem;
+            margin: 0.5rem 1rem;
+            color:variables.$blue-accent;
+        }
+
+        button {
+            font-size: 1.2rem;
+            padding: 0 0.8rem;
+            margin: 0.6rem 1rem;
+            background: transparent;
+            outline: none;
+            border: none;
+            color: variables.$sooth-black;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 0.9;
+                color: variables.$blue-light;
+            }
+        }
+    }
+
+    .fund-time {
+        height: 2rem;
+        // padding:0.2rem;
+        display: flex;
+        align-items: center;
+
+        i {
+            margin: 0 1rem;
+            font-size: 1.3rem;
+        }
+
+        p {
+            font-size: 1rem;
+            color: variables.$sooth-black;
+        }
+
+    }
+
+    .fund-details {
+        height: 6rem;
+        padding: 0.2rem;
+        color:variables.$blue-light;
+
+        p {
+            font-size: 1.1rem;
+            margin: 0.5rem 1rem;
+        }
+
+        .progress-flex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .progress-container {
+                height: 2rem;
+                width: 15rem;
+                display: flex;
+                overflow: hidden;
+                border: 5px solid variables.$green-light;
+                border-radius: 0.8rem;
+                background: variables.$green-light;
+                margin: 0.5rem 1rem;
+
+                .progress {
+                    padding: 0.1rem;
+                    background: variables.$positive;
+                    animation: fluidish 3500ms alternate ease infinite;
+                }
+
+                @keyframes fluidish {
+                    from {
+                        width: 0%;
+                        opacity: 0.7;
+                    }
+                    to {
+                        opacity: 0.9;
+                    }
+                }
+            }
+
+            .amount-raised {
+                font-size: 2rem;
+                font-family: serif;
+            }
+        }
+
+    }
+
+}

@@ -1,0 +1,20 @@
+@use '../../utils/variables';
+
+.grey-button{
+    padding:0.6rem 0.8rem;
+    width:fit-content;
+    cursor:pointer;
+    background: variables.$light-grey;
+    color:variables.$sooth-black;
+    font-size: 1.4rem;
+    margin:1.5rem 1rem; 
+    outline: none;
+    border:none;
+    border-radius: 0.4rem;
+    box-shadow: 0 0 6px variables.$fallback;
+
+    &:hover{
+        transform: scale(1.006);
+        opacity: 0.8;
+    }
+}

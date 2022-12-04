@@ -3,6 +3,8 @@ import './FundRaise.scss';
 import { TextField } from '@mui/material';
 import { useState } from 'react';
 import Fund from '../Fund/Fund';
+import GreyButton from '../GreyButton/GreyButton';
+import BlueButton from '../BlueButton/BlueButton';
 
 const FundRaise = () => {
 
@@ -26,16 +28,17 @@ const FundRaise = () => {
           value={fundRaiseSearch}
           onChange={(e) => setFundRaiseSearch(e.target.value)}
           type="search"
-          label="Search field"
+          label="Search fund raise"
         />
-        <button
-          onClick={addNewEvent}>
-          Add new event
-        </button>
+        <BlueButton
+           text={"Add new event"}
+           addNewEvent={addNewEvent}
+        />
+
       </header>
 
       <section className="fund-list-container">
-        <h1>Lists of Funds</h1>
+        <h1>Fund raises available</h1>
         <ul className='fund-list'>
           {
             funds?.length > 0 ?

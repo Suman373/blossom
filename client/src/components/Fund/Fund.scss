@@ -86,16 +86,23 @@
                 .progress {
                     padding: 0.1rem;
                     background: variables.$positive;
-                    animation: fluidish 3500ms alternate ease infinite;
+                    // animation: fluidish 3500ms alternate ease ;
+                    animation: fluidish 5000ms ease-in-out;
                 }
 
                 @keyframes fluidish {
-                    from {
+                    25% {
                         width: 0%;
+                        opacity: 0.3;
+                    }
+                    50%{
+                        opacity:0.5
+                    }
+                    75% {
                         opacity: 0.7;
                     }
-                    to {
-                        opacity: 0.9;
+                    100%{
+                        opacity:1;
                     }
                 }
             }

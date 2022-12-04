@@ -18,8 +18,9 @@
 
         .search-field{
             margin-left:1rem;
-            border-radius: 1rem;
+            // border-radius: 1rem;
             width:20rem;
+            box-shadow: 0 2px 5px variables.$light-grey;
         }
     }
 
@@ -31,6 +32,13 @@
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
+
+        h1{
+            font-size: 1.7rem;
+            margin:1rem auto;
+            color:variables.$shadow;
+            text-underline-offset: 1px 0 1px black;
+        }
 
     }
 }

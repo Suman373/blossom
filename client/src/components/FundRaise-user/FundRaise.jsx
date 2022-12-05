@@ -23,7 +23,7 @@ const FundRaise = () => {
   }
 
   return (
-    <section className="fund-raise-container">
+    <section className="fund-raise-container" id="fundraises">
       <header>
         <TextField
           id="outlined-search"

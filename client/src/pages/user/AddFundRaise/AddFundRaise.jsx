@@ -25,6 +25,7 @@ const AddFundRaise = () => {
     setFundRaiseName("");setFundOrgName(""); setFundCurrency("");setFundAmount("");
     navigate('/userhome');
   }
+  
   return (
     <main className='add-fundraise-wrapper'>
       <h1>Add <span>Fundraise Details</span></h1>

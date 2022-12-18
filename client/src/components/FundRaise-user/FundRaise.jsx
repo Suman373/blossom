@@ -8,6 +8,9 @@ import { useNavigate } from 'react-router-dom';
 
 const FundRaise = () => {
 
+  // title set
+  document.title = "HH | Fundraises"
+
   // const navigator
   const navigate = useNavigate();
 
@@ -23,7 +26,7 @@ const FundRaise = () => {
   }
 
   return (
-    <section className="fund-raise-container" id="fundraises">
+    <section className="fund-raise-container" >
       <header>
         <TextField
           id="outlined-search"

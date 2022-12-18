@@ -3,8 +3,10 @@ import './UserNavbar.scss';
 import { AppBar } from '@mui/material';
 
 import icon from '../../assets/give-take-heart.webp';
+import { useState } from 'react';
 
-const UserNavbar = () => {
+const UserNavbar = ({activeLink, setActiveLink}) => {
+  
   return (
     <>
         <AppBar
@@ -12,10 +14,26 @@ const UserNavbar = () => {
            <div style={{display:'flex'}}>
            <ul>
                 <li><a id="logo" href="/userhome">Helping hand</a></li>
-                <li><a href="#fundraises">Fundraises</a></li>
-                <li><a href="/userhome/events">Events</a></li>
-                <li><a href="/userhome/plans">Plans</a></li>
-                <li><a href="/userhome/settings">Settings</a></li>
+                <li 
+                  value={activeLink}
+                  onClick={()=> setActiveLink("Fundraises")}>
+                    Fundraises
+                </li>
+                <li 
+                  value={activeLink}
+                  onClick={()=> setActiveLink("Events")}>
+                    Events
+                </li>
+                <li 
+                  value={activeLink}
+                  onClick={()=> setActiveLink("Plans")}>
+                    Plans
+                </li>
+                <li 
+                  value={activeLink}
+                  onClick={()=> setActiveLink("Settings")}>
+                    Settings
+                </li>
             </ul>
             <section className="icon-control">
                 <img src={icon} alt="user-icon"/>

@@ -20,10 +20,11 @@
         list-style: none;
         // background:variables.$blue-accent;
 
-        li a{
+        li {
             font-size: 1.25rem;
             margin:0 1rem;
             color:variables.$sooth-black;
+            cursor:pointer;
 
             &:hover{
                 border-bottom: 4px solid variables.$shadow;

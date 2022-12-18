@@ -1,13 +1,13 @@
 @use '../../../utils/variables';
 
 .banner-wrapper{
-    // min-height: 100vh;
     display: grid;
     place-content: center;
     padding:0.5rem;
+    position: relative;
     gap:2rem;
-    margin:2rem 0;
-    z-index: 100;
+    margin:2rem auto;
+    z-index: 10;
     .banner-slogan{
         height:20rem;
         width:fit-content;
@@ -15,6 +15,7 @@
         place-content: center;
         margin:1rem auto;
         text-align: center;
+        position: relative;
         h1{
             font-size: 2.5rem;
             font-weight:800;
@@ -32,6 +33,8 @@
         display: grid;
         place-content: center;
         position:relative;
+        background:white;
+        z-index: 10;
         .icons-container{
             width: fit-content;
             margin:0.5rem;
@@ -78,14 +81,13 @@
 
 .platform-wrapper{
     min-height: 100vh;
+    width: 100%;
     margin:1rem auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding:0.5rem;
-    gap:2rem;
-    // flex-wrap: wrap;
-    position: relative;
+    padding:1rem;
+    gap:1rem;
     border-radius: 1rem;
     background: variables.$light-grey;
 
@@ -97,15 +99,14 @@
     }
     .our-platform{
         min-height:30rem;
-        width:50%;
+        width:35rem;
         // background:variables.$blue-light;
 
         .platform-card{
-            width:100%;
+            width:fit-content;
             margin:1rem auto;
             height:fit-content;
             padding:1rem;
-            // background-color: variables.$body-bg;
 
             p{
                 font-size: 1.3rem;
@@ -118,7 +119,7 @@
                 height:25rem;
                 border-radius: 0.8rem;
                 width:100%;
-                box-shadow: 0 0 12px variables.$shadow;
+                // box-shadow: 0 0 12px variables.$shadow;
             }
         }
     }

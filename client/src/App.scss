@@ -3,25 +3,49 @@
 
 *,
 *::before,
-*::after{
+*::after {
   box-sizing: border-box;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
-a{
+
+a {
   text-decoration: none;
 }
-html{
+
+html {
   scroll-behavior: smooth;
 }
-body{
+
+body {
   min-height: 100vh;
   overflow-x: hidden;
   font-family: sans-serif;
 
-    .App{
-        min-height: 100vh;
-        width:100vw;
-        // background:variables.$body-bg;
+  .App {
+    min-height: 100vh;
+    width: 100vw;
+    position: relative;
+    //  background: radial-gradient(#ff9faf,variables.$blue-light) ;
+
+    &::before, &::after{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: radial-gradient(variables.$pink 70%, white);
+      z-index: -100;
+      clip-path: circle(30% at 10% 80%);
     }
+    &::before{
+      clip-path: circle(30% at 10% 80%);
+    }
+
+    &::after {
+      content: "";
+      clip-path: circle(30% at 100% 35%);
+    }
+  }
 }

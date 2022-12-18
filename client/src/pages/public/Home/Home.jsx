@@ -30,7 +30,7 @@ const Home = () => {
                 <Box className="banner-wrapper">
                     <section className="banner-slogan">
                         <h1>
-                            Your Go-to Fundraising Platform
+                            Your Go-to Crowdfund raising Platform
                         </h1>
                         <p>
                             Join us to thrive towards helping millions of unpriviledged who need our help

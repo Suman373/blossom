@@ -1,13 +1,25 @@
 @use '../../../utils/variables';
 
+video{
+    position:fixed;
+    height:100vh;
+    width:100vw;
+    top:0;
+    left:0;
+    z-index: -1;
+}
+
 .banner-wrapper{
+    min-height:100vh;
+    width: fit-content;
     display: grid;
     place-content: center;
     padding:0.5rem;
     position: relative;
     gap:2rem;
     margin:2rem auto;
-    z-index: 10;
+
+
     .banner-slogan{
         height:20rem;
         width:fit-content;
@@ -16,6 +28,7 @@
         margin:1rem auto;
         text-align: center;
         position: relative;
+
         h1{
             font-size: 2.5rem;
             font-weight:800;
@@ -25,6 +38,7 @@
             font-size: 1.5rem;
         }
     }
+
     .banner-illustration{
         min-height:25rem;
         border-radius: 1rem;
@@ -33,8 +47,9 @@
         display: grid;
         place-content: center;
         position:relative;
-        background:white;
+        background:variables.$white;
         z-index: 10;
+
         .icons-container{
             width: fit-content;
             margin:0.5rem;
@@ -89,7 +104,11 @@
     padding:1rem;
     gap:1rem;
     border-radius: 1rem;
+
     background: variables.$light-grey;
+    @media screen and (max-width:1000px){
+        flex-wrap: wrap;
+    }
 
     h1{
         font-size: 2rem;
@@ -102,6 +121,9 @@
         width:35rem;
         // background:variables.$blue-light;
 
+        @media  screen and (max-width:1000px){
+            width: 30rem;
+        }
         .platform-card{
             width:fit-content;
             margin:1rem auto;

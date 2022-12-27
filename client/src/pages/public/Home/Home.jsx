@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './Home.scss';
+import videoBackground from './assets/smiling_kid.mp4';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import NavbarHome from '../../../components/Navbar-home/NavbarHome';
 import { SiFsecure, SiWebmoney } from 'react-icons/si';
 import { FaHandshake } from 'react-icons/fa';
-import givetakeheart from '../../../assets/give-take-heart.webp';
-import donatebox from '../../../assets/donate-box.webp';
-import devices from '../../../assets/devices-compatibility.webp';
+import givetakeheart from './assets/give-take-heart.webp';
+import donatebox from './assets/donate-box.webp';
+import devices from './assets/devices-compatibility.webp';
 import BlueButton from '../../../components/BlueButton/BlueButton';
 
 const Home = () => {
     // navigator
     const navigate = useNavigate();
 
-    const getStarted= ()=>{
+    const getStarted = () => {
         navigate('/userhome');
     }
 
-    const moreFromUs = ()=>{
+    const moreFromUs = () => {
         alert("You want more? ");
     }
 
@@ -30,19 +31,19 @@ const Home = () => {
                 <Box className="banner-wrapper">
                     <section className="banner-slogan">
                         <h1>
-                            Your Go-to Crowdfund raising Platform
+                            Your Crowdfund raising Platform
                         </h1>
                         <p>
-                            Join us to thrive towards helping millions of unpriviledged who need our help
+                            Join us to thrive towards helping millions of unpriviledged who need your help
                         </p>
 
                         <div>
                             <BlueButton
                                 text={"Get started"}
-                                handleClick={getStarted}/>
+                                handleClick={getStarted} />
                             <BlueButton
                                 text={"More from us"}
-                                handleClick={moreFromUs}/>
+                                handleClick={moreFromUs} />
                         </div>
                     </section>
                     <section className="banner-illustration">
@@ -63,7 +64,7 @@ const Home = () => {
                         <img src={givetakeheart} alt="give-take-heart" />
                     </section>
                 </Box>
-                <Box className="platform-wrapper">
+                <Box className="platform-wrapper" id="platform">
                     <section className="our-platform">
                         <h1>An onboarding experience</h1>
                         <div className="platform-card">

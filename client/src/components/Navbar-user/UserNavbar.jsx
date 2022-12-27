@@ -2,7 +2,7 @@ import React from 'react'
 import './UserNavbar.scss';
 import { AppBar } from '@mui/material';
 
-import icon from '../../assets/give-take-heart.webp';
+import icon from './assets/give-take-heart.webp';
 import { useState } from 'react';
 
 const UserNavbar = ({activeLink, setActiveLink}) => {

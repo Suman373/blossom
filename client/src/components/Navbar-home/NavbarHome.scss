@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #ffffff;
+    background: variables.$body-bg;
 
     &>a{
         font-size: 2.2rem;

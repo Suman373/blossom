@@ -27,8 +27,7 @@
             cursor:pointer;
 
             &:hover{
-                border-bottom: 4px solid variables.$shadow;
-                border-radius: 0.2rem;
+                border-bottom: 1px solid variables.$shadow;
                 color:variables.$shadow;
             }
             &:visited{

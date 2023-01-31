@@ -1,16 +1,14 @@
 @use '../../utils/variables';
 
 .fund-item {
-    height: 12rem;
-    width: 25rem;
-    margin: 1rem auto;
+    height: 25rem;
+    width: 23rem;
     background: white;
     box-shadow: 0 0 5px variables.$fallback;
     border-radius: 1rem;
 
     .fund-header {
         height: 3rem;
-        // background: rebeccapurple;
         display: flex;
         align-items: center;
         justify-content: space-between;

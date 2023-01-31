@@ -2,7 +2,7 @@ import React from 'react';
 import './FundRaise.scss';
 import { TextField } from '@mui/material';
 import { useState } from 'react';
-import Fund from '../Fund/Fund';
+import FundCard from '../FundCard/FundCard';
 import BlueButton from '../BlueButton/BlueButton';
 import { useNavigate } from 'react-router-dom';
 
@@ -50,7 +50,7 @@ const FundRaise = () => {
             funds?.length > 0 ?
               funds.map((fund, index) => (
                 fund?.toLowerCase().includes((fundRaiseSearch.toLowerCase())) ?
-                  <Fund
+                  <FundCard
                     key={index}
                     fund={fund}
                     />
@@ -59,7 +59,7 @@ const FundRaise = () => {
               ))
               :
               <>
-                <p className='no-fund-raise-message'>No fund raises available</p>
+                <p className='no-fund-raise-message'>No fund raises to show</p>
               </>
           }
         </ul>

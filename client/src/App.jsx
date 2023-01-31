@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 import {BrowserRouter as BRouter, Routes, Route} from 'react-router-dom';
-import Home from './pages/public/Home/Home';
+import Home from './pages/nonuser/Home/Home';
 import UserHome from './pages/user/UserHome/UserHome';
 import AddFundRaise from './pages/user/AddFundRaise/AddFundRaise';
 

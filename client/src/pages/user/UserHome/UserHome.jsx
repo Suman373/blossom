@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './UserHome.scss';
+import heartImage from '../../../assets/give-take-heart.webp';
 import UserNavbar from '../../../components/Navbar-user/UserNavbar';
 import UserSynopsis from '../../../components/Synopsis-user/UserSynopsis';
 import FundRaise from '../../../components/FundRaise-user/FundRaise';
@@ -36,7 +37,7 @@ const UserHome = () => {
           </>
           :
           <>
-            <p>HOME</p>
+            <img className='home-heart' src={heartImage} alt="home page illustration"/>
           </>
          }
 

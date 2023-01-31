@@ -1,15 +1,15 @@
 import React from 'react';
-import './Fund.scss';
+import './FundCard.scss';
 import { FaArrowRight } from 'react-icons/fa';
 import {MdPublic} from 'react-icons/md';
 
-const Fund = ({ fund }) => {
+const FundCard = ({ fund }) => {
     let progressVal = 90;
     return (
         <div className='fund-item'>
 
             <div className="fund-header">
-                <h1>Fund raise name</h1>
+                <h1>FundCard raise name</h1>
                 <button>
                     <FaArrowRight />
                 </button>
@@ -38,4 +38,4 @@ const Fund = ({ fund }) => {
     )
 }
 
-export default Fund;
+export default FundCard;

@@ -22,7 +22,7 @@ const UserSynopsis = () => {
                              </span>
                         </h1>
                         <div className="usage-period">
-                            <p>Current usage : (Dec 1 - Dec 31)</p>
+                            {/* <p>Current usage : (Dec 1 - Dec 31)</p> */}
                         </div>
                     </header>
                     <div className='welcome'>

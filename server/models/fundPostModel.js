@@ -3,7 +3,7 @@ const FundPostSchema = new mongoose.Schema({
     title:{
         type:String
     },
-    goal:{
+    about:{
         type:String
     },
     orgName:{
@@ -12,13 +12,11 @@ const FundPostSchema = new mongoose.Schema({
     amount:{
         type:String
     },
-    createdAt:{
+    deadline:{
         type:Date,
-        default:Date.now()
     }
 },
 {timestamps:true}
 );
 
-const FundPost = mongoose.model('FundPost', FundPostSchema);
-module.exports = FundPost;
+module.exports = mongoose.model('FundModel', FundPostSchema);

@@ -30,21 +30,21 @@ const UserSynopsis = () => {
                     </div>
                     <section className='user-data-container'>
                             <div className="data-box">
-                                <h1>Donations done</h1>
-                                <p>currency 54500 </p>
+                                <h1>Total donation</h1>
+                                <p>xxxx</p>
 
                             </div>
                             <div className="data-box">
-                                <h1>Events created</h1>
-                                <p>5</p>
+                                <h1>Events donated</h1>
+                                <p>xxx</p>
                             </div>
                             <div className="data-box">
-                                <h1>Organisations</h1>
-                                <p>3</p>
+                                <h1>Fundraise created</h1>
+                                <p>XX</p>
                             </div>
                             <div className="data-box">
                                 <h1>Redeem points</h1>
-                                <p>29</p>        
+                                <p>XXX</p>        
                             </div>
                     </section>
             </div>

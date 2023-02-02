@@ -1,17 +1,17 @@
 import React from 'react';
-import './FundRaise.scss';
+import './FundList.scss';
 import { TextField } from '@mui/material';
 import { useState } from 'react';
 import FundCard from '../FundCard/FundCard';
 import BlueButton from '../BlueButton/BlueButton';
 import { useNavigate } from 'react-router-dom';
 
-const FundRaise = () => {
+const FundList = () => {
 
   // title set
   document.title = "HH | Fundraises"
 
-  // const navigator
+  
   const navigate = useNavigate();
 
   const [fundRaiseSearch, setFundRaiseSearch] = useState("");
@@ -68,4 +68,4 @@ const FundRaise = () => {
   )
 }
 
-export default FundRaise;
+export default FundList;

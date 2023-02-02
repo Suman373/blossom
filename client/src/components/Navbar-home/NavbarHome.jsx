@@ -10,7 +10,6 @@ const NavbarHome = () => {
             <li><a href="#platform">Platform</a></li>
             <li><a href="#pricing">Pricing</a></li>
             <li><a href="#support">Support</a></li>
-            <li><a href="#blogs">Blogs</a></li>
           </ul>
           <div className="user-block">
             <button>

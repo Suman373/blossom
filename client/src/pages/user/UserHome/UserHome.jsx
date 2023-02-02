@@ -3,7 +3,7 @@ import './UserHome.scss';
 import heartImage from '../../../assets/give-take-heart.webp';
 import UserNavbar from '../../../components/Navbar-user/UserNavbar';
 import UserSynopsis from '../../../components/Synopsis-user/UserSynopsis';
-import FundRaise from '../../../components/FundRaise-user/FundRaise';
+import FundList from '../../../components/FundList/FundList';
 
 const UserHome = () => {
   const [activeLink , setActiveLink] = useState("");
@@ -18,7 +18,7 @@ const UserHome = () => {
          {
           activeLink === "Fundraises"?
           <>
-            <FundRaise/>
+            <FundList/>
           </>
           :
           activeLink === "Events" ? 

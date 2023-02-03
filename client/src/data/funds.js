@@ -11,6 +11,16 @@ export default [
         createdAt:"26tsdjkhskdh",
         status:200
     },
+    {
+        id:1,
+        title:"SKS Shikshya fundraise",
+        about:"SKS is going to raise funds to help the schools in village located in Birbhum",
+        orgName:"SKS",
+        amount:"5000",
+        deadline:`${date.toLocaleString()}`,
+        createdAt:"26tsdjkhskdh",
+        status:200
+    },
 ];
 
 /** 

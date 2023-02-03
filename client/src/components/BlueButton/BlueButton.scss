@@ -6,7 +6,7 @@
     cursor: pointer;
     background: variables.$blue-light;
     color: #ffffff;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     margin: 1.5rem 1rem;
     outline: none;
     border: none;
@@ -21,7 +21,7 @@
     }
 
     @media only screen and (max-width:750px) {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     @media only screen and (max-width:512px) {

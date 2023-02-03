@@ -1,5 +1,6 @@
 import React from 'react';
 import './NavbarHome.scss';
+import BlueButton from '../BlueButton/BlueButton'
 
 const NavbarHome = () => {
   return (
@@ -12,9 +13,10 @@ const NavbarHome = () => {
             <li><a href="#support">Support</a></li>
           </ul>
           <div className="user-block">
-            <button>
-              Sign in
-            </button>
+            <BlueButton 
+            text="Sign in"
+            handleClick={()=>alert('Signin')}
+            />
           </div>
       </nav>
     </>

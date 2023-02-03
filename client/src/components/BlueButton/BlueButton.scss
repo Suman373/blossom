@@ -1,19 +1,31 @@
 @use '../../utils/variables';
 
-.blue-button{
-    padding:0.6rem 0.8rem;
-    width:fit-content;
-    cursor:pointer;
+.blue-button {
+    padding: 0.6rem 0.8rem;
+    width: max-content;
+    cursor: pointer;
     background: variables.$blue-light;
-    color:#ffffff;
+    color: #ffffff;
     font-size: 1.4rem;
-    margin:1.5rem 1rem; 
+    margin: 1.5rem 1rem;
     outline: none;
-    border:none;
-    border-radius: 0.4rem;
+    border: none;
+    border-radius: 0.5rem;
 
-    &:hover{
-        transform: scale(1.006);
-        opacity: 0.8;
+    &:hover {
+        background:#ffffffff;
+        transition:all 300ms ease-in-out;
+        outline: 1px solid variables.$blue-light;
+        color:variables.$blue-light;
+        filter: drop-shadow(0 0 8px variables.$fallback);
     }
+
+    @media only screen and (max-width:750px) {
+        font-size: 1.2rem;
+    }
+
+    @media only screen and (max-width:512px) {
+        font-size: 1rem;
+    }
+
 }

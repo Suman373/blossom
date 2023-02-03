@@ -5,19 +5,16 @@ import { useState } from 'react';
 import FundCard from '../FundCard/FundCard';
 import BlueButton from '../BlueButton/BlueButton';
 import { useNavigate } from 'react-router-dom';
+import funds from '../../data/funds';
 
 const FundList = () => {
 
   // title set
   document.title = "HH | Fundraises"
 
-  
   const navigate = useNavigate();
 
   const [fundRaiseSearch, setFundRaiseSearch] = useState("");
-
-  const funds = ["A","B","C","D"];
-
 
   // adding new event button click
   const addNewFundRaise = (e) => {
@@ -44,12 +41,12 @@ const FundList = () => {
       </header>
 
       <section className="fund-list-container">
-        <h1>Fund raises available</h1>
+        <h1>Fund-raises you can donate to</h1>
         <ul className='fund-list'>
           {
             funds?.length > 0 ?
-              funds.map((fund, index) => (
-                fund?.toLowerCase().includes((fundRaiseSearch.toLowerCase())) ?
+              funds?.map((fund, index) => (
+                fund?.title?.toLowerCase().includes((fundRaiseSearch.toLowerCase())) ?
                   <FundCard
                     key={index}
                     fund={fund}

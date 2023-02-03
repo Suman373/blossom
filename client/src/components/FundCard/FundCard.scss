@@ -1,89 +1,49 @@
 @use '../../utils/variables';
 
 .fund-item {
-    height: 25rem;
+    min-height: 25rem;
+    max-height: 30rem;
     width: 23rem;
     background: white;
     box-shadow: 0 0 5px variables.$fallback;
     border-radius: 1rem;
 
-    .fund-header {
-        height: 3rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin: 0.5rem auto;
-
-        h1 {
-            padding: 0.4rem 0;
-            font-size: 1.3rem;
-            margin: 0.5rem 1rem;
-            color:variables.$blue-accent;
-        }
-
-        button {
-            font-size: 1.2rem;
-            padding: 0 0.8rem;
-            margin: 0.6rem 1rem;
-            background: transparent;
-            outline: none;
-            border: none;
-            color: variables.$sooth-black;
-            cursor: pointer;
-
-            &:hover {
-                opacity: 0.9;
-                color: variables.$blue-light;
-            }
-        }
-    }
-
-    .fund-time {
-        height: 2rem;
-        // padding:0.2rem;
-        display: flex;
-        align-items: center;
-
-        i {
-            margin: 0 1rem;
-            font-size: 1.3rem;
-        }
-
-        p {
-            font-size: 1rem;
-            color: variables.$sooth-black;
-        }
-
+    img{
+        height: 15rem;
+        width: 100%;
+        border-radius: 1rem 1rem 0 0 ;
     }
 
     .fund-details {
-        height: 6rem;
+        height: fit-content;
         padding: 0.2rem;
         color:variables.$blue-light;
-
         p {
             font-size: 1.1rem;
             margin: 0.5rem 1rem;
         }
-
+        .fund-title{
+            color: variables.$blue-accent;
+            font-size: 1.2rem;
+        }
         .progress-flex {
             display: flex;
             justify-content: center;
             align-items: center;
 
             .progress-container {
-                height: 1rem;
-                width: 15rem;
+                height: 1.3rem;
+                width: 14rem;
                 display: flex;
                 overflow: hidden;
-                border: 5px solid variables.$green-light;
+                border: 5px solid variables.$fallback;
                 border-radius: 0.8rem;
-                background: variables.$green-light;
+                background: variables.$fallback;
                 margin: 0.5rem 1rem;
 
                 .progress {
                     padding: 0.1rem;
-                    background: variables.$positive;
+                    background: variables.$blue-accent;
                     // animation: fluidish 3500ms alternate ease ;
                     animation: fluidish 5000ms ease-in-out;
                 }
@@ -105,9 +65,8 @@
                 }
             }
 
-            .amount-raised {
-                font-size: 2rem;
-                font-family: serif;
+            .amount-raised p{
+                font-size: 1.4rem;
             }
         }
 

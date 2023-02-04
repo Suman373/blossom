@@ -4,6 +4,7 @@ import heartImage from '../../../assets/give-take-heart.webp';
 import UserNavbar from '../../../components/Navbar-user/UserNavbar';
 import UserSynopsis from '../../../components/Synopsis-user/UserSynopsis';
 import FundList from '../../../components/FundList/FundList';
+import EventCard from '../../../components/EventCard/EventCard';
 
 const UserHome = () => {
   const [activeLink , setActiveLink] = useState("");
@@ -23,7 +24,7 @@ const UserHome = () => {
           :
           activeLink === "Events" ? 
           <>
-            <p>EVENTS PAGE NEED TO BE ADDED</p>
+            <EventCard/>
           </>
           :
           activeLink === "Plans"?

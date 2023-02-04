@@ -5,6 +5,7 @@ import UserNavbar from '../../../components/Navbar-user/UserNavbar';
 import UserSynopsis from '../../../components/Synopsis-user/UserSynopsis';
 import FundList from '../../../components/FundList/FundList';
 import EventCard from '../../../components/EventCard/EventCard';
+import EventList from '../../../components/EventList/EventList';
 
 const UserHome = () => {
   const [activeLink , setActiveLink] = useState("");
@@ -24,7 +25,7 @@ const UserHome = () => {
           :
           activeLink === "Events" ? 
           <>
-            <EventCard/>
+            <EventList/>
           </>
           :
           activeLink === "Plans"?

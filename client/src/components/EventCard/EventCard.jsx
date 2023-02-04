@@ -2,17 +2,10 @@ import React, { useState } from 'react';
 import './EventCard.scss';
 import BlueButton from '../BlueButton/BlueButton';
 import eventItemImg from '../../assets/children.jpeg';
+import {GoLocation} from 'react-icons/go';
+import {BsClock} from 'react-icons/bs';
 
-const EventCard = ({  }) => {
-
-    const event = [
-       {
-        title:"SPRING",
-        orgName:"SPRING",
-        deadline:"26thJuly2023",
-       }
-
-    ]
+const EventCard = ({event}) => {
 
     const [donateAmt , setDonateAmt] = useState(0);
 
@@ -27,7 +20,9 @@ const EventCard = ({  }) => {
             <div className="event-details">
                 <p className="event-title">{event.title}</p>
                 <p>By {event.orgName}</p>
-                <p>Ends on {event.deadline}</p>
+                <p><GoLocation/><span> {event.location}</span>
+                {" "}
+                <BsClock/> {event.datetime}</p>
             </div>
 
             <div style={{textAlign:'center'}}>

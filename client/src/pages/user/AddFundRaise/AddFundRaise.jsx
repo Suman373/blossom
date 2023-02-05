@@ -61,7 +61,6 @@ const AddFundRaise = () => {
 
             <TextField
             type="date"
-            label="Deadline"
             id="outlined-basic"
             value={fundDeadline}
             onChange={(e)=> setFundDeadline(e.target.value)}

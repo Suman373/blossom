@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 // const bodyParser = require('body-parser');
 const fundPost = require('./routes/fundPostRoute');
+const event = require('./routes/eventRoute');
 require('dotenv').config();
 const path = require('path');
 const app = express();
@@ -14,6 +15,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname,'/public')));
 
 app.use('/api/funds', fundPost);
+app.use('/api/events', event);
+
 app.get('/', (req,res)=>  {
     if(req.accepts('html')){
         res.sendFile(path.join(__dirname, 'view','welcome.html'));

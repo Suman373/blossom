@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom'
 import './Home.scss';
-import videoBackground from './assets/smiling_kid.mp4';
-import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
 import NavbarHome from '../../../components/Navbar-home/NavbarHome';
 import { SiFsecure, SiWebmoney } from 'react-icons/si';
 import { FaHandshake } from 'react-icons/fa';
@@ -26,12 +23,12 @@ const Home = () => {
 
     return (
         <>
-            <Container>
+            <div>
                 <NavbarHome />
-                <Box className="banner-wrapper">
+                <div className="banner-wrapper">
                     <section className="banner-slogan">
                         <h1>
-                            Your Crowdfund raising Platform
+                            Be someone's reason for smile
                         </h1>
                         <p>
                             Join us to thrive towards helping millions of unpriviledged who need your help
@@ -46,25 +43,26 @@ const Home = () => {
                                 handleClick={moreFromUs} />
                         </div>
                     </section>
-                    <section className="banner-illustration">
-                        <div className="icons-container">
-                            <i><SiFsecure /></i>
-                            <i><FaHandshake /></i>
-                            <i><SiWebmoney /></i>
-                            <i></i>
-                        </div>
-                        <div className="illustration-caption">
-                            <h1>
-                                Looking to help the needy but not sure of the authenticity?
-                            </h1>
-                            <p>
-                                Our site provides you that opportunity of making a huge difference to the lives of millions with small contribution. Yes, you might be worried about if it's safe. Don't worry, we have got you covered.
-                            </p>
-                        </div>
-                        <img src={givetakeheart} alt="give-take-heart" />
-                    </section>
-                </Box>
-                <Box className="platform-wrapper" id="platform">
+                </div>
+                <section className="banner-illustration">
+                    <div className="icons-container">
+                        <i><SiFsecure /></i>
+                        <i><FaHandshake /></i>
+                        <i><SiWebmoney /></i>
+                        <i></i>
+                    </div>
+                    <div className="illustration-caption">
+                        <h1>
+                            Looking to help the needy but not sure of the authenticity?
+                        </h1>
+                        <p>
+                            Our site provides you that opportunity of making a huge difference to the lives of millions with small contribution. Yes, you might be worried about if it's safe. Don't worry, we have got you covered.
+                        </p>
+                    </div>
+                    <img src={givetakeheart} alt="give-take-heart" />
+                </section>
+
+                <div className="platform-wrapper" id="platform">
                     <section className="our-platform">
                         <h1>An onboarding experience</h1>
                         <div className="platform-card">
@@ -79,8 +77,8 @@ const Home = () => {
                             <img src={devices} alt="device-compatibility" />
                         </div>
                     </section>
-                </Box>
-            </Container>
+                </div>
+            </div>
         </>
     )
 }

@@ -1,14 +1,14 @@
 @use '../../../utils/variables';
 
 .banner-wrapper{
-    min-height:100vh;
-    width: fit-content;
+    height:90vh;
     display: grid;
     place-content: center;
     padding:0.5rem;
     position: relative;
     gap:2rem;
     margin:2rem auto;
+    overflow-x: hidden;
 
 
     .banner-slogan{
@@ -29,65 +29,67 @@
             font-size: 1.5rem;
         }
     }
+}
 
-    .banner-illustration{
-        min-height:25rem;
-        border-radius: 1rem;
-        box-shadow: 0 3px 18px variables.$shadow;
-        width:100%;
-        display: grid;
-        place-content: center;
-        position:relative;
-        background:variables.$white;
-        z-index: 10;
+.banner-illustration{
+    min-height:25rem;
+    min-width: 25rem;
+    max-width: 80vw;
+    border-radius: 1rem;
+    margin:0 auto;
+    box-shadow: 0 3px 18px variables.$shadow;
+    display: grid;
+    place-content: center;
+    position:relative;
+    background:variables.$white;
+    z-index: 10;
+    margin-bottom: 5rem;
 
-        .icons-container{
-            width: fit-content;
-            margin:0.5rem;
-            padding:1rem;
-            i{
-                font-size: 2.5rem;
-                margin:1rem;
-                padding:0.5rem;
+    .icons-container{
+        width: fit-content;
+        margin:0.5rem;
+        padding:1rem;
+        i{
+            font-size: 2.5rem;
+            margin:1rem;
+            padding:0.5rem;
 
-                &:nth-child(1){
-                    color:variables.$warning;
-                }
-                &:nth-child(2){
-                    color:variables.$positive;
-                }
-                &:nth-child(3){
-                    color:variables.$blue-accent;
-                }
+            &:nth-child(1){
+                color:variables.$warning;
+            }
+            &:nth-child(2){
+                color:variables.$positive;
+            }
+            &:nth-child(3){
+                color:variables.$blue-accent;
             }
         }
+    }
 
-        .illustration-caption{
-            width:50%;
-            padding:1rem;
-            margin:0 2rem;
-            h1{
-                font-size: 2rem;
-                margin:1rem 0;
-                font-weight: 800;
-            }
-            p{
-                font-size: 1.4rem;
-            }
+    .illustration-caption{
+        width:50%;
+        padding:1rem;
+        margin:0 2rem;
+        h1{
+            font-size: 2rem;
+            margin:1rem 0;
+            font-weight: 800;
         }
-        img{
-            height:100%;
-            max-width:25rem;
-            position:absolute;
-            right:1rem;
-            top:0rem;
+        p{
+            font-size: 1.4rem;
         }
+    }
+    img{
+        height:100%;
+        max-width:25rem;
+        position:absolute;
+        right:1rem;
+        top:0rem;
     }
 }
 
 .platform-wrapper{
     min-height: 100vh;
-    width: 100%;
     margin:1rem auto;
     display: flex;
     align-items: center;

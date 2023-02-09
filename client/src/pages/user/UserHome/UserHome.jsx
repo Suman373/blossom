@@ -4,8 +4,8 @@ import heartImage from '../../../assets/give-take-heart.webp';
 import UserNavbar from '../../../components/Navbar-user/UserNavbar';
 import UserSynopsis from '../../../components/Synopsis-user/UserSynopsis';
 import FundList from '../../../components/FundList/FundList';
-import EventCard from '../../../components/EventCard/EventCard';
 import EventList from '../../../components/EventList/EventList';
+import Settings from '../Settings-page/Settings';
 
 const UserHome = () => {
   const [activeLink , setActiveLink] = useState("");
@@ -16,7 +16,6 @@ const UserHome = () => {
           activeLink={activeLink}
           setActiveLink={setActiveLink}
         />
-        <UserSynopsis/>
          {
           activeLink === "Fundraises"?
           <>
@@ -35,7 +34,8 @@ const UserHome = () => {
           :
           activeLink === "Settings"?
           <>
-            <p>SETTINGS TO BE ADDED</p>
+            <UserSynopsis/>
+            <Settings/>
           </>
           :
           <>

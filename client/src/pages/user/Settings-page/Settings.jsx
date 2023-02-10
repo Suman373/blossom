@@ -11,43 +11,63 @@ const Settings = () => {
     // route navigator 
     const navigate = useNavigate();
 
+    const [editedName, setEditedName] = useState("");
+    const [editedPassword, setEditedPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [profileAvatar, setProfileAvatar] = useState(null);
+    const [passwordMatch, setPasswordMatch] = useState(true);
 
     // submission of form
     const handleUpdateProfile = async (e) => {
+        e.preventDefault();
+        console.log(editedName, editedPassword, confirmPassword,profileAvatar);
+        if(editedPassword !== confirmPassword){
+            setPasswordMatch(false);
+            return;
+        }else{
+            setPasswordMatch(true);
+            alert("Updated!");
+        }
     }
 
     return (
         <main className='settings-wrapper'>
-            <img alt="settings illustration" />
+            {profileAvatar&&<>
+
+            <img src={URL.createObjectURL(profileAvatar)} alt="Not selected" />
+
+            </>}
             <div className="form-wrapper">
                 <h1>Your <span>Account Settings</span></h1>
                 <p>Edit your account details and settings from here</p>
                 <div>
                     <form>
                         <TextField
+                            value={editedName}
+                            onChange={(e)=> setEditedName(e.target.value)}
                             type="text"
-                            label=""
-                            id="outlined-basic" />
+                            label="Edit name"/>
 
                         <TextField
-                            type="text"
-                            label=""
-                            id="outlined-basic" />
+                            value={editedPassword}
+                            onChange={(e)=> setEditedPassword(e.target.value)}
+                            type="password"
+                            label="Edit password"/>
 
                         <TextField
-                            type="text"
-                            label=""
-                            id="outlined-basic" />
-
-                        <TextField
-                            type="text"
-                            id="outlined-basic"
-                        />
+                            value={confirmPassword}
+                            type="password"
+                            onChange={(e)=> setConfirmPassword(e.target.value)}
+                            label="Confirm password"/>
+                        
+                        {!passwordMatch ? 
+                            <p style={{color:'red',fontSize:'1rem'}}>Password did not match</p>:""}
 
                         <label>
                             Insert profile avatar{"  "}
                             <input
                                 type="file"
+                                onChange={(e)=> setProfileAvatar(e.target.files[0])}
                                 accept="image/png,image/jpeg" />
                         </label>
 

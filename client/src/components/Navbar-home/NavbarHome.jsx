@@ -6,11 +6,11 @@ const NavbarHome = () => {
   return (
     <>
       <nav className='navbar-home'>
-          <a href="/">Helping-hand</a>
+          <a href="/">Blossom</a>
           <ul>
             <li><a href="#platform">Platform</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#support">Support</a></li>
+            <li><a href="#pricing">Motive</a></li>
+            <li><a href="#support">Contact</a></li>
           </ul>
           <div className="user-block">
             <BlueButton 

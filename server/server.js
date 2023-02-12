@@ -4,6 +4,7 @@ const cors = require('cors');
 // const bodyParser = require('body-parser');
 const fundPost = require('./routes/fundPostRoute');
 const event = require('./routes/eventRoute');
+const accSettings = require('./routes/settingsRoute');
 require('dotenv').config();
 const path = require('path');
 const app = express();
@@ -16,6 +17,7 @@ app.use(express.static(path.join(__dirname,'/public')));
 
 app.use('/api/funds', fundPost);
 app.use('/api/events', event);
+app.use('/api/settings', accSettings);
 
 app.get('/', (req,res)=>  {
     if(req.accepts('html')){

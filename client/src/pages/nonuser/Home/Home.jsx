@@ -64,16 +64,16 @@ const Home = () => {
 
                 <div className="platform-wrapper" id="platform">
                     <section className="our-platform">
-                        <h1>An onboarding experience</h1>
+                        <h1>Sharing is caring</h1>
                         <div className="platform-card">
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit dolore neque natus eveniet a officia quibusdam magni maiores consequuntur ad!</p>
+                            <p>We don't let non-verified users and organisation start raise programs, so your love and kindness would reach the needy without any hesitation. </p>
                             <img src={donatebox} alt="donate-box" />
                         </div>
                     </section>
                     <section className="our-platform">
-                        <h1>Optimized to any device</h1>
+                        <h1>Join us to collaborate</h1>
                         <div className="platform-card">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium dolores corrupti dignissimos sed possimus tenetur similique quis libero cumque veritatis?</p>
+                            <p>We are actively looking for tech enthusiasts and developers to help us bring more features, so that we can reach new heights! </p>
                             <img src={devices} alt="device-compatibility" />
                         </div>
                     </section>

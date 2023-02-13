@@ -5,6 +5,7 @@ import Home from './pages/nonuser/Home/Home';
 import UserHome from './pages/user/UserHome/UserHome';
 import AddFundRaise from './pages/user/AddFundRaise/AddFundRaise';
 import AddEvent from './pages/user/AddEvent/AddEvent';
+import Footer from './components/Footer/Footer';
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
             <AddEvent/>
           }></Route>
         </Routes>
+        <Footer/>
       </div>
     </BRouter>
     </>

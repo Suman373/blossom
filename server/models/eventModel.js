@@ -1,24 +1,27 @@
 const mongoose = require('mongoose');
 
 const EventSchema = new mongoose.Schema({
-    eventName:{
+    name:{
         type:String,
         trim:true,
     },
-    orgName:{
-        type:String,
-        trim:true,
+    organisation:{
+        orgName:{type:String,trim:true},
+        orgType:{type:String,trim:true}
     },
     location:{
         type:String,
         trim:true,
     },
-    eventDate:{
+    date:{
         type:Date,
     },
-    eventTime:{
+    time:{
         type:String,
         trim:true,
+    },
+    image:{
+        fileUrl:{type:String,trim:true}
     }
 },{timestamps:true});
 

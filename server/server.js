@@ -4,24 +4,24 @@ const path = require('path');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const cors = require('cors');
-const cookieSession = require('cookie-session')
+const session = require('express-session');
 const fundPost = require('./routes/fundPostRoute');
 const event = require('./routes/eventRoute');
 const user = require('./routes/userRoute');
+const auth = require('./routes/authRoute');
 const passportSetup = require('./config/passport-setup');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 // middlewares
 app.use(cors({
-    origin:"http://localhost:3000",
-    methods:"GET,POST,PUT,PATCH,DELETE",
-    credentials:true
+    credentials:true,
+    origin:["http://localhost:3000"]
 }));
-app.use(cookieSession({
-    name:"session",
-    keys:["sumanroy"],
-    maxAge:24*60*60*100
+app.use(session({
+    secret:"ksahdkhksad7aydhkah3d3d2",
+    resave:true,
+    saveUninitialized:true,
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -30,9 +30,10 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,'/public')));
 
 // server routes
+app.use('/auth',auth);
 app.use('/funds', fundPost);
 app.use('/events', event);
-app.use('/auth',user);
+app.use('/user',user);
 
 app.get('/', (req,res)=>  {
     if(req.accepts('html')){

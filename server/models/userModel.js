@@ -13,10 +13,9 @@ const UserSchema = new mongoose.Schema({
         type:String,
         trim:true,
     },
-    profileImage:[
-        {
-            fileUrl:String
-        }],
+    profileImage:{
+        type:String
+    },
     followers:[
         {
             type:ObjectId,

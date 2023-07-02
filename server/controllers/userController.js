@@ -3,30 +3,6 @@ const UserModel = require('../models/userModel');
 const passport = require('passport');
 
 
-// @GET authenticate with passport 
-const passportAuth = (req,res)=>{
-    // handle google auth login w passport js
-    passport.authenticate("google",{
-        successRedirect:process.env.CLIENT_URL,
-        failureRedirect:"/login/failed"
-    })
-}
-//  @GET login user w comparing cookie sessions
-const loginUser = async(req,res)=>{
-    try {
-        if(req.user){
-            return res.status(200).json({message:"Logged in successfully!",user:req.user})
-        }else{
-            return res.status(403).json({message:"User not authorized"});
-        }
-        
-    } catch (error) {
-        console.log(error);
-        res.status(400).json({message:error.message});
-    }
-}
-
-
 //  @GET all users
 const getUsers = async(req,res)=>{
 
@@ -98,4 +74,4 @@ const deleteUser = async(req,res)=>{
 
 }
 
-module.exports = {getUsers,getOneUser,passportAuth,loginUser,updateUser,followUser,unfollowUser,deleteUser};
+module.exports = {getUsers,getOneUser,updateUser,followUser,unfollowUser,deleteUser};

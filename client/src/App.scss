@@ -22,13 +22,13 @@ html {
 
 body {
   min-height: 100vh;
+  width:100vw;
   overflow-x: hidden;
   font-family: 'Open Sans',serif;
   background:variables.$body-bg;
 
   .App {
     min-height: 100vh;
-    width: 100vw;
     position: relative;
     overflow-x: hidden;
   }

@@ -1,0 +1,76 @@
+@use '../../../utils/variables';
+
+.auth-wrapper {
+
+    .navbar {
+        height: 7rem;
+        background:variables.$blue-light;
+        position: relative;
+
+        img {
+            transform: scale(0.5);
+            margin-top: -1.5rem;
+        }
+    }
+
+    .auth-container {
+        height: 90vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        background: variables.$blue-light;
+        color: #fff;
+
+        .banner-wrapper {
+            height: 100%;
+            width: 40%;
+            display: grid;
+            place-content: center;
+            // img{
+
+            // }
+
+        }
+
+        .auth-component {
+            height: 100%;
+            width: 40%;
+            display: grid;
+            place-content: center;
+            padding: 1rem;
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            p {
+                font-size: 1.3rem;
+                margin: 1rem 0;
+            }
+            .google-button {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                width: fit-content;
+                font-size: 1.4rem;
+                padding: 0.4rem 1rem;
+                border: none;
+                border-radius: 0.5rem;
+                cursor: pointer;
+                &:hover {
+                    box-shadow: 0 0 10px #e6e0e0;
+                }
+                img {
+                    height: 2.5rem;
+                    width: 5rem;
+                }
+            }
+            .auth-toggle{
+                cursor:pointer;
+                text-decoration: underline;
+            }
+        }
+    }
+}

@@ -1,21 +1,22 @@
 import React from 'react';
 import './Footer.css';
-// import logo from '../../assets/logo.png';
+import logo from '../../assets/blossom_logo.png';
 import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
+import {Link} from 'react-router-dom';
 
 const Footer = () => {
     return (
         <div className='footer_wrapper'>
             <div className="footer_row">
                 <div className="footer_col">
-                    <img  alt="logo" />
-                    <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when</p>
+                    <img src={logo} className="footer-logo"  alt="logo" />
+                    <p>A Little Help Is What They Need</p>
                 </div>
                 <div className="footer_col">
                     <ul>
-                        <li><p>Home</p></li>
-                        <li><p>Motto</p></li>
-                        <li><p>Team</p></li>
+                        <li><Link>Home</Link></li>
+                        <li><Link>Motto</Link></li>
+                        <li><Link>Team</Link></li>
                     </ul>
                 </div>
                 <div className="footer_col">

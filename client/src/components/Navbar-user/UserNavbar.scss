@@ -3,8 +3,13 @@
 .user-navbar{
     background: #ffffff !important;
     box-shadow: none !important;
-    height: 6rem;
-
+    height: 7rem;
+    position:relative;
+    .logo{  
+        position:absolute;
+        left:1rem;
+        transform: scale(0.5);
+     }
     div{
         display:flex;
         width:100%;
@@ -42,22 +47,17 @@
             }
         }
     }
-
-    .icon-control{
+    .logout{
         height:100%;
-        width:40%;
-        // background: sandybrown;
-        position: relative;
-
-        img{
-            position:absolute;
-            right:2rem;
-            top:1.4rem;
-
-            height:3.5rem;
-            width:3.5rem;
-            border-radius: 50%;
-            box-shadow:  0 0 5px variables.$shadow;
+        width:5rem;
+        position:absolute;
+        right:1rem;
+        display:grid;
+        place-content: center;
+        cursor:pointer;
+        i{
+            font-size:2rem;
+            color:#000;
         }
     }
 }

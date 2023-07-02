@@ -1,19 +1,26 @@
 import React from 'react'
 import './UserNavbar.scss';
 import { AppBar } from '@mui/material';
-
 import icon from './assets/give-take-heart.webp';
+import logo from '../../assets/blossom_logo.png';
 import { useState } from 'react';
+import {AiOutlineLogout} from 'react-icons/ai';
+import axios from 'axios';
 
 const UserNavbar = ({activeLink, setActiveLink}) => {
-  
+
+  const handleLogout = async()=>{
+    await window.open("http://localhost:5000/auth/logout","_self");
+    console.log("Logged out");
+  }
+
   return (
     <>
         <AppBar
             className="user-navbar" >
            <div style={{display:'flex'}}>
            <ul>
-                <li><a id="logo" href="/userhome">Helping hand</a></li>
+                <img className="logo" src={logo} alt="logo"/>
                 <li 
                   value={activeLink}
                   onClick={()=> setActiveLink("Fundraises")}>
@@ -35,8 +42,8 @@ const UserNavbar = ({activeLink, setActiveLink}) => {
                     Settings
                 </li>
             </ul>
-            <section className="icon-control">
-                <img src={icon} alt="user-icon"/>
+            <section className="logout" onClick={handleLogout}>
+                <i><AiOutlineLogout/></i>
             </section>
            </div>
         </AppBar>

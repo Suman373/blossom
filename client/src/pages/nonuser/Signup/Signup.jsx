@@ -28,7 +28,7 @@ const Signup = () => {
           </div>
           <div className="auth-component">
             <h1>A Little Help Is What They Need</h1>
-            <p>Create your account and extend your helping hand</p>
+            <p>Get started with Blossom and take one step towards the greater good</p>
             {
               isSignup?
                 <>
@@ -48,7 +48,7 @@ const Signup = () => {
                   <button className='google-button'
                   onClick={handleLogin}
                   >
-                   <img src={google} alt="google" />Log in with
+                   <img src={google} alt="google" />Log in with Google
                   </button>
                   <p>Don't have an account ? 
                     <span 

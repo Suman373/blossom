@@ -20,9 +20,7 @@ const AddFundRaise = () => {
   // submission of form
   const handleFundRaiseForm = async (e) => {
     e.preventDefault();
-    alert("Yay form submitted");
-    console.log(fundRaiseName, fundOrgName, fundAmount, fundDeadline);
-    // api
+    console.log(fundRaiseName,fundOrgName,fundAmount,fundDeadline);
     setFundRaiseName(""); setFundOrgName(""); setFundDeadline(); setFundAmount("");
     navigate('/userhome');
   }

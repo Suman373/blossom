@@ -4,14 +4,16 @@ import UserNavbar from '../../../components/Navbar-user/UserNavbar';
 import UserSynopsis from '../../../components/Synopsis-user/UserSynopsis';
 import FundList from '../../../components/FundList/FundList';
 import EventList from '../../../components/EventList/EventList';
+import Feeds from '../../../components/Feeds/Feeds';
 import Settings from '../Settings-page/Settings';
 import cover from '../../../assets/children.jpeg';
 
 const UserHome = () => {
   const [activeLink , setActiveLink] = useState("Fundraises");
+  // api to get user details
+
   return (
     <main className='user-home-container'>
-        {/* User navbar */}
         <UserNavbar
           activeLink={activeLink}
           setActiveLink={setActiveLink}
@@ -46,9 +48,9 @@ const UserHome = () => {
             <EventList/>
           </>
           :
-          activeLink === "Plans"?
+          activeLink === "Feeds"?
           <>
-            <p>PLANS PAGE NEED TO BE ADDED</p>
+            <Feeds/>
           </>
           :
           activeLink === "Settings"?

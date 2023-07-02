@@ -11,6 +11,7 @@ const UserNavbar = ({activeLink, setActiveLink}) => {
 
   const handleLogout = async()=>{
     await window.open("http://localhost:5000/auth/logout","_self");
+    localStorage.removeItem('blossomUserObj');
     console.log("Logged out");
   }
 
@@ -33,8 +34,8 @@ const UserNavbar = ({activeLink, setActiveLink}) => {
                 </li>
                 <li 
                   value={activeLink}
-                  onClick={()=> setActiveLink("Plans")}>
-                    Plans
+                  onClick={()=> setActiveLink("Feeds")}>
+                    Feeds
                 </li>
                 <li 
                   value={activeLink}

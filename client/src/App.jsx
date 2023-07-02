@@ -17,6 +17,7 @@ const App = () => {
       const {data} = await axios.get(url,{withCredentials:true});
       console.log("User data",data);
       setUser(data.user);
+      localStorage.setItem('blossomUserObj',JSON.stringify(data.user));
     } catch (error) {
       console.log(error);
     }

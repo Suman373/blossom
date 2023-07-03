@@ -9,7 +9,7 @@ const fundPost = require('./routes/fundPostRoute');
 const event = require('./routes/eventRoute');
 const user = require('./routes/userRoute');
 const auth = require('./routes/authRoute');
-const passportSetup = require('./config/passport-setup');
+const passportSetup = require('./config/passportSetup');
 const app = express();
 const PORT = process.env.PORT || 5000;
 

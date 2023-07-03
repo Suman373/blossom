@@ -5,6 +5,10 @@ import { TextField } from '@mui/material';
 import BlueButton from '../../../components/BlueButton/BlueButton';
 import { useState } from 'react';
 import donationImg from '../../../assets/donation box.png';
+import { storage } from '../../../config/firebase';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { v4 } from 'uuid';
+import {MoonLoader} from 'react-spinners';
 
 const AddFundRaise = () => {
 
@@ -12,62 +16,113 @@ const AddFundRaise = () => {
   const navigate = useNavigate();
 
   // states for forms
-  const [fundRaiseName, setFundRaiseName] = useState("");
-  const [fundOrgName, setFundOrgName] = useState("");
-  const [fundAmount, setFundAmount] = useState("");
-  const [fundDeadline , setFundDeadline] = useState();
+  const [title, setTitle] = useState("");
+  const [orgName, setOrgName] = useState("");
+  const [amount, setAmount] = useState(0);
+  const [deadline, setDeadline] = useState("");
+  const [image, setImage] = useState(null);
+  const [imageURL, setImageURL] = useState("");
+  const [loading, setLoading] = useState(false);
+
+
+  // upload image to bucket
+  const uploadImage = ()=>{
+    if (image == null) return;
+    const imageRef = ref(storage, `fundraiseImages/${image.name + v4()}`); // the refernce to the image in the bucket
+     uploadBytes(imageRef, image)
+     .then((snapshot)=> {
+      console.log("Image uploaded");
+      getDownloadURL(snapshot.ref)
+      .then((url)=>{
+        console.log(url);
+        setImageURL(url);
+      })
+     })
+     .catch((err)=>console.log(err));
+     
+  }
 
   // submission of form
   const handleFundRaiseForm = async (e) => {
     e.preventDefault();
-    console.log(fundRaiseName,fundOrgName,fundAmount,fundDeadline);
-    setFundRaiseName(""); setFundOrgName(""); setFundDeadline(); setFundAmount("");
-    navigate('/userhome');
+    setLoading(true);
+    await uploadImage();
+    // send data to backend 
+
+    setTitle(""); setOrgName(""); setDeadline(""); setAmount(0); setImage(null);
+    setLoading(false);
+    navigate('/');
   }
 
   return (
     <main className='add-fundraise-wrapper'>
-      <img src={donationImg} alt="add fund illustration" />
+      {
+        !image ? <img className="uploaded-image" src={donationImg} alt="add fund illustration" /> :
+          <img className="uploaded-image" src={URL.createObjectURL(image)} alt="banner" />
+      }
       <div className="form-wrapper">
         <h1>Add <span>Fundraise Details</span></h1>
         <p>You are required to fill up the necessary details</p>
         <div>
-          <form>
-            <TextField
-              type="text"
-              label="Fundraise name"
-              id="outlined-basic"
-              value={fundRaiseName}
-              onChange={(e) => setFundRaiseName(e.target.value)}
-              placeholder='Fund raise name' />
+          {loading ?
+            <>
+              <div>
+                <MoonLoader
+                  color='##0b0b9b'
+                  size={200}
+                />
+              </div>
+            </> 
+            :
+            <>
+              <form onSubmit={handleFundRaiseForm}>
+                <TextField
+                  type="text"
+                  label="Title"
+                  id="outlined-basic"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  required
+                  placeholder='Title' />
 
-            <TextField
-              type="text"
-              label="Organisation name"
-              id="outlined-basic"
-              value={fundOrgName}
-              onChange={(e) => setFundOrgName(e.target.value)}
-              placeholder='Organisation name' />
+                <TextField
+                  type="text"
+                  label="Organisation name"
+                  id="outlined-basic"
+                  value={orgName}
+                  onChange={(e) => setOrgName(e.target.value)}
+                  required
+                  placeholder='Organisation name' />
 
-            <TextField
-              type="text"
-              label="Amount"
-              id="outlined-basic"
-              value={fundAmount}
-              onChange={(e) => setFundAmount(e.target.value)}
-              placeholder='Amount to be raised' />
+                <TextField
+                  type="number"
+                  label="Amount"
+                  id="outlined-basic"
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
+                  required
+                  placeholder='Amount to be raised' />
 
-            <TextField
-            type="date"
-            id="outlined-basic"
-            value={fundDeadline}
-            onChange={(e)=> setFundDeadline(e.target.value)}
-            />
+                <label>Deadline</label>
+                <TextField
+                  type="date"
+                  id="outlined-basic"
+                  value={deadline}
+                  required
+                  onChange={(e) => setDeadline(e.target.value)}
+                />
 
-            <BlueButton
-              text={"Create"}
-              handleClick={handleFundRaiseForm} />
-          </form>
+                <input className="file-upload"
+                  accept="image/*"
+                  onChange={(e) => setImage(e.target.files[0])}
+                  required
+                  type="file" />
+
+                <BlueButton
+                  text={"Create"} />
+              </form>
+            </>
+          }
         </div>
       </div>
     </main>

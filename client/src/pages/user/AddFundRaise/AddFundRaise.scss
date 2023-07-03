@@ -10,6 +10,14 @@
     align-items: center;
     flex-wrap: wrap;
     gap:1rem;
+    
+    .uploaded-image{
+        min-height: 20rem;
+        object-fit: contain;
+        max-height: 28rem;
+        box-shadow: 0 0 15px #767373;
+        border-radius: 1.8rem;
+    }
 
     .form-wrapper {
         
@@ -35,6 +43,7 @@
             width: 30rem;
             padding: 1rem;
             margin: 1rem auto;
+            font-size: 1.1rem;
             background-color: transparent;
             border-radius: 0.8rem;
             border: 2px solid variables.$fallback;
@@ -46,10 +55,6 @@
             button {
                 margin: 0 auto;
                 font-size: 1.1rem;
-            }
-
-            input::placeholder{
-                color:red;
             }
         }
     }

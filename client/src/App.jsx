@@ -36,6 +36,13 @@ const App = () => {
           <Route path="/" element={
             user ? <UserHome user={user}/> : <Signup/>
           }></Route>
+          <Route path="/new/fundraise" element={
+            user ? <AddFundRaise/> : <Signup/>
+          }></Route>
+          <Route path="/new/event"
+         element={
+          user ? <AddEvent/> : <Signup/>
+        }></Route>
         </Routes>
         <Footer/>
       </div>

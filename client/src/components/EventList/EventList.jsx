@@ -10,7 +10,7 @@ import events from '../../data/events';
 const EventList = () => {
 
   // title set
-  document.title = "HH | Eventsraises"
+  document.title = "HH | Events"
 
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ const EventList = () => {
   // adding new event button click
   const addNewEvent = (e) => {
     e.preventDefault();
-    navigate('/userhome/new-event');
+    navigate('/new/event');
   }
 
   return (

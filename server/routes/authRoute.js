@@ -15,7 +15,8 @@ router.get('/google/callback',
 // login success
 router.get('/login/success',(req,res)=>{
     if(req.user){
-        return res.status(200).json({message:"Logged in successfully!",user:req.user})
+        const {name,email,profileImage,_id} = req.user;
+        return res.status(200).json({message:"Logged in successfully!",user:{name,email,profileImage,_id}});
     }else{
         return res.status(403).json({message:"User not authorized"});
     }

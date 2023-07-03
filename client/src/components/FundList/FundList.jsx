@@ -19,7 +19,7 @@ const FundList = () => {
   // adding new event button click
   const addNewFundRaise = (e) => {
     e.preventDefault();
-    navigate('/userhome/new-fundraise');
+    navigate('/new/fundraise');
   }
 
   return (

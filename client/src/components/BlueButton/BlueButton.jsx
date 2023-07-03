@@ -6,6 +6,7 @@ const BlueButton = ({text,handleClick}) => {
   return (
    <>
         <button
+            type='submit'
             className="blue-button"
             onClick={handleClick}>
             {text}

@@ -4,6 +4,7 @@ const UserSchema = new mongoose.Schema({
     name:{
         type:String,
         trim:true,
+        required:true,
     },
     googleId:{
         type:String,
@@ -12,9 +13,23 @@ const UserSchema = new mongoose.Schema({
     email:{
         type:String,
         trim:true,
+        required:true
     },
     profileImage:{
-        type:String
+        type:String,
+        required:true,
+    },
+    profession:{
+        type:String,
+        trim:true,
+    },
+    phoneNumber:{
+        type:Number,
+        maxLength:12
+    },
+    age:{
+        type:String,
+        trim:true
     },
     followers:[
         {
@@ -23,7 +38,8 @@ const UserSchema = new mongoose.Schema({
         }],
     following:[
         {
-            type:ObjectId,ref:"UserModel"
+            type:ObjectId,
+            ref:"UserModel"
         }],
 
 },{timestamps:true}

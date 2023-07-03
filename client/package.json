@@ -10,19 +10,21 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.0",
+    "firebase": "^9.23.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
     "react-router-dom": "^6.4.3",
-    "react-spinners": "^0.13.6",
+    "react-spinners": "^0.13.8",
     "sass": "^1.56.1",
+    "uuid": "^9.0.0",
     "vite": "^4.0.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dev":"vite --port 3000",
-    "build":"vite build",
-    "server":"vite serve"
+    "dev": "vite --port 3000",
+    "build": "vite build",
+    "server": "vite serve"
   },
   "eslintConfig": {
     "extends": [

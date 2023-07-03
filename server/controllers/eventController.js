@@ -45,7 +45,7 @@ const addEvent = async(req,res)=>{
        }
        const event = await EventModel.create(req.body);
        if(!event){
-            throw Error("There was a problem while creating event!");
+            throw Error("Something went wrong");
        }
        res.status(200).json({message:"Event created successfully!"});
         
@@ -58,9 +58,9 @@ const addEvent = async(req,res)=>{
 // @PUT Edit event
 const editEvent = async(req,res)=>{
     try {
-        const {id:_id} = await req.params;
-        if(!mongoose.Types.ObjectId.isValid(_id)){
-            throw Error("Invalid object id");
+        const { id: _id } = await req.params;
+        if (!mongoose.Types.ObjectId.isValid(_id) || !_id) {
+            return res.status(401).json({ message: "ObjectId is invalid" });
         }
         if(!EventModel.findOne({_id})){
             throw Error("Event with id doesn't exist!");
@@ -77,9 +77,9 @@ const editEvent = async(req,res)=>{
 // @DELETE Delete event
 const deleteEvent = async(req,res)=>{
     try {
-        const {id:_id} = await req.params;
-        if(!mongoose.Types.ObjectId.isValid(_id)){
-            throw Error("Invalid object id");
+        const { id: _id } = await req.params;
+        if (!mongoose.Types.ObjectId.isValid(_id) || !_id) {
+            return res.status(401).json({ message: "ObjectId is invalid" });
         }
         if(!EventModel.findOne({_id})){
             throw error("Event with id doesn't exist!");

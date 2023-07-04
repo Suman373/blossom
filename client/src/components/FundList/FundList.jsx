@@ -1,31 +1,47 @@
 import React from 'react';
 import './FundList.scss';
 import { TextField } from '@mui/material';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import FundCard from '../FundCard/FundCard';
 import BlueButton from '../BlueButton/BlueButton';
 import { useNavigate } from 'react-router-dom';
-import funds from '../../data/funds';
+import {MoonLoader} from 'react-spinners';
+import axios from 'axios';
+
 
 const FundList = () => {
 
-  // title set
   document.title = "HH | Fundraises"
-
   const navigate = useNavigate();
-
   const [fundRaiseSearch, setFundRaiseSearch] = useState("");
 
-  // adding new event button click
+  const [fundraises, setFundRaises] = useState([]);
+
+  const fetchFundRaises = async()=>{
+     const data = await axios.get('http://localhost:5000/funds/')
+     .catch((e)=>{
+      if(e.response){
+        console.log(e.response);
+      }else{
+        console.log(e.message);
+      }
+     });
+    //  console.log(data?.data);
+     setFundRaises(data?.data);
+  }
+
   const addNewFundRaise = (e) => {
     e.preventDefault();
     navigate('/new/fundraise');
   }
 
+  useEffect(()=>{
+    fetchFundRaises();
+  },[]);
+
   return (
    <>
     <section className="fund-raise-container" >
-    {/* <UserSynopsis/> */}
       <header>
         <TextField
           id="outlined-search"
@@ -46,8 +62,8 @@ const FundList = () => {
         <h1>Fund-raises you can donate to</h1>
         <ul className='fund-list'>
           {
-            funds?.length > 0 ?
-              funds?.map((fund, index) => (
+            fundraises?.length > 0 ?
+              fundraises?.map((fund, index) => (
                 fund?.title?.toLowerCase().includes((fundRaiseSearch.toLowerCase())) ?
                   <FundCard
                     key={index}
@@ -58,7 +74,9 @@ const FundList = () => {
               ))
               :
               <>
-                <p className='no-fund-raise-message'>No fund raises to show</p>
+                <div style={{height:"fitContent",display:"grid", placeContent:'center'}}>
+                <MoonLoader size={80} color="#067676"/>
+                </div>
               </>
           }
         </ul>

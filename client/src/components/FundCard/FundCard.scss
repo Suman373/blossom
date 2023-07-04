@@ -25,50 +25,18 @@
         .fund-title{
             color: variables.$blue-accent;
             font-size: 1.2rem;
-        }
-        .progress-flex {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            .progress-container {
-                height: 1.3rem;
-                width: 14rem;
-                display: flex;
-                overflow: hidden;
-                border: 5px solid variables.$fallback;
-                border-radius: 0.8rem;
-                background: variables.$fallback;
-                margin: 0.5rem 1rem;
-
-                .progress {
-                    padding: 0.1rem;
-                    background: variables.$blue-accent;
-                    // animation: fluidish 3500ms alternate ease ;
-                    animation: fluidish 5000ms ease-in-out;
-                }
-
-                @keyframes fluidish {
-                    25% {
-                        width: 0%;
-                        opacity: 0.3;
-                    }
-                    50%{
-                        opacity:0.5
-                    }
-                    75% {
-                        opacity: 0.7;
-                    }
-                    100%{
-                        opacity:1;
-                    }
-                }
-            }
-
-            .amount-raised p{
-                font-size: 1.4rem;
+            position: relative;
+            span{
+                position:absolute;
+                font-size: 1.3rem;
+                font-weight:600;
+                right:0.5rem;
             }
         }
+        .fund-amount{
+            font-size: 1.3rem;
+        }
+    
 
     }
 

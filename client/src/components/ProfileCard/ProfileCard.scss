@@ -1,7 +1,7 @@
 @use '../../utils/variables';
 
 $card-width:23rem;
-$profile-left-offset: $card-width/3.3333;
+$profile-left-offset: calc($card-width / 3.3333);
 
  .profile{
     width:$card-width;

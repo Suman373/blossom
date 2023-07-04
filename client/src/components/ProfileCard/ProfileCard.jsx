@@ -19,8 +19,7 @@ const ProfileCard = () => {
                     console.log(e.message);
                 }
             });
-        alert(data?.data?.message);
-        console.log(data?.data?.result);
+        console.log(data?.data?.message);
         setProfileDetails(data?.data?.result);
     }
 
@@ -43,13 +42,13 @@ const ProfileCard = () => {
                         Amount donated <span>{profileDetails?.amountDonated}</span>
                     </div>
                     <div className="count-slots">
-                        Events held <span>{profileDetails?.eventsHeld.length}</span>
+                        Events held <span>{profileDetails?.eventsHeld?.length}</span>
                     </div>
                     <div className="count-slots">
-                        Followers <span>{profileDetails?.followers.length}</span>
+                        Followers <span>{profileDetails?.followers?.length}</span>
                     </div>
                     <div className="count-slots">
-                        Following <span>{profileDetails?.following.length}</span>
+                        Following <span>{profileDetails?.following?.length}</span>
                     </div>
                 </div>
                 <button>

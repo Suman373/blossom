@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const {ObjectId} = mongoose.Schema.Types;
 const FundPostSchema = new mongoose.Schema({
+    userId:{
+        type:ObjectId,
+        ref:'FundModel'
+    },
     title:{
         type:String,
         trim:true,

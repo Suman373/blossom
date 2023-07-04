@@ -8,47 +8,54 @@ import donationImg from '../../../assets/donation box.png';
 import { storage } from '../../../config/firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { v4 } from 'uuid';
-import {MoonLoader} from 'react-spinners';
+import { MoonLoader } from 'react-spinners';
+import axios from 'axios';
+import useAuth from '../../../hooks/useAuth';
 
 const AddFundRaise = () => {
 
-  // route navigator 
   const navigate = useNavigate();
-
-  // states for forms
+  const { _id: userId } = useAuth();
+  // states for forms and image
   const [title, setTitle] = useState("");
   const [orgName, setOrgName] = useState("");
   const [amount, setAmount] = useState(0);
   const [deadline, setDeadline] = useState("");
   const [image, setImage] = useState(null);
-  const [imageURL, setImageURL] = useState("");
   const [loading, setLoading] = useState(false);
 
 
   // upload image to bucket
-  const uploadImage = ()=>{
+  const uploadImage = async()=>{
     if (image == null) return;
-    const imageRef = ref(storage, `fundraiseImages/${image.name + v4()}`); // the refernce to the image in the bucket
-     uploadBytes(imageRef, image)
-     .then((snapshot)=> {
-      console.log("Image uploaded");
-      getDownloadURL(snapshot.ref)
-      .then((url)=>{
-        console.log(url);
-        setImageURL(url);
-      })
-     })
-     .catch((err)=>console.log(err));
-     
+    const imageRef =  ref(storage, `fundraiseImages/${image.name + v4()}`); // the refernce to the image in the bucket
+    await uploadBytes(imageRef,image);
+    const url = await getDownloadURL(imageRef);
+    return url;
   }
-
+  
   // submission of form
-  const handleFundRaiseForm = async (e) => {
+  const handleFundRaiseForm = async(e) => {
     e.preventDefault();
     setLoading(true);
-    await uploadImage();
-    // send data to backend 
-    
+    const imageURL = await uploadImage();
+    // send data to backend
+    const data = await axios.post('http://localhost:5000/funds/', {
+      userId,
+      title,
+      orgName,
+      amount,
+      deadline,
+      imageURL
+    }).catch((e) => {
+        if (e.response) {
+          console.log(e.response.data);
+        } else {
+          console.log(e.message);
+        }
+      });
+    alert(data?.data?.message);
+    console.log(data?.data?.newFundraise);
     setTitle(""); setOrgName(""); setDeadline(""); setAmount(0); setImage(null);
     setLoading(false);
     navigate('/');
@@ -66,13 +73,14 @@ const AddFundRaise = () => {
         <div>
           {loading ?
             <>
-              <div>
+              <div style={{display:'grid',placeContent:'center'}}>
                 <MoonLoader
-                  color='##0b0b9b'
-                  size={200}
+                  color='#0b0b9b'
+                  size={100}
                 />
+                <p>Submitting...</p>
               </div>
-            </> 
+            </>
             :
             <>
               <form onSubmit={handleFundRaiseForm}>

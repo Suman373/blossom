@@ -31,6 +31,19 @@ const UserSchema = new mongoose.Schema({
         type:String,
         trim:true
     },
+    amountDonated:{
+        type:Number
+    },
+    eventsHeld:[
+        {
+            name:{type:String},
+        }
+    ],
+    eventsAttended:[
+        {
+            name:{type:String},
+        }
+    ],
     followers:[
         {
             type:ObjectId,

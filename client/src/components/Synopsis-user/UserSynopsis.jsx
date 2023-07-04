@@ -3,7 +3,6 @@ import './UserSynopsis.scss';
 
 const UserSynopsis = () => {
 
-    // states for user details from api
     const [username, setUsername] = useState("");
 
     const userLevel = "Platinum";
@@ -28,25 +27,6 @@ const UserSynopsis = () => {
                     <div className='welcome'>
                         <p>Welcome back 💙</p>
                     </div>
-                    <section className='user-data-container'>
-                            <div className="data-box">
-                                <h1>Total donation</h1>
-                                <p>xxxx</p>
-
-                            </div>
-                            <div className="data-box">
-                                <h1>Events donated</h1>
-                                <p>xxx</p>
-                            </div>
-                            <div className="data-box">
-                                <h1>Fundraise created</h1>
-                                <p>XX</p>
-                            </div>
-                            <div className="data-box">
-                                <h1>Redeem points</h1>
-                                <p>XXX</p>        
-                            </div>
-                    </section>
             </div>
     )
 }

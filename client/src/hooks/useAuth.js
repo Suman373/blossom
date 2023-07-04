@@ -1,5 +1,6 @@
-export default useAuth = ()=>{
-    if(localStorage.getItem(JSON.parse('blossomUserObj'))){
-        return localStorage.getItem(JSON.parse('blossomUserObj'));
-    }
+const useAuth = ()=>{
+    if(JSON.parse(localStorage.getItem('blossomUserObj'))){
+        return JSON.parse(localStorage.getItem('blossomUserObj'));
+    }else return [];
 }
+export default useAuth;

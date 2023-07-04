@@ -23,7 +23,9 @@ const FundList = () => {
   }
 
   return (
+   <>
     <section className="fund-raise-container" >
+    {/* <UserSynopsis/> */}
       <header>
         <TextField
           id="outlined-search"
@@ -31,7 +33,7 @@ const FundList = () => {
           value={fundRaiseSearch}
           onChange={(e) => setFundRaiseSearch(e.target.value)}
           type="search"
-          label="Search fund raise"
+          label="Search fundraise"
         />
         <BlueButton
            text={"Add new fundraise"}
@@ -62,6 +64,7 @@ const FundList = () => {
         </ul>
       </section>
     </section>
+   </>
   )
 }
 

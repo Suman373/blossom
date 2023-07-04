@@ -11,8 +11,9 @@ passport.use(
         scope:["profile","email"]
 
     }, async(accessToken, refreshToken, profile, done)=>{ // cb for passport 
-    const user = await UserModel.findById(profile._id);
+    const user = await UserModel.findOne({googleId:profile.id});
     if(user){
+        console.log("User exists",user);
         return done(null,user);
     }else{
         const newUser = await UserModel.create({

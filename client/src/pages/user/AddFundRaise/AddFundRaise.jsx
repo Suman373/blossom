@@ -48,7 +48,7 @@ const AddFundRaise = () => {
     setLoading(true);
     await uploadImage();
     // send data to backend 
-
+    
     setTitle(""); setOrgName(""); setDeadline(""); setAmount(0); setImage(null);
     setLoading(false);
     navigate('/');

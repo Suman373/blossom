@@ -9,7 +9,7 @@ const getEvents = async(req,res)=>{
             res.status(404).json({message:"Events not found!"});
             return;
         }
-        res.status(200).json(events);
+        res.status(200).json({message:"Events found",result:events});
     } catch (error) {
         console.log(error);
         res.status(400).json({message: error.message});

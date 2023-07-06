@@ -10,7 +10,15 @@
     align-items: center;
     flex-wrap: wrap;
     gap:1rem;
-
+    .uploaded-image{
+        min-height: 20rem;
+        object-fit: contain;
+        max-height: 28rem;
+        // box-shadow: 0 0 15px #767373;
+        // border-radius: 1.8rem;
+        max-width: 30rem;
+        mix-blend-mode:darken;
+    }
     .form-wrapper {
         h1 {
             font-size: 2.1rem;
@@ -31,6 +39,7 @@
             width: 30rem;
             padding: 1rem;
             margin: 1rem auto;
+            font-size: 1.1rem;
             background-color: transparent;
             border-radius: 0.8rem;
             border: 2px solid variables.$fallback;
@@ -44,9 +53,6 @@
                 font-size: 1.1rem;
             }
 
-            input::placeholder{
-                color:red;
-            }
         }
     }
 

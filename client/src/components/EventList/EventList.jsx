@@ -1,26 +1,42 @@
 import React from 'react';
 import './EventList.scss';
 import { TextField } from '@mui/material';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import EventCard from '../EventCard/EventCard';
 import BlueButton from '../BlueButton/BlueButton';
 import { useNavigate } from 'react-router-dom';
-import events from '../../data/events';
+import axios from "axios";
 
 const EventList = () => {
-
-  // title set
   document.title = "HH | Events"
 
   const navigate = useNavigate();
-
   const [eventSearch, setEventsSearch] = useState("");
+  const [fetchedEvents, setFetchedEvents] = useState([]);
 
-  // adding new event button click
+  const fetchEvents = async()=>{
+    const data = await axios.get("http://localhost:5000/events/")
+    .catch((e)=>{
+      if(e.response){
+        console.log(e.response);
+      }else{
+        console.log(e.message);
+      }
+    });
+    console.log(data?.data?.message);
+    console.log(data?.data?.result);
+    setFetchedEvents(data?.data?.result);
+  }
+
+  // navigate to event adding page
   const addNewEvent = (e) => {
     e.preventDefault();
     navigate('/new/event');
   }
+
+  useEffect(()=>{
+    fetchEvents();
+  },[]);
 
   return (
     <section className="event-raise-container" >
@@ -44,9 +60,9 @@ const EventList = () => {
         <h1>Events you can attend</h1>
         <ul className='event-list'>
           {
-            events?.length > 0 ?
-              events?.map((event, index) => (
-                event?.title?.toLowerCase().includes((eventSearch.toLowerCase())) ?
+            fetchedEvents?.length > 0 ?
+              fetchedEvents?.map((event, index) => (
+                event?.name?.toLowerCase().includes((eventSearch.toLowerCase())) ?
                   <EventCard
                     key={index}
                     event={event}
@@ -56,7 +72,7 @@ const EventList = () => {
               ))
               :
               <>
-                <p className='no-event-raise-message'>No event raises to show</p>
+                <p className='no-event-raise-message'>No events to show</p>
               </>
           }
         </ul>

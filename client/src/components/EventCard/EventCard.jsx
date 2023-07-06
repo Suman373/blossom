@@ -1,34 +1,33 @@
 import React, { useState } from 'react';
 import './EventCard.scss';
 import BlueButton from '../BlueButton/BlueButton';
-import eventItemImg from '../../assets/children.jpeg';
+import defaultImage from '../../assets/blossom_fallback.jpg';
 import {GoLocation} from 'react-icons/go';
 import {BsClock} from 'react-icons/bs';
+import moment from 'moment';
 
 const EventCard = ({event}) => {
 
-    const [donateAmt , setDonateAmt] = useState(0);
-
-    const handleDonation = ()=>{
-        if(donateAmt === 100){ return; }
-        setDonateAmt(donateAmt+50);
+    const handleAttendEvent = async()=>{
+        // attend the event
+        return;
     }
 
     return (
         <div className='event-item'>
-            <img src={eventItemImg} alt="event item banner" />
+            <img src={event?.imageURL ? event?.imageURL : defaultImage} alt="event item banner" />
             <div className="event-details">
-                <p className="event-title">{event.title}</p>
-                <p>By {event.orgName}</p>
-                <p><GoLocation/><span> {event.location}</span>
+                <p className="event-name">{event.name}</p>
+                <p>By {event.organisation}</p>
+                <p><i className="event-icon"><GoLocation/></i><span> {event.location}</span>
                 {" "}
-                <BsClock/> {event.datetime}</p>
+                <i className="event-icon"><BsClock/></i>{moment(event?.date).format("MMM Do")} {event?.time}</p>
             </div>
 
             <div style={{textAlign:'center'}}>
                 <BlueButton
                     text="Attend "
-                    handleClick={handleDonation} />
+                    handleClick={handleAttendEvent} />
             </div>
 
         </div>

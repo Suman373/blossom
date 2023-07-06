@@ -39,8 +39,11 @@ const getEventById = async(req,res)=>{
 //  @POST New event
 const addEvent = async(req,res)=>{
     try{
-       const {eventName} = await req.body;
-       if(await EventModel.findOne({eventName})){
+       const {userId,name,organisation,location,time,date,imageURL} = await req.body;
+       if(!name || !organisation || !location || !time || !date || !imageURL){
+          throw Error("Fill up the all the required details!");
+       }
+       if(await EventModel.findOne({name})){
             throw Error("Event with that name already exists! ");
        }
        const event = await EventModel.create(req.body);

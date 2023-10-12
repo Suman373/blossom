@@ -12,6 +12,7 @@ const auth = require('./routes/authRoute');
 const passportSetup = require('./config/passportSetup');
 const app = express();
 const PORT = process.env.PORT || 5000;
+mongoose.set('strictQuery',true);
 
 // middlewares
 app.use(cors({

@@ -3,11 +3,14 @@ import './ProfileCard.scss';
 import defaultCover from '../../assets/blossom_fallback.jpg';
 import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const ProfileCard = () => {
 
+    const navigate = useNavigate();
     const [profileDetails, setProfileDetails] = useState([]);
     const { _id } = useAuth();
+
 
     // unique user details
     const fetchProfileDetails = async () => {
@@ -19,6 +22,7 @@ const ProfileCard = () => {
                     console.log(e.message);
                 }
             });
+        console.log(data?.data);
         console.log(data?.data?.message);
         setProfileDetails(data?.data?.result);
     }
@@ -32,7 +36,7 @@ const ProfileCard = () => {
         <div className="profile">
             <div className="cover">
                 <img className='cover-pic' src={defaultCover} alt="cover" />
-                <img className="profile-pic" src={profileDetails?.profileImage? profileDetails.profileImage : defaultCover} alt="pfp" />
+                <img className="profile-pic" src={profileDetails?.profileImage? profileDetails?.profileImage : defaultCover} alt="pfp" />
             </div>
             <div className="details">
                 <h3 className="name">{profileDetails.name}</h3>
@@ -51,7 +55,7 @@ const ProfileCard = () => {
                         Following <span>{profileDetails?.following?.length}</span>
                     </div>
                 </div>
-                <button>
+                <button onClick={()=> navigate(`/profile/self/${_id}`)}>
                     Show Profile
                 </button>
             </div>

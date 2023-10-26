@@ -72,7 +72,7 @@ const EventList = () => {
               ))
               :
               <>
-                <p className='no-event-raise-message'>No events to show</p>
+                <p className='result-message'>No events to show</p>
               </>
           }
         </ul>

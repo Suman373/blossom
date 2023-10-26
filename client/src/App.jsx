@@ -1,52 +1,58 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.scss';
-import {BrowserRouter as BRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter as BRouter, Routes, Route } from 'react-router-dom';
 import Signup from './pages/nonuser/Signup/Signup';
 import UserHome from './pages/user/UserHome/UserHome';
 import AddFundRaise from './pages/user/AddFundRaise/AddFundRaise';
 import AddEvent from './pages/user/AddEvent/AddEvent';
 import Footer from './components/Footer/Footer';
 import axios from 'axios';
+import UserDetails from './pages/user/UserDetails/UserDetails';
 
 const App = () => {
-  const [user,setUser] = useState(null);
+  const [user, setUser] = useState(null);
   // user details
-  const getUser = async()=>{
+  const getUser = async () => {
     try {
       const url = `http://localhost:5000/auth/login/success`;
-      const {data} = await axios.get(url,{withCredentials:true});
-      console.log("User data",data);
+      const { data } = await axios.get(url, { withCredentials: true });
+      console.log("User data", data);
       setUser(data.user);
-      localStorage.setItem('blossomUserObj',JSON.stringify(data.user));
+      localStorage.setItem('blossomUserObj', JSON.stringify(data.user));
     } catch (error) {
       console.log(error);
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     getUser();
-
-  },[]);
+  }, []);
 
   return (
     <>
-    <BRouter>
-      <div className='App'>
-        <Routes>
-          <Route path="/" element={
-            user ? <UserHome user={user}/> : <Signup/>
-          }></Route>
-          <Route path="/new/fundraise" element={
-            user ? <AddFundRaise/> : <Signup/>
-          }></Route>
-          <Route path="/new/event"
-         element={
-          user ? <AddEvent/> : <Signup/>
-        }></Route>
-        </Routes>
-        <Footer/>
-      </div>
-    </BRouter>
+      <BRouter>
+        <div className='App'>
+          {
+            user ?
+              <>
+                <Routes>
+                  <Route path="/" element={<UserHome user={user} />}>
+                  </Route>
+                  <Route path="/new/fundraise" element={<AddFundRaise/>}>
+                  </Route>
+                  <Route path="/new/event" element={<AddEvent/>}></Route>
+                  <Route path="/profile/:type/:id" element={<UserDetails/>}>
+                  </Route>
+                </Routes>
+              </>
+              :
+              <Routes>
+                <Route path="*" element={<Signup/>}></Route>
+              </Routes>
+        }
+          <Footer />
+        </div>
+      </BRouter>
     </>
   )
 }

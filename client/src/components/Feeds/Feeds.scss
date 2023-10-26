@@ -1,0 +1,48 @@
+@use '../../utils/variables';
+
+.feeds-container {
+    min-height: 100vh;
+    width: 90%;
+    margin: 1rem auto;
+    box-shadow: 0 0 2px variables.$shadow;
+    border-radius: 1rem;
+    padding-bottom: 1rem;
+
+    header{
+        height:5rem;
+        width:100%;
+        margin:2rem auto;
+        // background: orange;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .search-field{
+            margin-left:1rem;
+            // border-radius: 1rem;
+            width:20rem;
+            box-shadow: 0 2px 5px variables.$light-grey;
+        }
+    }
+
+    .feed-list-container{
+        min-height: fit-content;
+        background-color:variables.$body-bg;
+
+        h1{
+            font-size: 1.7rem;
+            margin:2rem auto;
+            color:variables.$shadow;
+            text-align: center;
+        }
+        .feed-list{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap:1rem;
+        }
+
+    }
+}

@@ -6,6 +6,10 @@ const UserSchema = new mongoose.Schema({
         trim:true,
         required:true,
     },
+    completedDetails:{
+        type:Boolean,
+        default:false,
+    },
     googleId:{
         type:String,
         trim:true
@@ -23,6 +27,10 @@ const UserSchema = new mongoose.Schema({
         type:String,
         trim:true,
     },
+    bio:{
+        type:String,
+        trim:true,
+    },
     phoneNumber:{
         type:Number,
         maxLength:12
@@ -30,6 +38,9 @@ const UserSchema = new mongoose.Schema({
     age:{
         type:String,
         trim:true
+    },
+    dob:{
+        type:Date,
     },
     amountDonated:{
         type:Number

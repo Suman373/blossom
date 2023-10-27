@@ -29,10 +29,10 @@ const getOneUser = async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: "User with id not found!" });
         }
-        const { name, email, profession, profileImage, amountDonated, eventsHeld, eventsAttended, followers, following } = user;
+        const { name, email, profession, dob, profileImage, amountDonated, eventsHeld, eventsAttended, followers, following } = user;
         res.status(200).json({
             message: "User found", result: {
-                name, email, profession, profileImage, amountDonated, eventsHeld, eventsAttended, followers, following
+                name, email, profession, dob, profileImage, amountDonated, eventsHeld, eventsAttended, followers, following
             }
         });
     } catch (error) {
@@ -63,6 +63,7 @@ const updateUser = async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 }
+
 // @PUT follow user
 const followUser = async (req, res) => {
     try {

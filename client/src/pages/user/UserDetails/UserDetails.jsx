@@ -69,18 +69,18 @@ const UserDetails = () => {
             </div>
             <div className="info-right-wrap">
                 <div className="numeric-items">
-                  <h1>20</h1>
+                  <h1>{userDetails?.followers?.length}</h1>
                   <p>Followers</p>
                 </div>
                 <div className="numeric-items">
-                  <h1>20</h1>
+                  <h1>{userDetails?.followers?.length}</h1>
                   <p>Following</p>
                 </div>
                 <div className="numeric-items">
                   <h1><span>
                   &#x20B9;
                   </span>
-                    2
+                    {userDetails?.amountDonated}
                   </h1>
                   <p>Donation</p>
                 </div>

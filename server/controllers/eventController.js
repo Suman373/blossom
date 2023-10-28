@@ -48,7 +48,7 @@ const addEvent = async(req,res)=>{
        }
        const event = await EventModel.create(req.body);
        if(!event){
-            throw Error("Something went wrong");
+            throw Error("Could not create event");
        }
        res.status(200).json({message:"Event created successfully!"});
         
@@ -68,7 +68,10 @@ const editEvent = async(req,res)=>{
         if(!EventModel.findOne({_id})){
             throw Error("Event with id doesn't exist!");
         }
-        await EventModel.findByIdAndUpdate(_id,req.body,{new:true});
+        const result = await EventModel.findByIdAndUpdate(_id,req.body,{new:true});
+        if(!result){
+            throw Error("Could not update event");
+        }
         res.status(200).json({message:"Event updated successfully!"});
         
     } catch (error) {

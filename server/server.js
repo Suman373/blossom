@@ -9,6 +9,7 @@ const fundPost = require('./routes/fundPostRoute');
 const event = require('./routes/eventRoute');
 const user = require('./routes/userRoute');
 const auth = require('./routes/authRoute');
+const feed = require('./routes/feedRoute');
 const passportSetup = require('./config/passportSetup');
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -32,9 +33,10 @@ app.use(express.static(path.join(__dirname,'/public')));
 
 // server routes
 app.use('/auth',auth);
-app.use('/funds', fundPost);
-app.use('/events', event);
+app.use('/funds',fundPost);
+app.use('/events',event);
 app.use('/user',user);
+app.use('/feeds',feed);
 
 app.get('/', (req,res)=>  {
     if(req.accepts('html')){

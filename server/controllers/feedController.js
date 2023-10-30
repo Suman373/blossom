@@ -48,7 +48,7 @@ const addNewFeed = async(req,res)=>{
         if(!mongoose.Types.ObjectId.isValid(_id)){
             return res.status(422).json({message:"ObjectId is invalid"});
         }
-        const newFeed = await UserModel.create(req.body);
+        const newFeed = await FeedModel.create(req.body);
         if(!newFeed){
             throw Error("Could not add feed");
         }
@@ -74,7 +74,7 @@ const updateUserFeed = async(req,res)=>{
         !mongoose.Types.ObjectId.isValid(userId)){
             return res.status(422).json({message:"ObjectId is invalid"});
         }
-        const updatedFeed = await UserModel.findByIdAndUpdate(_id,req.body,{new:true});
+        const updatedFeed = await FeedModel.findByIdAndUpdate(_id,req.body,{new:true});
         if(!updatedFeed){
             throw Error("Could not update feed");
         }

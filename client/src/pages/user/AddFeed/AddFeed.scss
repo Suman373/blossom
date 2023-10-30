@@ -1,0 +1,28 @@
+@use '../../../utils/variables';
+
+.create-feed-form{
+    height: fit-content;
+    padding:1rem;
+
+    textarea{
+        font-size: 1.1rem;
+        padding:1rem;
+        resize: none;
+        font-family: sans-serif;
+        color:#276ecc;
+        &::placeholder{
+            font-family: sans-serif;
+        }
+    }
+
+    input[type="file"]{
+        margin:0.6rem 0;
+    }
+    button{
+        margin:0.6rem 0;
+    }
+
+    .selected-image{
+        max-width: 100%;
+    }
+}

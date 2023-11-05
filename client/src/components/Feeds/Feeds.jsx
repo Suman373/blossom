@@ -1,13 +1,42 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Feeds.scss';
 import { TextField } from '@mui/material';
 import BlueButton from '../BlueButton/BlueButton';
 import AddFeed from '../../pages/user/AddFeed/AddFeed';
+import axios from 'axios';
+import { MoonLoader } from 'react-spinners';
+import FeedCard from '../FeedCard/FeedCard';
 
 const Feeds = () => {
   document.title = "HH | Feeds";
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [allFeeds, setAllFeeds] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const fetchAllFeeds = async () => {
+    setLoading(true);
+    try {
+      const data = await axios.get('http://localhost:5000/feeds/');
+      if (!data) {
+        throw Error({ message: "Could not load feeds" });
+      }
+      setAllFeeds(data?.data?.result);
+
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response);
+      } else {
+        console.log(error.message);
+      }
+    }
+    setLoading(false);
+  }
+
+  useEffect(()=>{
+    fetchAllFeeds();
+  },[]);
+
 
   return (
     <>
@@ -20,12 +49,6 @@ const Feeds = () => {
       }
       <section className="feeds-container" >
         <header>
-          <TextField
-            id="outlined-search"
-            className="search-field"
-            type="search"
-            label="Search Feed"
-          />
           <BlueButton
             text={"Add new feed"}
             handleClick={() => setModalOpen(true)}
@@ -36,22 +59,26 @@ const Feeds = () => {
         <section className="feed-list-container">
           <h1>Share your moments</h1>
           <ul className='feed-list'>
-            {/* {
-            fetchedEvents?.length > 0 ?
-              fetchedEvents?.map((event, index) => (
-                event?.name?.toLowerCase().includes((eventSearch.toLowerCase())) ?
-                  <EventCard
-                    key={index}
-                    event={event}
+            {
+              allFeeds?.length > 0 ?
+                allFeeds?.map((item, index) => (
+                    <FeedCard
+                      key={index}
+                      item={item}
                     />
-                  :
-                  ""
-              ))
-              :
+                ))
+                :
+                <>
+                   {!loading  && (<p className='result-message'>No feeds to show</p>)}
+                </>
+            }
+            {loading && (
               <>
-                <p className='result-message'>No events to show</p>
-              </>
-          } */}
+                <div style={{ height: "fitContent", display: "grid", placeContent: 'center' }}>
+                  <MoonLoader size={80} color="#067676" />
+                </div>
+              </>)
+            }
           </ul>
         </section>
       </section>

@@ -8,41 +8,39 @@
     border-radius: 1rem;
     padding-bottom: 1rem;
 
-    header{
-        height:5rem;
-        width:100%;
-        margin:2rem auto;
-        // background: orange;
+    header {
+        height: 5rem;
+        width: 100%;
+        margin: 2rem auto;
         display: flex;
         align-items: center;
         justify-content: space-between;
 
-        .search-field{
-            margin-left:1rem;
-            // border-radius: 1rem;
-            width:20rem;
+        .search-field {
+            margin-left: 1rem;
+            width: 20rem;
             box-shadow: 0 2px 5px variables.$light-grey;
         }
     }
 
-    .event-list-container{
+    .event-list-container {
         min-height: fit-content;
-        background-color:variables.$body-bg;
+        background-color: variables.$body-bg;
 
-        h1{
+        h1 {
             font-size: 1.7rem;
-            margin:2rem auto;
-            color:variables.$shadow;
+            margin: 2rem auto;
+            color: variables.$shadow;
             text-align: center;
         }
-        .event-list{
+
+        .event-list {
             width: 100%;
             display: flex;
             align-items: center;
             flex-wrap: wrap;
             justify-content: center;
-            gap:1rem;
+            gap: 1rem;
         }
-
     }
 }

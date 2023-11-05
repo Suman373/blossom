@@ -6,6 +6,7 @@ import EventCard from '../EventCard/EventCard';
 import BlueButton from '../BlueButton/BlueButton';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { MoonLoader } from 'react-spinners';
 
 const EventList = () => {
   document.title = "HH | Events"
@@ -13,8 +14,10 @@ const EventList = () => {
   const navigate = useNavigate();
   const [eventSearch, setEventsSearch] = useState("");
   const [fetchedEvents, setFetchedEvents] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const fetchEvents = async()=>{
+    setLoading(true);
     const data = await axios.get("http://localhost:5000/events/")
     .catch((e)=>{
       if(e.response){
@@ -23,9 +26,8 @@ const EventList = () => {
         console.log(e.message);
       }
     });
-    console.log(data?.data?.message);
-    console.log(data?.data?.result);
     setFetchedEvents(data?.data?.result);
+    setLoading(false);
   }
 
   // navigate to event adding page
@@ -72,9 +74,16 @@ const EventList = () => {
               ))
               :
               <>
-                <p className='result-message'>No events to show</p>
+                {!loading  && (<p className='result-message'>No events to show</p>)}
               </>
           }
+            {loading && (
+              <>
+                <div style={{ height: "fitContent", display: "grid", placeContent: 'center' }}>
+                  <MoonLoader size={80} color="#067676" />
+                </div>
+              </>)
+            }
         </ul>
       </section>
     </section>

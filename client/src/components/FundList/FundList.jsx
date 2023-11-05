@@ -14,10 +14,11 @@ const FundList = () => {
   document.title = "HH | Fundraises"
   const navigate = useNavigate();
   const [fundRaiseSearch, setFundRaiseSearch] = useState("");
-
+  const [loading, setLoading] = useState(false);
   const [fundraises, setFundRaises] = useState([]);
 
   const fetchFundRaises = async () => {
+    setLoading(true);
     const data = await axios.get('http://localhost:5000/funds/')
       .catch((e) => {
         if (e.response) {
@@ -28,6 +29,7 @@ const FundList = () => {
       });
     //  console.log(data?.data);
     setFundRaises(data?.data);
+    setLoading(false);
   }
 
   const addNewFundRaise = (e) => {
@@ -73,14 +75,16 @@ const FundList = () => {
                     ""
                 ))
                 :
+                <>
+                  {!loading  && (<p className='result-message'>No fundraises to show</p>)}
+                </>
+            }
+            {loading && (
               <>
-              <p className='result-message'>No events to show</p>
-              </>
-              // <>
-              //   <div style={{height:"fitContent",display:"grid", placeContent:'center'}}>
-              //   <MoonLoader size={80} color="#067676"/>
-              //   </div>
-              // </>
+                <div style={{ height: "fitContent", display: "grid", placeContent: 'center' }}>
+                  <MoonLoader size={80} color="#067676" />
+                </div>
+              </>)
             }
           </ul>
         </section>

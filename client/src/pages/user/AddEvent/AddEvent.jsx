@@ -37,9 +37,9 @@ const AddEvent = () => {
     const handleEventForm = async (e) => {
         e.preventDefault();
         setIsLoading(true);
-        // upload image to fire bucket
+        // uploading image to fire bucket
         const imageURL = await uploadImage();
-        // send data to backend 
+        // sending data to backend 
         const data = await axios.post("http://localhost:5000/events/", {
             userId,
             name,
@@ -131,7 +131,7 @@ const AddEvent = () => {
                                         type="time"
                                         value={time}
                                         onChange={(e) => setTime(e.target.value)}
-                                        id="outlined-basic"
+                                        id="outlined-basic" z
                                         required
                                     />
 

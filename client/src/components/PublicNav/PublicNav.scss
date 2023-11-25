@@ -1,0 +1,48 @@
+@use '../../utils/variables';
+
+// ---- PUBLIC NAVBAR ------------
+
+$nav-ht-lg: 6rem;
+
+.landing-nav {
+    height: $nav-ht-lg;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+
+    nav {
+        height: $nav-ht-lg;
+        width: 100vw;
+        background-color: #fff;
+
+        ul {
+            height: 100%;
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            align-items: center;
+            list-style: none;
+            padding: 0 2rem;
+
+            a {
+                color: #000;
+                font-size: 1.1rem;
+
+            }
+
+            #logo {
+                cursor: pointer;
+                position: absolute;
+                left: 2rem;
+                top: 0;
+
+                img {
+                    height: 6.5rem;
+                }
+            }
+        }
+
+    }
+}
+

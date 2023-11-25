@@ -5,19 +5,25 @@
     width: max-content;
     cursor: pointer;
     background: variables.$blue-light;
-    color: #ffffff;
     font-size: 1.2rem;
     margin: 1.5rem 1rem;
     outline: none;
     border: none;
     border-radius: 0.5rem;
 
+    a {
+        color: #fff;
+    }
+    
     &:hover {
-        background:#ffffffff;
-        transition:all 300ms ease-in-out;
+        background: #ffffffff;
+        transition: all 300ms ease-in-out;
         outline: 1px solid variables.$blue-light;
-        color:variables.$blue-light;
         filter: drop-shadow(0 0 8px variables.$fallback);
+        
+        a{
+            color: variables.$blue-light;
+        }
     }
 
     @media only screen and (max-width:750px) {

@@ -1,7 +1,8 @@
 import React from 'react';
 import './BlueButton.scss';
+import { Link } from 'react-router-dom';
 
-const BlueButton = ({text,handleClick}) => {
+const BlueButton = ({text,handleClick,redirect}) => {
 
   return (
    <>
@@ -9,7 +10,9 @@ const BlueButton = ({text,handleClick}) => {
             type='submit'
             className="blue-button"
             onClick={handleClick}>
-            {text}
+            <Link to={redirect}>
+              {text}
+            </Link>
         </button>
    </>
   )

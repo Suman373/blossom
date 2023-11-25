@@ -1,0 +1,247 @@
+@use '../../../utils/variables';
+
+$nav-ht-lg: 6rem;
+
+.landing-wrapper {
+
+    //  ---- BANNER ----------
+    .banner {
+        height: 100vh;
+        width: 100vw;
+        margin-top: $nav-ht-lg;
+        display: grid;
+        place-content: center;
+        position: relative;
+        color: #fff;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.427);
+    
+        &::before {
+            content: "";
+            height: 100%;
+            width: 100%;
+            background: url('../../../assets/together.jpg') no-repeat center center/cover;
+            top: 0;
+            left: 0;
+            position: absolute;
+            opacity: 0.8;
+            z-index: -1;
+        }
+    
+        h1 {
+            font-size: 4.8rem;
+        }
+    
+        #typewriter-text {
+            font-size: 1.6rem;
+            height: 2rem;
+            width: 100%;
+        }
+    
+        // custom class from the module typed.js
+        .typed-cursor {
+            font-size: 1.6rem;
+        }
+    
+        .auth-component {
+    
+            font-size: 1.1rem;
+    
+            .google-button {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                width: fit-content;
+                font-size: 1.2rem;
+                padding: 0.4rem 0.8rem;
+                border: none;
+                border-radius: 0.5rem;
+                margin: 1rem auto;
+                cursor: pointer;
+    
+                &:hover {
+                    box-shadow: 0 0 10px #e6e0e0;
+                }
+    
+                img {
+                    height: 2rem;
+                    width: 4rem;
+                }
+            }
+    
+            .auth-toggle {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    // ------ ABOUT ------------------------
+    .about-us {
+        min-height: fit-content;
+        display: grid;
+        place-content: center;
+        padding: 2rem 0;
+
+        &>h1{
+            font-size: 2.5rem;
+        }
+        &>h1,
+        &>p {
+            text-align: center;
+            margin: 1rem;
+            padding: 0 15%;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+
+        .about-cards-wrapper {
+
+            .about-cards-flexbox {
+                margin-top: 2rem;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: flex-start;
+                padding: 1.2rem;
+                gap: 4rem;
+
+                .about-card {
+                    height: 22rem;
+                    width: 20rem;
+                    background: #fff;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    padding: 1.5rem;
+                    text-align: center;
+                    word-spacing: 2px;
+                    gap: 0.5rem;
+                    box-shadow: #cecece;
+                    transform: scale(0);
+                    opacity: 0;
+                    transition: all 400ms linear;
+                    box-shadow: 0 0 30px variables.$shadow;
+
+                    &:hover {
+                        transform: scale(1.02);
+                    }
+
+                    h4 {
+                        font-size: 1.3rem;
+                    }
+
+                    &:nth-child(1) {
+                        transition-delay: 200ms;
+                    }
+
+                    &:nth-child(2) {
+                        transition-delay: 300ms;
+                    }
+
+                    &:nth-child(3) {
+                        transition-delay: 400ms;
+                    }
+
+                    // link
+                    a {
+                        font-size: 1rem;
+                        background-color: variables.$blue-light;
+                        color: #fff;
+                        padding: 1rem 0.5rem;
+                        position: relative;
+
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            height: 100%;
+                            width: 100%;
+                            background-color: grey;
+                            transition: all 400ms ease;
+                            z-index: -1;
+                        }
+
+                        &:hover::before {
+                            top: 0.4rem;
+                            left: 0.5rem;
+                            height: 110%;
+                        }
+                    }
+                }
+
+                // icon
+                svg {
+                    font-size: 2.5rem;
+                    color: variables.$blue-light;
+                    text-align: center;
+                    margin: 0 auto;
+                }
+
+                .about-card.grow-out {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+        }
+    }
+
+    // ---- END OF ABOUT -----------------
+
+    // ---- WELCOME ---------------------
+    .welcome {
+        min-height: fit-content;
+        padding: 5%;
+        background-color: variables.$shadow-light;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            height: 30rem;
+            margin: 1rem 0;
+        }
+
+        .welcome-text {
+            width: 50%;
+            transform: translateX(350px);
+            opacity: 0.4;
+            transition: all 400ms linear;
+
+            &>p {
+                margin: 1rem 0;
+                font-size: 1.1rem;
+            }
+
+            &>h1 {
+                margin-bottom: 2rem;
+                position: relative;
+                font-size: 3rem;
+
+                span {
+                    color: variables.$blue-light;
+                }
+
+                &::before {
+                    content: "";
+                    height: 0.3rem;
+                    width: 4rem;
+                    background: variables.$blue-light;
+                    left: 0;
+                    bottom: -0.7rem;
+                    position: absolute;
+                    border-radius: 1rem;
+                }
+            }
+        }
+
+        .welcome-text.slide-left {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+}

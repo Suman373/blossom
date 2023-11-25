@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.css';
-import logo from '../../assets/blossom_logo.png';
+import logo from '../../assets/blossomLogo.png';
 import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
 import {Link} from 'react-router-dom';
 
@@ -10,7 +10,7 @@ const Footer = () => {
             <div className="footer_row">
                 <div className="footer_col">
                     <img src={logo} className="footer-logo"  alt="logo" />
-                    <p>A Little Help Is What They Need</p>
+                    <p>Small efforts make big change</p>
                 </div>
                 <div className="footer_col">
                     <ul>

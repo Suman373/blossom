@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './App.scss';
 import { BrowserRouter as BRouter, Routes, Route } from 'react-router-dom';
-import Signup from './pages/nonuser/Signup/Signup';
 import UserHome from './pages/user/UserHome/UserHome';
 import AddFundRaise from './pages/user/AddFundRaise/AddFundRaise';
 import AddEvent from './pages/user/AddEvent/AddEvent';
 import Footer from './components/Footer/Footer';
 import axios from 'axios';
 import UserDetails from './pages/user/UserDetails/UserDetails';
+import Landing from './pages/nonuser/Landing/Landing';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -47,7 +47,7 @@ const App = () => {
               </>
               :
               <Routes>
-                <Route path="*" element={<Signup/>}></Route>
+                <Route path="*" element={<Landing/>}></Route>
               </Routes>
         }
           <Footer />

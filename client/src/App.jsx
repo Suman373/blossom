@@ -43,6 +43,11 @@ const App = () => {
                   <Route path="/new/event" element={<AddEvent/>}></Route>
                   <Route path="/profile/:type/:id" element={<UserDetails/>}>
                   </Route>
+                  <Route path="/fundraise/details" element={
+                    <>
+                    <h1>THIS IS FUND DETAILS PAGE</h1>
+                    </>
+                  }></Route>
                 </Routes>
               </>
               :

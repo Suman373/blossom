@@ -1,4 +1,5 @@
 @use '../../utils/variables';
+@import '../../utils/mixins';
 
 .event-item {
     min-height: 25rem;
@@ -8,29 +9,39 @@
     box-shadow: 0 0 5px variables.$fallback;
     border-radius: 1rem;
 
-    img{
+    // svg of icon
+    svg {
+        font-size: 1.4rem; 
+        margin:0 0.3rem;
+        padding-top: 0.5rem;
+    }
+
+    img {
         height: 15rem;
         width: 100%;
-        border-radius: 1rem 1rem 0 0 ;
+        border-radius: 1rem 1rem 0 0;
     }
 
     .event-details {
         height: fit-content;
         padding: 0.2rem;
-        color:variables.$blue-light;
+        color: variables.$blue-light;
+
         p {
             font-size: 1.1rem;
             margin: 0.5rem 1rem;
         }
-        .event-name{
+
+        .event-name {
             color: variables.$blue-accent;
             font-size: 1.3rem;
         }
-        .event-icon{
-            font-size: 1.2rem;
-            margin:0.3rem;
-        }
+    }
 
+    // link
+    a{
+        @include linkHoverBtn(8rem);
+        margin:0 auto;
     }
 
 }

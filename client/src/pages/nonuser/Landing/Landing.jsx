@@ -55,7 +55,7 @@ function Landing() {
         <>
             <div className='landing-wrapper'>
                 {/* Nav */}
-                <PublicNav/>
+                <PublicNav />
                 <div className="banner">
                     <h1>
                         Small Efforts Make Big Change .
@@ -148,10 +148,9 @@ function Landing() {
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure cupiditate placeat earum corporis ex maiores delectus! Sapiente enim alias exercitationem ad aliquid nisi, blanditiis iste nobis consectetur minus fugiat esse nostrum id minima natus similique et, autem explicabo! Reiciendis, dicta!
                         </p>
 
-                        <BlueButton
-                            text={"More about us"}
-                            redirect={"/about-us"}
-                        />
+                        <Link className='welcome-link' to="#a">
+                            Know more
+                        </Link>
                     </div>
 
                 </div>

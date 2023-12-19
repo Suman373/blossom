@@ -21,8 +21,11 @@ const AddEvent = () => {
     const [name, setName] = useState("");
     const [organisation, setOrganisation] = useState("");
     const [date, setDate] = useState("");
+    const [description, setDescription] = useState("");
+    const [requirements, setRequirements] = useState([]);
     const [time, setTime] = useState("");
-    const [location, setLocation] = useState("");
+    const [city, setCity] = useState("");
+    const [place, setPlace] = useState("");
     const [image, setImage] = useState(null);
 
     // upload to storage bucket
@@ -44,9 +47,11 @@ const AddEvent = () => {
             userId,
             name,
             organisation,
+            description,
             date,
             time,
-            location,
+            city,
+            place,
             imageURL
         })
             .catch((e) => {
@@ -58,7 +63,7 @@ const AddEvent = () => {
             });
         console.log(data?.data?.message);
         setName(""); setOrganisation(""); setDate("");
-        setTime(""); setLocation(""); setImage(null);
+        setTime(""); setPlace(""); setCity(""); setImage(null);
         setIsLoading(false);
         navigate('/');
     }
@@ -101,14 +106,23 @@ const AddEvent = () => {
                                         required
                                         placeholder='Organisation name' />
 
-                                    <InputLabel id="demo-simple-select-label">Location</InputLabel>
+                                    <TextField
+                                        type="text"
+                                        label="Description"
+                                        id="outlined-basic"
+                                        value={description}
+                                        onChange={(e) => setDescription(e.target.value)}
+                                        required
+                                        placeholder='Description' />
+
+                                    <InputLabel id="demo-simple-select-label">City</InputLabel>
                                     <Select
-                                        label="Select location"
+                                        label="Select city"
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
-                                        value={location}
+                                        value={city}
                                         required
-                                        onChange={(e) => setLocation(e.target.value)}>
+                                        onChange={(e) => setCity(e.target.value)}>
                                         <MenuItem value="Kolkata" defaultValue >Kolkata</MenuItem>
                                         <MenuItem value="Bangalore">Bangalore</MenuItem>
                                         <MenuItem value="Mumbai">Mumbai</MenuItem>
@@ -118,6 +132,15 @@ const AddEvent = () => {
                                         <MenuItem value="Hyderabad">Hyderabad</MenuItem>
                                         <MenuItem value="Bhopal">Bhopal</MenuItem>
                                     </Select>
+
+                                    <TextField
+                                        type="text"
+                                        label="Place"
+                                        id="outlined-basic"
+                                        value={place}
+                                        onChange={(e) => setPlace(e.target.value)}
+                                        required
+                                        placeholder='Place' />
 
                                     <TextField
                                         type="date"

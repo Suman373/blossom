@@ -1,4 +1,5 @@
 @use '../../utils/variables';
+@import '../../utils/mixins';
 
 .fund-item {
     min-height: 25rem;
@@ -8,36 +9,43 @@
     box-shadow: 0 0 5px variables.$fallback;
     border-radius: 1rem;
 
-    img{
+    img {
         height: 15rem;
         width: 100%;
-        border-radius: 1rem 1rem 0 0 ;
+        border-radius: 1rem 1rem 0 0;
     }
 
     .fund-details {
         height: fit-content;
         padding: 0.2rem;
-        color:variables.$blue-light;
+        color: variables.$blue-light;
+
         p {
             font-size: 1.1rem;
             margin: 0.5rem 1rem;
         }
-        .fund-title{
+
+        .fund-title {
             color: variables.$blue-accent;
             font-size: 1.2rem;
             position: relative;
-            span{
-                position:absolute;
+
+            span {
+                position: absolute;
                 font-size: 1.3rem;
-                font-weight:600;
-                right:0.5rem;
+                font-weight: 600;
+                right: 0.5rem;
             }
         }
-        .fund-amount{
+
+        .fund-amount {
             font-size: 1.3rem;
         }
-    
-
+    }
+    // link
+    a{
+        @include linkHoverBtn(8rem);
+        margin: 1rem auto;
     }
 
 }

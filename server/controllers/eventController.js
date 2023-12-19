@@ -39,8 +39,8 @@ const getEventById = async(req,res)=>{
 //  @POST New event
 const addEvent = async(req,res)=>{
     try{
-       const {userId,name,organisation,location,time,date,imageURL} = await req.body;
-       if(!name || !organisation || !location || !time || !date || !imageURL){
+       const {name,organisation,description,place,city,time,date,imageURL} = await req.body;
+       if(!name || !organisation || !description ||  !place || !city || !time || !date || !imageURL){
           throw Error("Fill up the all the required details!");
        }
        if(await EventModel.findOne({name})){

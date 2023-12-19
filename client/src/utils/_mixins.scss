@@ -1,0 +1,32 @@
+@use './variables';
+
+// param - width of the button
+@mixin linkHoverBtn ($width) {
+    display: grid;
+    place-content: center;
+    font-size: 1rem;
+    background-color: variables.$blue-light;
+    color: #fff;
+    padding: 1rem 0.5rem;
+    width: $width;
+    margin:1rem 0;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: grey;
+        transition: all 400ms ease;
+        z-index: -1;
+    }
+
+    &:hover::before {
+        top: 0.4rem;
+        left: 0.5rem;
+        height: 110%;
+    }
+}

@@ -3,6 +3,7 @@ import './FundCard.scss';
 import BlueButton from '../BlueButton/BlueButton';
 import fallback from '../../assets/blossom_fallback.jpg';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 const FundCard = ({ fund }) => {
 
@@ -17,10 +18,7 @@ const FundCard = ({ fund }) => {
             </div>
 
             <div style={{textAlign:'center'}}>
-                <BlueButton
-                    text="Donate ❤"
-                  />
-                <BlueButton text="Message ✉"/>
+                <Link to={`fundraise/details?id=${fund?._id}`}>Know more</Link>
             </div>
         </div>
     )

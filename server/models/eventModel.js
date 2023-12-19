@@ -15,12 +15,28 @@ const EventSchema = new mongoose.Schema({
     organisation: {
         type: String,
         trim: true,
-        required: [true, "Organisation name required"]
+        // required: [true, "Organisation name required"]
     },
-    location: {
+    description:{
         type: String,
         trim: true,
-        required: [true, "Location required"]
+        required: [true, "Description is required"]
+    },
+    requirements:[
+        {
+            type:String,
+            trim:true,
+        }
+    ],
+    city: {
+        type: String,
+        trim: true,
+        required: [true, "City required"]
+    },
+    place:{
+        type:String,
+        trim:true,
+        required:[true, "Place is required"],
     },
     date: {
         type: Date,

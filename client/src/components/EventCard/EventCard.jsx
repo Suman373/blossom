@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './EventCard.scss';
 import BlueButton from '../BlueButton/BlueButton';
 import defaultImage from '../../assets/blossom_fallback.jpg';
-import {GoLocation} from 'react-icons/go';
-import {BsClock} from 'react-icons/bs';
+import { GoLocation } from 'react-icons/go';
+import { BsClock } from 'react-icons/bs';
 import moment from 'moment';
 
-const EventCard = ({event}) => {
+const EventCard = ({ event }) => {
 
-    const handleAttendEvent = async()=>{
+    const handleAttendEvent = async () => {
         // attend the event
         return;
     }
@@ -19,15 +20,12 @@ const EventCard = ({event}) => {
             <div className="event-details">
                 <p className="event-name">{event.name}</p>
                 <p>By {event.organisation}</p>
-                <p><i className="event-icon"><GoLocation/></i><span> {event.location}</span>
-                {" "}
-                <i className="event-icon"><BsClock/></i>{moment(event?.date).format("MMM Do")} {event?.time}</p>
+                <p><GoLocation /><span>{event.city}</span>
+                    <BsClock />{moment(event?.date).format("MMM Do")} {event?.time}</p>
             </div>
 
-            <div style={{textAlign:'center'}}>
-                <BlueButton
-                    text="Attend "
-                    handleClick={handleAttendEvent} />
+            <div style={{ padding:'0.8rem'}}>
+                <Link to={`/event/details?id=${event?._id}`}>Know more</Link>
             </div>
 
         </div>

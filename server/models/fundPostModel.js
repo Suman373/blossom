@@ -10,6 +10,16 @@ const FundPostSchema = new mongoose.Schema({
         trim:true,
         required:[true,"Title required"]
     },
+    description:{
+        type:String,
+        trim:true,
+        required:[true,"Description required"]
+    },
+    cause:{
+        type:String,
+        trim:true,
+        required:[true,"Cause required"]
+    },
     orgName:{
         type:String,
         trim:true,

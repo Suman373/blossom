@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AddFundRaise.scss';
-import { TextField } from '@mui/material';
+import { TextField, Button } from '@mui/material';
 import BlueButton from '../../../components/BlueButton/BlueButton';
 import { useState } from 'react';
 import donationImg from '../../../assets/donation box.png';
@@ -12,6 +12,8 @@ import { MoonLoader } from 'react-spinners';
 import axios from 'axios';
 import useAuth from '../../../hooks/useAuth';
 
+
+
 const AddFundRaise = () => {
 
   const navigate = useNavigate();
@@ -19,6 +21,8 @@ const AddFundRaise = () => {
   // states for forms and image
   const [title, setTitle] = useState("");
   const [orgName, setOrgName] = useState("");
+  const [description, setDescription] = useState("");
+  const [cause, setCause] = useState("");
   const [amount, setAmount] = useState(0);
   const [deadline, setDeadline] = useState("");
   const [image, setImage] = useState(null);
@@ -26,16 +30,16 @@ const AddFundRaise = () => {
 
 
   // upload image to bucket
-  const uploadImage = async()=>{
+  const uploadImage = async () => {
     if (image == null) return;
-    const imageRef =  ref(storage, `fundraiseImages/${image.name + v4()}`); // the refernce to the image in the bucket
-    await uploadBytes(imageRef,image);
+    const imageRef = ref(storage, `fundraiseImages/${image.name + v4()}`); // the refernce to the image in the bucket
+    await uploadBytes(imageRef, image);
     const url = await getDownloadURL(imageRef);
     return url;
   }
-  
+
   // submission of form
-  const handleFundRaiseForm = async(e) => {
+  const handleFundRaiseForm = async (e) => {
     e.preventDefault();
     setLoading(true);
     const imageURL = await uploadImage();
@@ -44,19 +48,22 @@ const AddFundRaise = () => {
       userId,
       title,
       orgName,
+      description,
+      cause,
       amount,
       deadline,
       imageURL
     }).catch((e) => {
-        if (e.response) {
-          console.log(e.response.data);
-        } else {
-          console.log(e.message);
-        }
-      });
+      if (e.response) {
+        console.log(e.response.data);
+      } else {
+        console.log(e.message);
+      }
+    });
     alert(data?.data?.message);
     console.log(data?.data?.newFundraise);
-    setTitle(""); setOrgName(""); setDeadline(""); setAmount(0); setImage(null);
+    setTitle(""); setOrgName(""); setDeadline(""); 
+    setDescription(""); setCause(""); setAmount(0); setImage(null);
     setLoading(false);
     navigate('/');
   }
@@ -73,7 +80,7 @@ const AddFundRaise = () => {
         <div>
           {loading ?
             <>
-              <div style={{display:'grid',placeContent:'center'}}>
+              <div style={{ display: 'grid', placeContent: 'center' }}>
                 <MoonLoader
                   color='#0b0b9b'
                   size={100}
@@ -84,6 +91,16 @@ const AddFundRaise = () => {
             :
             <>
               <form onSubmit={handleFundRaiseForm}>
+
+                <TextField
+                  type="text"
+                  label="Organisation name"
+                  id="outlined-basic"
+                  value={orgName}
+                  onChange={(e) => setOrgName(e.target.value)}
+                  required
+                  placeholder='Organisation name' />
+
                 <TextField
                   type="text"
                   label="Title"
@@ -95,12 +112,22 @@ const AddFundRaise = () => {
 
                 <TextField
                   type="text"
-                  label="Organisation name"
+                  label="Description"
                   id="outlined-basic"
-                  value={orgName}
-                  onChange={(e) => setOrgName(e.target.value)}
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
                   required
-                  placeholder='Organisation name' />
+                  placeholder='Description' />
+
+                <TextField
+                  type="text"
+                  label="Cause"
+                  id="outlined-basic"
+                  value={cause}
+                  onChange={(e) => setCause(e.target.value)}
+                  required
+                  placeholder='Cause' />
+
 
                 <TextField
                   type="number"
@@ -125,7 +152,6 @@ const AddFundRaise = () => {
                   onChange={(e) => setImage(e.target.files[0])}
                   required
                   type="file" />
-
                 <BlueButton
                   text={"Create"} />
               </form>

@@ -21,7 +21,7 @@ app.use(cors({
     origin:["http://localhost:3000"]
 }));
 app.use(session({
-    secret:"ksahdkhksad7aydhkah3d3d2",
+    secret:process.env.EXPRESS_SESSION_SECRET,
     resave:true,
     saveUninitialized:true,
 }));
@@ -46,13 +46,8 @@ app.get('/', (req,res)=>  {
 
 const connectToDB = async()=>{
     try {
-           await mongoose.connect(
-            process.env.MONGO_DB_URI,{
-                useUnifiedTopology:true,
-                useNewUrlParser:true
-            }
-        )
-        console.log(`MongoDB is connected successfully`);
+           await mongoose.connect(process.env.MONGO_DB_URI)
+           console.log(`MongoDB is connected successfully`);
         
     } catch (error) {
         console.log(error);

@@ -52,7 +52,7 @@ const AddFeed = ({ modalOpen, setModalOpen }) => {
             // uploading feed image to fire bucket
             const imageURL = await uploadImage();
             // sending payload to server
-            const data = await axios.post('http://localhost:5000/feeds/',{
+            const data = await axios.post(`${import.meta.env.VITE_API_ENDPOINT}/feeds/`,{
                 name:userObj.name,
                 userId:userObj._id,
                 profileImage:userObj.profileImage,

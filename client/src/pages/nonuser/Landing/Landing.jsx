@@ -9,7 +9,6 @@ import { FaHandHoldingHeart } from "react-icons/fa";
 import { IoPeople } from "react-icons/io5";
 import { GiEternalLove } from "react-icons/gi";
 import charity from '../../../assets/charity.png';
-import BlueButton from '../../../components/BlueButton/BlueButton';
 import PublicNav from '../../../components/PublicNav/PublicNav';
 
 function Landing() {
@@ -26,10 +25,10 @@ function Landing() {
 
     // google authentication with Oauth2.0
     const handleRegister = () => {
-        window.open("http://localhost:5000/auth/google/callback", "_self");
+        window.open(`${import.meta.env.VITE_API_ENDPOINT}/auth/google/callback`, "_self");
     }
     const handleLogin = () => {
-        window.open("http://localhost:5000/auth/google/callback", "_self");
+        window.open(`${import.meta.env.VITE_API_ENDPOINT}/auth/google/callback`, "_self");
 
     }
 

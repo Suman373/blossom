@@ -43,7 +43,7 @@ const AddEvent = () => {
         // uploading image to fire bucket
         const imageURL = await uploadImage();
         // sending data to backend 
-        const data = await axios.post("http://localhost:5000/events/", {
+        const data = await axios.post(`${import.meta.env.VITE_API_ENDPOINT}/events/`, {
             userId,
             name,
             organisation,

@@ -44,7 +44,7 @@ const AddFundRaise = () => {
     setLoading(true);
     const imageURL = await uploadImage();
     // send data to backend
-    const data = await axios.post('http://localhost:5000/funds/', {
+    const data = await axios.post(`${import.meta.env.VITE_API_ENDPOINT}/funds/`, {
       userId,
       title,
       orgName,

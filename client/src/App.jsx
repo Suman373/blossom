@@ -10,13 +10,14 @@ import UserDetails from './pages/user/UserDetails/UserDetails';
 import Landing from './pages/nonuser/Landing/Landing';
 
 const App = () => {
+  console.log(import.meta.env.VITE_API_ENDPOINT);
   const [user, setUser] = useState(null);
   // user details
   const getUser = async () => {
     try {
-      const url = `http://localhost:5000/auth/login/success`;
+      const url = `${import.meta.env.VITE_API_ENDPOINT}/auth/login/success`;
       const { data } = await axios.get(url, { withCredentials: true });
-      console.log("User data", data);
+      // console.log("User data", data);
       setUser(data.user);
       localStorage.setItem('blossomUserObj', JSON.stringify(data.user));
     } catch (error) {

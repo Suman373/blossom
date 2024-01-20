@@ -21,7 +21,7 @@ const UserDetails = () => {
 
   const fetchUserDetails = async () => {
     try {
-      const data = await axios.get(`http://localhost:5000/user/${profileId}`);
+      const data = await axios.get(`${import.meta.env.VITE_API_ENDPOINT}/user/${profileId}`);
       if (!data) {
         alert("Failed to retrieve details");
       }

@@ -10,7 +10,6 @@ import UserDetails from './pages/user/UserDetails/UserDetails';
 import Landing from './pages/nonuser/Landing/Landing';
 
 const App = () => {
-  console.log(import.meta.env.VITE_API_ENDPOINT);
   const [user, setUser] = useState(null);
   // user details
   const getUser = async () => {

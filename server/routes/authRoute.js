@@ -1,6 +1,7 @@
 const express = require('express');
 const passport = require('passport');
-const clientURL = "http://localhost:3000";
+// const clientURL = "http://localhost:3000";
+const clientURL="https://blossom-web-v1.vercel.app";
 const router = express.Router();
 
 // ------ AUTH ROUTES -------

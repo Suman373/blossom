@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 5000;
 // middlewares
 app.use(cors({
     credentials:true,
-    origin:["http://localhost:3000"]
+    origin:["http://localhost:3000","https://blossom-web-v1.vercel.app"]
 }));
 app.use(session({
     secret:process.env.EXPRESS_SESSION_SECRET,

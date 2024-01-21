@@ -16,7 +16,7 @@ const App = () => {
     try {
       const url = `${import.meta.env.VITE_API_ENDPOINT}/auth/login/success`;
       const { data } = await axios.get(url, { withCredentials: true });
-      // console.log("User data", data);
+      console.log("User data", data);
       setUser(data.user);
       localStorage.setItem('blossomUserObj', JSON.stringify(data.user));
     } catch (error) {
@@ -36,7 +36,7 @@ const App = () => {
             user ?
               <>
                 <Routes>
-                  <Route path="/" element={<UserHome user={user} />}>
+                  <Route path="/home" element={<UserHome user={user} />}>
                   </Route>
                   <Route path="/new/fundraise" element={<AddFundRaise/>}>
                   </Route>

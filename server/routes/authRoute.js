@@ -8,7 +8,7 @@ const router = express.Router();
 // passport authenticate -> auth screen
 router.get('/google/callback',
     passport.authenticate("google",{
-    successRedirect:clientURL,
+    successRedirect:`${clientURL}/home`,
     failureRedirect:"/login/failed"
 })
 );

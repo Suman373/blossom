@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer';
 import axios from 'axios';
 import UserDetails from './pages/user/UserDetails/UserDetails';
 import Landing from './pages/nonuser/Landing/Landing';
+import Signup from './pages/nonuser/Signup/Signup';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -53,6 +54,7 @@ const App = () => {
               :
               <Routes>
                 <Route path="*" element={<Landing/>}></Route>
+                <Route path="/signup" element={<Signup/>}></Route>
               </Routes>
         }
           <Footer />

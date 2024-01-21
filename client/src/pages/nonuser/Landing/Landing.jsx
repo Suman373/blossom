@@ -2,10 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import './Landing.scss';
 import Typed from 'typed.js';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import google from '../../../assets/google.png';
 import { useInView } from 'react-intersection-observer';
-import { FaHandHoldingHeart } from "react-icons/fa";
+import { FaHandHoldingHeart,FaHandHolding} from "react-icons/fa";
 import { IoPeople } from "react-icons/io5";
 import { GiEternalLove } from "react-icons/gi";
 import charity from '../../../assets/charity.png';
@@ -13,24 +11,12 @@ import PublicNav from '../../../components/PublicNav/PublicNav';
 
 function Landing() {
 
-    // control signup or login button
-    const [isSignup, setIsSignup] = useState(true);
     const elementRef = useRef(null);
 
     // cards
     const { ref: serviceCardRef, inView: cardVisible } = useInView();
     // welcome 
     const { ref: welcomeTextRef, inView: welcomeTextVisible } = useInView();
-
-
-    // google authentication with Oauth2.0
-    const handleRegister = () => {
-        window.open(`${import.meta.env.VITE_API_ENDPOINT}/auth/google/callback`, "_self");
-    }
-    const handleLogin = () => {
-        window.open(`${import.meta.env.VITE_API_ENDPOINT}/auth/google/callback`, "_self");
-
-    }
 
     useEffect(() => {
         const typed = new Typed(elementRef.current, {
@@ -63,36 +49,11 @@ function Landing() {
                         <span id='typewriter-text' ref={elementRef}>
                         </span>
                     </div>
-                    <div className="auth-component">
-                        {
-                            isSignup ?
-                                <>
-                                    <button className="google-button"
-                                        onClick={handleRegister}
-                                    >
-                                        <img src={google} alt="google" />Sign up with Google
-                                    </button>
-                                    <p>Already have an account ?
-                                        <span
-                                            className="auth-toggle"
-                                            onClick={() => setIsSignup(!isSignup)}
-                                        > Login</span> </p>
-                                </>
-                                :
-                                <>
-                                    <button className='google-button'
-                                        onClick={handleLogin}
-                                    >
-                                        <img src={google} alt="google" />Log in with Google
-                                    </button>
-                                    <p>Don't have an account ?
-                                        <span
-                                            className='auth-toggle'
-                                            onClick={() => setIsSignup(!isSignup)}
-                                        > Sign up</span></p>
-                                </>
-                        }
-                    </div>
+                    <Link
+                    to="/signup"
+                    className='banner-btn'>
+                        <p>Join now</p> <FaHandHolding/>
+                    </Link>
                 </div>
 
                 <div className="about-us">

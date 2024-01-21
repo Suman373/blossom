@@ -5,12 +5,12 @@ const UserModel = require('../models/userModel');
 
 passport.use(
     new GoogleStrategy({
-        callbackURL:'/auth/google/callback',
+        callbackURL:`/auth/google/callback`,
         clientID:keys.google.clientID,
         clientSecret:keys.google.clientSecret,
         scope:["profile","email"]
 
-    }, async(accessToken, refreshToken, profile, done)=>{ // cb for passport 
+    }, async(request,accessToken, refreshToken, profile, done)=>{ // cb for passport 
     const user = await UserModel.findOne({googleId:profile.id});
     if(user){
         console.log("User exists",user);

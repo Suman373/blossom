@@ -1,89 +1,139 @@
-import React, {useRef, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Signup.scss';
-import banner from '../../../assets/blossom_banner.png';
-import logo from '../../../assets/blossom_logo.png';
+import logo from '../../../assets/blossomLogo.png';
 import google from '../../../assets/google.png';
-import Typed from 'typed.js';
-import Landing from '../Landing/Landing';
+import { TextField } from '@mui/material';
+import Warning from '../../../components/Warning/Warning';
+import BlueButton from '../../../components/BlueButton/BlueButton';
 
 const Signup = () => {
 
-  const [isSignup, setIsSignup] = useState(true);
-  const elementRef = useRef(null);
+    // control signup or login button
+    const [isSignup, setIsSignup] = useState(true);
+    // state of loader
+    const [loading, setLoading] = useState(true);
 
-  const handleRegister = () => {
-    window.open("http://localhost:5000/auth/google/callback", "_self");
-  }
-  const handleLogin = () => {
-    window.open("http://localhost:5000/auth/google/callback", "_self");
+    // states for form
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-  }
+    // registration and login with credentials
+    const handleCredsRegister = async () => {
+        try {
+            // registration
 
-  useEffect(()=>{
-    const typed = new Typed(elementRef.current, {
-      strings: ['A Little Help is all they need',
-      'Join us today to make a difference'],
-      typeSpeed: 50,
-      backSpeed:40,
-      loop:true,
-      smartBackspace:true
-    });
-
-    return()=>{
-      typed.destroy();
+        } catch (error) {
+            if (error.response) {
+                console.log(error.response);
+            } else {
+                console(error);
+            }
+        }
     }
 
-  },[])
 
-  return (
-    <>
-      <div className="auth-wrapper">
-        <nav className='navbar'>
-          <img src={logo} alt="logo" />
-        </nav>
-        <Landing/>
-        <div className="auth-container">
-          <div className="banner-wrapper">
-            <img src={banner} alt="banner" />
-          </div>
-          <div className="auth-component">
-            <div className="typewriter">
-              <span id='typewriter-text' ref={elementRef}></span>
-            </div>
-            <p>Get started with Blossom and take one step towards the greater good</p>
-            {
-              isSignup ?
-                <>
-                  <button className="google-button"
-                    onClick={handleRegister}
-                  >
-                    <img src={google} alt="google" />Sign up with Google
-                  </button>
-                  <p>Already have an account ?
-                    <span
-                      className="auth-toggle"
-                      onClick={() => setIsSignup(!isSignup)}
-                    > Login</span> </p>
-                </>
-                :
-                <>
-                  <button className='google-button'
-                    onClick={handleLogin}
-                  >
-                    <img src={google} alt="google" />Log in with Google
-                  </button>
-                  <p>Don't have an account ?
-                    <span
-                      className='auth-toggle'
-                      onClick={() => setIsSignup(!isSignup)}
-                    > Sign up</span></p>
-                </>
+    const handleCredsLogin = async () => {
+        try {
+            // login
+        } catch (error) {
+            if (error.response) {
+                console.log(error.response);
+            } else {
+                console(error);
             }
-          </div>
+        }
+
+    }
+
+    // google authentication with Oauth2.0
+    const handleOAuthRegister = () => {
+        window.open(`${import.meta.env.VITE_API_ENDPOINT}/auth/google/callback`, "_self");
+    }
+    const handleOAuthLogin = () => {
+        window.open(`${import.meta.env.VITE_API_ENDPOINT}/auth/google/callback`, "_self");
+
+    }
+    return (
+        <div className='signup-wrapper'>
+            <img src={logo} className='logo' alt="logo" />
+            <h1>Create your account</h1>
+            <div className="creds-component">
+                <form>
+                    {
+                        isSignup && (<TextField
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            type="text"
+                            label="Name" />)
+                    }
+
+                    <TextField
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        type="email"
+                        label="Email" />
+
+                    <TextField
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        type="password"
+                        label="Password" />
+                </form>
+                <div style={{textAlign:'center'}}> 
+                    {
+                        isSignup ?
+                            <BlueButton
+                                loading={loading}
+                                handleClick={handleCredsRegister}
+                                text={"Register"}
+                            />
+                            :
+                            <BlueButton
+                                loading={loading}
+                                handleClick={handleCredsLogin}
+                                text={"Login"} />
+                    }
+                </div>
+
+            </div>
+            <div className="or">
+                OR
+            </div>
+            <div className="oauth-component">
+                {
+                    isSignup ?
+                        <>
+                            <button disabled className="google-button"
+                                onClick={handleOAuthRegister}
+                            >
+                                <img src={google} alt="google" />Sign up with Google
+                            </button>
+                            <p>Already have an account ?
+                                <span
+                                    className="auth-toggle"
+                                    onClick={() => setIsSignup(!isSignup)}
+                                > Login</span> </p>
+                        </>
+                        :
+                        <>
+                            <button disabled className='google-button'
+                                onClick={handleOAuthLogin}
+                            >
+                                <img src={google} alt="google" />Log in with Google
+                            </button>
+                            <p>Don't have an account ?
+                                <span
+                                    className='auth-toggle'
+                                    onClick={() => setIsSignup(!isSignup)}
+                                > Sign up</span></p>
+                        </>
+                }
+
+                <Warning text={"Google Authentication is disabled in production mode due to some problems"} />
+            </div>
         </div>
-      </div>
-    </>
-  )
+    )
 }
 
 export default Signup;

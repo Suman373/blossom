@@ -1,18 +1,15 @@
 import React from 'react'
 import './UserNavbar.scss';
 import { AppBar } from '@mui/material';
-import icon from './assets/give-take-heart.webp';
-import logo from '../../assets/blossom_logo.png';
-import { useState } from 'react';
+import logo from '../../assets/blossomLogo.png';
 import {AiOutlineLogout} from 'react-icons/ai';
-import axios from 'axios';
 
 const UserNavbar = ({activeLink, setActiveLink}) => {
 
   const handleLogout = async()=>{
-    await window.open("http://localhost:5000/auth/logout","_self");
+    await window.open(`${import.meta.env.VITE_API_ENDPOINT}/auth/logout`,"_self");
     localStorage.removeItem('blossomUserObj');
-    console.log("Logged out");
+    alert("Logged out");
   }
 
   return (

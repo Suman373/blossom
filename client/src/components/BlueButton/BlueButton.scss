@@ -11,17 +11,19 @@
     border: none;
     border-radius: 0.5rem;
 
-    a {
+    a,p {
         color: #fff;
+        display: flex;
+        gap: 1rem;
     }
-    
+
     &:hover {
         background: #ffffffff;
         transition: all 300ms ease-in-out;
         outline: 1px solid variables.$blue-light;
         filter: drop-shadow(0 0 8px variables.$fallback);
-        
-        a{
+
+        a,p {
             color: variables.$blue-light;
         }
     }
@@ -34,4 +36,23 @@
         font-size: 1rem;
     }
 
+}
+
+.btn-loader {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
 }

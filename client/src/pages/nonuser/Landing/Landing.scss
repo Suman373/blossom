@@ -43,36 +43,36 @@ $nav-ht-lg: 6rem;
         .typed-cursor {
             font-size: 1.6rem;
         }
+        .banner-btn{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap:0.4rem;
+            padding: 0.8rem 2rem;
+            width: fit-content;
+            margin: 1rem auto;
+            font-size: 1.3rem;
+            cursor: pointer;
+            border-radius: 1.5rem;
+            border: none;
+            outline: none;
+            box-shadow:  0 0 8px 2px variables.$shadow;
+            background: variables.$blue-light;
+            color: #fff;
 
-        .auth-component {
-
-            font-size: 1.1rem;
-
-            .google-button {
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                width: fit-content;
-                font-size: 1.2rem;
-                padding: 0.4rem 0.8rem;
-                border: none;
-                border-radius: 0.5rem;
-                margin: 1rem auto;
-                cursor: pointer;
-
-                &:hover {
-                    box-shadow: 0 0 10px #e6e0e0;
-                }
-
-                img {
-                    height: 2rem;
-                    width: 4rem;
-                }
+            svg{
+                font-size: 1.5rem;
+                margin-top: -0.6rem;
             }
 
-            .auth-toggle {
-                cursor: pointer;
-                text-decoration: underline;
+            &:hover {
+                transition: transform 200ms ease;
+                transform: scale(1.006);
+                box-shadow:  0 0 6px 5px variables.$shadow;
+
+                svg{
+                    transform: translateX(6px);
+                }
             }
         }
     }
@@ -123,11 +123,11 @@ $nav-ht-lg: 6rem;
                     text-align: center;
                     word-spacing: 2px;
                     gap: 0.2rem;
-                    box-shadow: #cecece;
                     transform: scale(0);
                     opacity: 0;
+                    border-radius: 1rem;
                     transition: all 400ms linear;
-                    box-shadow: 0 0 30px variables.$shadow;
+                    box-shadow: 0 4px 35px #cecece;
 
                     &:hover {
                         transform: scale(1.02);
@@ -177,7 +177,7 @@ $nav-ht-lg: 6rem;
     .welcome {
         min-height: fit-content;
         padding: 5%;
-        background-color: variables.$shadow-light;
+        background-color: #ececee;
         display: flex;
         justify-content: center;
         align-items: center;

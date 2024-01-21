@@ -5,6 +5,9 @@ const router = express.Router();
 
 // ------ AUTH ROUTES -------
 
+// OAUTH2.0
+// profile and email access
+router.get('/google',passport.authenticate("google",["profile","email"]));
 // passport authenticate -> auth screen
 router.get('/google/callback',
     passport.authenticate("google",{
@@ -26,8 +29,6 @@ router.get('/login/failed',(req,res)=>{
     res.status(401).json({error:true,message:"Login failed"});
     res.redirect(clientURL);
 });
-// profile and email access
-router.get('/google',passport.authenticate("google",["profile","email"]));
 // logout
 router.get('/logout',(req,res)=>{
     // session logout for a user
@@ -36,5 +37,8 @@ router.get('/logout',(req,res)=>{
     });
     res.redirect(clientURL);
 });
+
+
+// JWT AUTHENTICATION
 
 module.exports = router;

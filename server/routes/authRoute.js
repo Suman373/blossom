@@ -2,6 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const clientURL = process.env.CLIENT_REDIRECT_URL;
 const router = express.Router();
+const controllers = require('../controllers/authController');
 
 // ------ AUTH ROUTES -------
 
@@ -40,5 +41,13 @@ router.get('/logout',(req,res)=>{
 
 
 // JWT AUTHENTICATION
+// user registration with creds
+router.post('/registration',controllers.registerUser);
+
+// user login with creds
+router.post('/login', controllers.loginUser);
+
+// logout 
+router.post('/signout',controllers.logoutUser);
 
 module.exports = router;

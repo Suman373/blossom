@@ -128,7 +128,7 @@ const deleteUser = async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: "User with id not found!" });
         }
-        if (await UserModel.findByIdAndRemove(_id, req.body, { new: true })) {
+        if (await UserModel.findByIdAndRemove({_id})) {
             return res.status(200).json({ message: "User details deleted succesfully!" });
         } else {
             throw Error("Something went wrong");

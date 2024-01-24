@@ -17,6 +17,6 @@ router.put('/follow', followUser);
 // unfollow user
 router.put('/unfollow', unfollowUser);
 // delete user
-router.delete('/:id', deleteUser);
+router.delete('/delete/:id', deleteUser);
 
 module.exports = router;

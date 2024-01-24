@@ -11,6 +11,7 @@ const user = require('./routes/userRoute');
 const auth = require('./routes/authRoute');
 const feed = require('./routes/feedRoute');
 const passportSetup = require('./config/passportSetup');
+const cookieParser = require('cookie-parser');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -28,6 +29,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname,'/public')));
 
 // server routes

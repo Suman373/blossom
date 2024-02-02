@@ -18,7 +18,7 @@ const EventList = () => {
 
   const fetchEvents = async()=>{
     setLoading(true);
-    const data = await axios.get("http://localhost:5000/events/")
+    const data = await axios.get(`${import.meta.env.VITE_API_ENDPOINT}/events/`,{withCredentials:true})
     .catch((e)=>{
       if(e.response){
         console.log(e.response);

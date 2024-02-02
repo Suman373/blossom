@@ -43,7 +43,7 @@ function Landing() {
                 <PublicNav />
                 <div className="banner">
                     <h1>
-                        Small Efforts Make Big Change .
+                    Cultivating Change through Compassion .
                     </h1>
                     <div style={{ margin: '1rem 0' }}>
                         <span id='typewriter-text' ref={elementRef}>

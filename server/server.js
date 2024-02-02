@@ -12,6 +12,7 @@ const auth = require('./routes/authRoute');
 const feed = require('./routes/feedRoute');
 const passportSetup = require('./config/passportSetup');
 const cookieParser = require('cookie-parser');
+const cookieAuth = require('./middlewares/cookieAuth');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname,'/public')));
 
 // server routes
 app.use('/auth',auth);
+app.use(cookieAuth);
 app.use('/funds',fundPost);
 app.use('/events',event);
 app.use('/user',user);

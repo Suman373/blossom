@@ -4,7 +4,20 @@ const EventModel = require('../models/eventModel');
 //  @GET All events
 const getEvents = async(req,res)=>{
     try{
-        const events = await EventModel.find({}); 
+        let filters={}; 
+        if(req.query.orgName){
+            filters.organisation = req.query.orgName;
+        }
+        if(req.query.date){
+            filters.date = {$gte:new Date(req.query.date)}; // on or after date
+        }
+        if(req.query.place){
+            filters.place = req.query.place;
+        }
+        if(req.query.city){
+            filters.city = req.query.city;
+        }
+        const events = await EventModel.find(filters); 
         if(!events){
             res.status(404).json({message:"Events not found!"});
             return;

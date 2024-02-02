@@ -7,45 +7,44 @@ import EventList from '../../../components/EventList/EventList';
 import Feeds from '../../../components/Feeds/Feeds';
 import Settings from '../Settings-page/Settings';
 
+const UserHome = ({user,setUser}) => {
+  const [activeLink, setActiveLink] = useState("Fundraises");
 
-const UserHome = () => {
-  const [activeLink , setActiveLink] = useState("Fundraises");
-  
 
 
   return (
     <main className='user-home-container'>
-        <UserNavbar
-          activeLink={activeLink}
-          setActiveLink={setActiveLink}
-        />
-        <ProfileCard/>
-         {
-          activeLink === "Fundraises"?
+      <UserNavbar
+        setUser={setUser}
+        activeLink={activeLink}
+        setActiveLink={setActiveLink}
+      />
+      <ProfileCard />
+      {
+        activeLink === "Fundraises" ?
           <>
-            <FundList/>
+            <FundList />
           </>
           :
-          activeLink === "Events" ? 
-          <>
-            <EventList/>
-          </>
-          :
-          activeLink === "Feeds"?
-          <>
-            <Feeds/>
-          </>
-          :
-          activeLink === "Settings"?
-          <>
-            <Settings/>
-          </>
-          :
-          <>
-           <FundList/>
-          </>
-         }
-
+          activeLink === "Events" ?
+            <>
+              <EventList />
+            </>
+            :
+            activeLink === "Feeds" ?
+              <>
+                <Feeds />
+              </>
+              :
+              activeLink === "Settings" ?
+                <>
+                  <Settings />
+                </>
+                :
+                <>
+                  <FundList />
+                </>
+      }
     </main>
   )
 }

@@ -43,7 +43,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="copyright">
-                &copy; Blossom 2023 | All Rights Reserved
+                &copy; Blossom 2024 | All Rights Reserved
             </div>
         </div>
     )

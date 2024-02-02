@@ -19,7 +19,7 @@ const FundList = () => {
 
   const fetchFundRaises = async () => {
     setLoading(true);
-    const data = await axios.get('http://localhost:5000/funds/')
+    const data = await axios.get('http://localhost:5000/funds/',{withCredentials:true})
       .catch((e) => {
         if (e.response) {
           console.log(e.response);

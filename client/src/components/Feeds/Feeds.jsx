@@ -17,7 +17,7 @@ const Feeds = () => {
   const fetchAllFeeds = async () => {
     setLoading(true);
     try {
-      const data = await axios.get('http://localhost:5000/feeds/');
+      const data = await axios.get(`${import.meta.env.VITE_API_ENDPOINT}/feeds/`,{withCredentials:true});
       if (!data) {
         throw Error({ message: "Could not load feeds" });
       }

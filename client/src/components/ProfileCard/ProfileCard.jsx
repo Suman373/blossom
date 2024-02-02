@@ -14,7 +14,7 @@ const ProfileCard = () => {
 
     // unique user details
     const fetchProfileDetails = async () => {
-        const data = await axios.get(`http://localhost:5000/user/${_id}`)
+        const data = await axios.get(`http://localhost:5000/user/${_id}`,{withCredentials:true})
             .catch((e) => {
                 if (e.response) {
                     console.log(e.response.data);
@@ -39,8 +39,8 @@ const ProfileCard = () => {
                 <img className="profile-pic" src={profileDetails?.profileImage? profileDetails?.profileImage : defaultCover} alt="pfp" />
             </div>
             <div className="details">
-                <h3 className="name">{profileDetails.name}</h3>
-                <p className="email">{profileDetails.email}</p>
+                <h3 className="name">{profileDetails?.name}</h3>
+                <p className="email">{profileDetails?.email}</p>
                 <div className="count">
                     <div className="count-slots">
                         Amount donated <span>{profileDetails?.amountDonated}</span>

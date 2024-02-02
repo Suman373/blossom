@@ -11,6 +11,7 @@
 
     img.logo {
         height: 8rem;
+        margin: 0 auto;
     }
 
     h1 {
@@ -20,6 +21,10 @@
     }
 
     .creds-component {
+        p {
+            text-align: center;
+        }
+
         form {
             display: flex;
             flex-direction: column;
@@ -37,7 +42,7 @@
             content: "";
             top: 0.6rem;
             left: -6rem;
-            background:grey;
+            background: grey;
             height: 2px;
             width: 5rem;
             position: absolute;
@@ -58,9 +63,10 @@
     }
 
     .oauth-component {
-
         font-size: 1.1rem;
-
+        p {
+            text-align: center;
+        }
         .google-button {
             display: flex;
             justify-content: space-around;
@@ -71,7 +77,7 @@
             border: none;
             border-radius: 0.5rem;
             margin: 1rem auto;
-            color:grey;
+            color: grey;
             cursor: pointer;
             border: 1px solid variables.$blue-light;
 

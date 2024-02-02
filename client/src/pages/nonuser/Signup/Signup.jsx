@@ -5,13 +5,19 @@ import google from '../../../assets/google.png';
 import { TextField } from '@mui/material';
 import Warning from '../../../components/Warning/Warning';
 import BlueButton from '../../../components/BlueButton/BlueButton';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
-const Signup = () => {
+
+const Signup = ({setUser}) => {
+
+    const navigator = useNavigate();
 
     // control signup or login button
     const [isSignup, setIsSignup] = useState(true);
     // state of loader
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     // states for form
     const [name, setName] = useState("");
@@ -22,12 +28,28 @@ const Signup = () => {
     const handleCredsRegister = async () => {
         try {
             // registration
+            if (!name || !email || !password) {
+                toast.error("Fill the details correctly");
+                return;
+            }
+            const data = await axios.post(`${import.meta.env.VITE_API_ENDPOINT}/auth/registration`, {
+                name, email, password
+            });
+            if(!data){
+                throw new Error("Registration failed");
+            }
+            toast.success("Registration success");
+            setName(""); setEmail(""); setPassword("");
+            setIsSignup(false); // login with creds
 
         } catch (error) {
             if (error.response) {
                 console.log(error.response);
+                if (error.response.status == 400) {
+                    toast.error(error.response?.data?.message); // email password validation message
+                }
             } else {
-                console(error);
+                console.log(error);
             }
         }
     }
@@ -36,11 +58,35 @@ const Signup = () => {
     const handleCredsLogin = async () => {
         try {
             // login
+            if (!email || !password) {
+                toast.error("Fill the details correctly");
+                return;
+            }
+            const data = await axios.post(`${import.meta.env.VITE_API_ENDPOINT}/auth/login`, {
+                email, password
+            },{withCredentials:true});
+
+            // failed
+            if(!data?.data?.user){
+                throw new Error()
+            }
+            // success
+            console.log(data?.data?.user);
+            setUser(data?.data?.user);
+            toast.success("Login success");
+            localStorage.setItem('blossomUserObj', JSON.stringify(data?.data?.user));
+            setEmail(""); setPassword("");
+            navigator('/');
+
         } catch (error) {
             if (error.response) {
                 console.log(error.response);
+                if (error.response.status == 400) {
+                    toast.error(error.response?.data?.message); // email password validation message
+                }
             } else {
-                console(error);
+                console.log(error);
+                toast.error('Login failed');
             }
         }
 
@@ -54,10 +100,11 @@ const Signup = () => {
         window.open(`${import.meta.env.VITE_API_ENDPOINT}/auth/google/callback`, "_self");
 
     }
+
     return (
         <div className='signup-wrapper'>
             <img src={logo} className='logo' alt="logo" />
-            <h1>Create your account</h1>
+            <h1>{isSignup ? "Create your account" : "Sign in"}</h1>
             <div className="creds-component">
                 <form>
                     {
@@ -80,7 +127,7 @@ const Signup = () => {
                         type="password"
                         label="Password" />
                 </form>
-                <div style={{textAlign:'center'}}> 
+                <div style={{ textAlign: 'center' }}>
                     {
                         isSignup ?
                             <BlueButton

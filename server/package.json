@@ -1,6 +1,6 @@
 {
   "name": "server",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Server of Blossom",
   "main": "server.js",
   "scripts": {

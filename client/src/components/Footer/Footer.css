@@ -2,6 +2,7 @@
     height: fit-content;
     position: relative;
     border-top: 2px solid #fff;
+    font-family: 'Open Sans', sans-serif;
 }
 .footer_row{
     min-height:20rem;
@@ -17,12 +18,12 @@
 }
 /* col containing logo */
 .footer-logo{
-    height:7rem;
+    height:3rem;
 }
 .footer_col:nth-child(1){
     flex-basis: 20%;
     font-size: 1.1rem;
-    font-family: 'Nunito',sans-serif;
+ 
 }
 .footer_col:nth-child(1) p{
    margin:1rem 0;
@@ -32,10 +33,14 @@
     list-style: none;
     font-size: 1.2rem;
     color:#fff;
-    font-family: 'Open Sans', sans-serif;
 }
 .footer_col ul li{
     margin: 1rem 0;
+}
+.footer_col ul li:hover{
+    transition: transform 200ms ease;
+    transform: translateX(6px);
+    color:#0964da;
 }
 .footer_col:nth-child(5){
     text-align: center;
@@ -57,7 +62,6 @@
     font-size: 2.9rem;
 }
 .copyright{
-    font-family: 'Open Sans',sans-serif;
     font-size: 1.1rem;
     height: 4rem;
     border-top:2px solid #fff;

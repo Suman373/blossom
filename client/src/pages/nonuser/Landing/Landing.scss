@@ -13,25 +13,23 @@ $nav-ht-lg: 6rem;
         display: grid;
         place-content: center;
         position: relative;
-        color: #fff;
+        color: #000;
         text-align: center;
-        background-color: rgba(0, 0, 0, 0.427);
+        background-color: #ffffff64;
 
-        &::before {
-            content: "";
+        .hero-image{
+            position:absolute;
             height: 100%;
-            width: 100%;
-            background: url('../../../assets/together.jpg') no-repeat center center/cover;
-            top: 0;
-            left: 0;
-            position: absolute;
-            opacity: 0.8;
+            width: 100vw;
+            object-fit: fill;
             z-index: -1;
+            opacity: 0.6;       
         }
 
         h1 {
-            font-size: 5rem;
+            font-size: 5.5rem;
             padding: 0 10%;
+            margin-top: -2rem;
         }
 
         #typewriter-text {
@@ -44,38 +42,39 @@ $nav-ht-lg: 6rem;
         .typed-cursor {
             font-size: 1.6rem;
         }
-        .banner-btn{
+
+        .banner-btn {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap:0.4rem;
+            position: relative;
+            gap: 0.4rem;
             padding: 0.8rem 2rem;
-            width: fit-content;
+            width: 12rem;
             margin: 1rem auto;
             font-size: 1.3rem;
             cursor: pointer;
             border-radius: 1.5rem;
             border: none;
             outline: none;
-            box-shadow:  0 0 8px 2px variables.$shadow;
             background: variables.$blue-light;
             color: #fff;
 
-            svg{
+            svg {
                 font-size: 1.5rem;
-                margin-top: -0.6rem;
             }
 
             &:hover {
                 transition: transform 200ms ease;
-                transform: scale(1.006);
-                box-shadow:  0 0 6px 5px variables.$shadow;
+                transform: scale(1.008);
+                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-                svg{
+                svg {
                     transform: translateX(6px);
                 }
             }
         }
+
     }
 
     // ------ ABOUT ------------------------
@@ -83,10 +82,10 @@ $nav-ht-lg: 6rem;
         min-height: fit-content;
         display: grid;
         place-content: center;
-        padding: 2rem 0;
+        padding: 4rem 0;
 
         &>h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
         }
 
         &>h1,
@@ -158,7 +157,7 @@ $nav-ht-lg: 6rem;
 
                 // icon
                 svg {
-                    font-size:3rem;
+                    font-size: 3rem;
                     color: variables.$blue-light;
                     text-align: center;
                     margin: 0 auto;
@@ -177,11 +176,11 @@ $nav-ht-lg: 6rem;
     // ---- WELCOME ---------------------
     .welcome {
         min-height: fit-content;
-        padding: 5%;
-        background-color: #ececee;
+        padding: 4rem 0;
         display: flex;
         justify-content: center;
         align-items: center;
+        gap: 2rem;
 
         img {
             height: 30rem;
@@ -195,6 +194,7 @@ $nav-ht-lg: 6rem;
             transform: translateX(350px);
             opacity: 0.4;
             transition: all 400ms linear;
+            padding-right: 2rem;
 
             // link
             .welcome-link {

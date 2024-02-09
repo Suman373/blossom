@@ -7,9 +7,9 @@ const Warning = ({ text }) => {
         <div
             style={{
                 margin:'1rem auto',
-                background: '#f8e387',
+                background: '#f9e9a0',
                 fontSize: '1rem',
-                color:'#CD7F32',
+                color:'#b56f2a',
                 padding:'1rem',
                 textAlign:'center'
             }}

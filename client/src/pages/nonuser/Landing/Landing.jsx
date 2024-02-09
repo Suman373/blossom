@@ -3,15 +3,19 @@ import './Landing.scss';
 import Typed from 'typed.js';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
-import { FaHandHoldingHeart,FaHandHolding} from "react-icons/fa";
+import { FaHandHoldingHeart, FaHandHolding, FaHeart, FaHandsHelping } from "react-icons/fa";
 import { IoPeople } from "react-icons/io5";
 import { GiEternalLove } from "react-icons/gi";
 import charity from '../../../assets/charity.png';
 import PublicNav from '../../../components/PublicNav/PublicNav';
+import handsBanner from '../../../assets/hands-banner.jpg';
+import Announcement from '../../../components/Announcement/Announcement';
 
 function Landing() {
 
     const elementRef = useRef(null);
+
+    const [isHovered, setIsHovered] = useState(false);
 
     // cards
     const { ref: serviceCardRef, inView: cardVisible } = useInView();
@@ -42,18 +46,22 @@ function Landing() {
                 {/* Nav */}
                 <PublicNav />
                 <div className="banner">
+                    <Announcement />
                     <h1>
-                    Cultivating Change through Compassion .
+                        Cultivating Change through Compassion .
                     </h1>
                     <div style={{ margin: '1rem 0' }}>
                         <span id='typewriter-text' ref={elementRef}>
                         </span>
                     </div>
                     <Link
-                    to="/signup"
-                    className='banner-btn'>
-                        <p>Join now</p> <FaHandHolding/>
+                        to="/signup"
+                        onMouseEnter={() => setIsHovered(true)}
+                        onMouseLeave={() => setIsHovered(false)}
+                        className='banner-btn'>
+                        <p>Join now</p> {!isHovered ? <FaHandsHelping /> : <FaHeart />}
                     </Link>
+                    <img className="hero-image" src={handsBanner} alt="hero" />
                 </div>
 
                 <div className="about-us">
@@ -102,10 +110,11 @@ function Landing() {
                     <div ref={welcomeTextRef} className={welcomeTextVisible ? "welcome-text slide-left" : "welcome-text"}>
                         <h1>Welcome to <span>Blossom</span></h1>
                         <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui repellendus vel molestiae debitis non autem perferendis reiciendis voluptate dicta aspernatur esse incidunt, minus impedit, nemo ducimus mollitia nulla tempora numquam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, dolore?
+                            Welcome to Blossom, a transformative initiative dedicated to nurturing positive change in the world through fundraises, charity donations, and volunteer services. Born out of a deep-rooted commitment to creating a better tomorrow, Blossom is more than just a project; it's a movement that harnesses the power of collective goodwill to address pressing social issues.
                         </p>
+                        <h2 style={{color:'#0964da'}}>Mission</h2>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure cupiditate placeat earum corporis ex maiores delectus! Sapiente enim alias exercitationem ad aliquid nisi, blanditiis iste nobis consectetur minus fugiat esse nostrum id minima natus similique et, autem explicabo! Reiciendis, dicta!
+                            At the heart of Blossom lies a mission to cultivate a culture of compassion, generosity, and community involvement. Our aim is to provide a platform that empowers individuals and organizations to make a meaningful impact on the lives of those in need.
                         </p>
 
                         <Link className='welcome-link' to="#a">

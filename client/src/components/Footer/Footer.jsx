@@ -10,7 +10,7 @@ const Footer = () => {
             <div className="footer_row">
                 <div className="footer_col">
                     <img src={logo} className="footer-logo"  alt="logo" />
-                    <p>Small efforts make big change</p>
+                    <p>Cultivating change through compassion</p>
                 </div>
                 <div className="footer_col">
                     <ul>

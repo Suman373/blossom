@@ -3,7 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 /* 
 font-family:'Open Sans',serif;
+font-family: 'Anek Malayalam', sans-serif;
 */
+
 *,
 *::before,
 *::after {
@@ -32,6 +34,10 @@ body {
   overflow-x: hidden;
   font-family: 'Open Sans',serif;
   background:variables.$body-bg;
+
+  h1,h2,h3,h4{
+    font-family: 'Anek Malayalam', sans-serif;
+  }
 
   .App {
     min-height: 100vh;

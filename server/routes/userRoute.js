@@ -7,15 +7,15 @@ const {getUsers,getOneUser,updateUser,followUser,unfollowUser,
 
 // ------- USER ROUTES -------
 // get all users
-router.get('/', getUsers);
+router.get('/',getUsers);
 // get unique user
 router.get('/:id', getOneUser);
 // update user details
 router.put('/:id', updateUser);
 // follow user
-router.put('/follow', followUser);
+router.put('/follow/:userId', followUser);
 // unfollow user
-router.put('/unfollow', unfollowUser);
+router.put('/unfollow/:userId', unfollowUser);
 // delete user
 router.delete('/delete/:id', deleteUser);
 

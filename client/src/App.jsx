@@ -28,9 +28,9 @@ const App = () => {
 
   useEffect(() => {
     const userData = useAuth();
-    if (userData===null) {
+    if (userData === null) {
       setUser(null);
-    }else{
+    } else {
       setUser(userData);
     }
   }, []);
@@ -55,13 +55,14 @@ const App = () => {
                       <h1>THIS IS FUND DETAILS PAGE</h1>
                     </>
                   }></Route>
+                  <Route path="*" element={<Navigate to="/" />}></Route>
                 </Routes>
               </>
               :
               <Routes>
-                <Route path="/" element={<Landing/>}></Route>
+                <Route path="/" element={<Landing />}></Route>
                 <Route path="/signup" element={<Signup setUser={setUser} />}></Route>
-                {/* <Route path="*" element={<Navigate to="/"/>}></Route> */}
+                <Route path="*" element={<Navigate to="/" />}></Route>
               </Routes>
           }
           <Footer />

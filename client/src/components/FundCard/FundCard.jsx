@@ -18,7 +18,7 @@ const FundCard = ({ fund }) => {
             </div>
 
             <div style={{textAlign:'center'}}>
-                <Link to={`fundraise/details?id=${fund?._id}`}>Know more</Link>
+                <Link to={`fundraise/details/${fund?._id}`}>Know more</Link>
             </div>
         </div>
     )

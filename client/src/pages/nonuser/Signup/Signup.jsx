@@ -9,7 +9,6 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
-
 const Signup = ({setUser}) => {
 
     const navigator = useNavigate();
@@ -27,6 +26,7 @@ const Signup = ({setUser}) => {
     // registration and login with credentials
     const handleCredsRegister = async () => {
         try {
+            setLoading(true);
             // registration
             if (!name || !email || !password) {
                 toast.error("Fill the details correctly");
@@ -39,6 +39,7 @@ const Signup = ({setUser}) => {
                 throw new Error("Registration failed");
             }
             toast.success("Registration success");
+            setLoading(false);
             setName(""); setEmail(""); setPassword("");
             setIsSignup(false); // login with creds
 
@@ -51,12 +52,14 @@ const Signup = ({setUser}) => {
             } else {
                 console.log(error);
             }
+            setLoading(false);
         }
     }
 
 
     const handleCredsLogin = async () => {
         try {
+            setLoading(true);
             // login
             if (!email || !password) {
                 toast.error("Fill the details correctly");
@@ -73,6 +76,7 @@ const Signup = ({setUser}) => {
             // success
             console.log(data?.data?.user);
             setUser(data?.data?.user);
+            setLoading(false);
             toast.success("Login success");
             localStorage.setItem('blossomUserObj', JSON.stringify(data?.data?.user));
             setEmail(""); setPassword("");
@@ -88,6 +92,7 @@ const Signup = ({setUser}) => {
                 console.log(error);
                 toast.error('Login failed');
             }
+            setLoading(false);
         }
 
     }

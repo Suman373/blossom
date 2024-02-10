@@ -11,6 +11,7 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { v4 } from 'uuid';
 import axios from 'axios';
 import { MoonLoader } from 'react-spinners';
+import toast from 'react-hot-toast';
 
 const AddEvent = () => {
 
@@ -27,6 +28,7 @@ const AddEvent = () => {
     const [city, setCity] = useState("");
     const [place, setPlace] = useState("");
     const [image, setImage] = useState(null);
+    const [dateTime, setDateTime] = useState(Date);
 
     // upload to storage bucket
     const uploadImage = async () => {
@@ -60,13 +62,16 @@ const AddEvent = () => {
                 } else {
                     console.log(e.message);
                 }
+                toast.error("Failed to add event");
             });
         console.log(data?.data?.message);
+        toast.success("Event uploaded");
         setName(""); setOrganisation(""); setDate("");
         setTime(""); setPlace(""); setCity(""); setImage(null);
         setIsLoading(false);
         navigate('/');
     }
+
 
     return (
         <main className='add-event-wrapper'>

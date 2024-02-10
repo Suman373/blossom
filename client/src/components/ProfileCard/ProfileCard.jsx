@@ -14,7 +14,7 @@ const ProfileCard = () => {
 
     // unique user details
     const fetchProfileDetails = async () => {
-        const data = await axios.get(`http://localhost:5000/user/${_id}`,{withCredentials:true})
+        const data = await axios.get(`${import.meta.env.VITE_API_ENDPOINT}/user/${_id}`,{withCredentials:true})
             .catch((e) => {
                 if (e.response) {
                     console.log(e.response.data);

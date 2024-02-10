@@ -80,7 +80,8 @@
             margin: 1rem auto;
             color: grey;
             cursor: pointer;
-            border: 1px solid variables.$blue-light;
+            // border: 1px solid variables.$blue-light;
+            background: #fff;
 
             &:hover {
                 box-shadow: 0 0 10px #e6e0e0;

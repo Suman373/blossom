@@ -75,7 +75,7 @@ const UserDetails = () => {
                 <p>Followers</p>
               </div>
               <div className="numeric-items">
-                <h1>{userDetails?.followers?.length}</h1>
+                <h1>{userDetails?.following?.length}</h1>
                 <p>Following</p>
               </div>
               <div className="numeric-items">

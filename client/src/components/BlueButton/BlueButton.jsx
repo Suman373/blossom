@@ -8,16 +8,15 @@ const ButtonLoader = () => {
   )
 }
 
-const BlueButton = ({ text, handleClick, redirect, loading }) => {
+const BlueButton = ({ text, handleClick, loading }) => {
 
   return (
     <>
       <button
         type='submit'
         className="blue-button"
+        disabled={loading}
         onClick={handleClick}>
-        {/* show redirect only when redirect is passed */}
-        {redirect && (<Link>{text}</Link>)}
         <p> {text} {loading && (<ButtonLoader />)}</p>
       </button>
     </>

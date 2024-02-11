@@ -13,9 +13,9 @@ router.get('/:id', getOneUser);
 // update user details
 router.put('/:id', updateUser);
 // follow user
-router.put('/follow/:userId', followUser);
+router.post('/:userId/follow', followUser);
 // unfollow user
-router.put('/unfollow/:userId', unfollowUser);
+router.post('/:userId/unfollow', unfollowUser);
 // delete user
 router.delete('/delete/:id', deleteUser);
 

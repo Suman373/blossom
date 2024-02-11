@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const UserModel = require('../models/userModel');
-const passport = require('passport');
-const { events } = require('../models/fundPostModel');
+const FundPostModel = require('../models/fundPostModel');
 
 
 //  @GET all users
@@ -60,8 +59,10 @@ const updateUser = async (req, res) => {
     }
 }
 
-// @PUT follow user
+// @PUT follow user (could have used Promise.all([followingArrPromise,followerArrPromise]))
 const followUser = async (req, res) => {
+    const session = await mongoose.startSession();
+    session.startTransaction();
     try {
         const { userId } = await req.params;
         const { followId } = await req.body; // followId is the id of the person to be followed by our user
@@ -75,10 +76,15 @@ const followUser = async (req, res) => {
         if (alreadyFollowing) {
             throw new Error("You are already following this person");
         }
-        // transaction
-
-
+        await UserModel.findByIdAndUpdate(userId,{$push:{following:followId}},{session});
+        await UserModel.findByIdAndUpdate(followId,{$push:{followers:userId}},{session});
+        // commit transaction
+        await session.commitTransaction();
+        session.endSession();
+        res.status(200).json({message:"Followed succesfully"});
     } catch (error) {
+        await session.abortTransaction();
+        session.endSession();
         console.log(error);
         res.status(400).json({ message: error.message });
     }
@@ -86,17 +92,28 @@ const followUser = async (req, res) => {
 
 // @PUT unfollow user
 const unfollowUser = async (req, res) => {
+    const session = await mongoose.startSession();
+    session.startTransaction();
     try {
         const { userId } = await req.params;
-        const { unfollowId } = await req.body; // followId is the id of the person to be followed by our user
+        const { unfollowId } = await req.body; // unfollowId is the id of the person to be unfollowed by our user
         if (!mongoose.Types.ObjectId.isValid(userId) || !mongoose.Types.ObjectId.isValid(unfollowId)
             || !userId || !unfollowId) {
             return res.status(422).json({ message: "Invalid Id" });
         }
-        // transaction
-
-
+        const alreadyFollowing = await UserModel.findOne({_id:unfollowId,followers:{$in:[userId]}}).countDocuments();
+        if(!alreadyFollowing){
+            throw new Error("You are not following this person");
+        }
+        await UserModel.findByIdAndUpdate(userId,{$pull:{following:unfollowId}},{session});
+        await UserModel.findByIdAndUpdate(unfollowId,{$pull:{followers:userId}},{session});
+        // commit transaction
+        await session.commitTransaction();
+        session.endSession();
+        res.status(200).json({message:"Unfollowed successfully"});
     } catch (error) {
+        await session.abortTransaction();
+        session.endSession();
         console.log(error);
         res.status(400).json({ message: error.message });
     }
@@ -111,13 +128,12 @@ const deleteUser = async (req, res) => {
         }
         const user = await UserModel.findById(_id);
         if (!user) {
-            return res.status(404).json({ message: "User with id not found!" });
+            return res.status(404).json({ message: "User not found" });
         }
-        if (await UserModel.findByIdAndRemove({ _id })) {
-            return res.status(200).json({ message: "User details deleted succesfully!" });
-        } else {
-            throw Error("Something went wrong");
-        }
+        await FundPostModel.deleteMany({userId:_id}); // delete fundposts created by user
+        await UserModel.updateMany({following:_id},{$pull:{following:_id}}); // remove deleted user's ref from other's following arr
+        await UserModel.findByIdAndRemove({ _id });
+        res.status(200).json({message:"User deleted succesfully"});
     } catch (error) {
         console.log(error);
         res.status(400).json({ message: error.message });

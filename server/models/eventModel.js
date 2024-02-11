@@ -72,9 +72,9 @@ const EventSchema = new mongoose.Schema({
     // ],
     attendees:[
         {
-            type:ObjectId
+            type:ObjectId,
+            ref:'UserModel'
         }
-
     ]
 }, { timestamps: true });
 

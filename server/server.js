@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname,'/public')));
 
 // server routes
 app.use('/auth',auth);
-app.use(cookieAuth);
+// app.use(cookieAuth);
 app.use('/funds',fundPost);
 app.use('/events',event);
 app.use('/user',user);

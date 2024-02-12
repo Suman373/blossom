@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const {ObjectId} = mongoose.Schema.Types;
+const UserModel = require('./userModel');
+
 const FundPostSchema = new mongoose.Schema({
     userId:{
         type:ObjectId,
@@ -50,5 +52,20 @@ const FundPostSchema = new mongoose.Schema({
 },
 {timestamps:true}
 );
+
+// MIDDLEWARES
+// handle document update of associated user
+FundPostSchema.post('save', async function(doc){
+    try {
+        const savedUser = await UserModel.findById(doc.userId);
+        if(!savedUser) throw new Error("User not found");
+        savedUser.totalFundPostCount += 1; 
+        savedUser.createdFundPosts.push(doc._id);
+        await savedUser.save();
+    } catch (error) {
+        console.log(error);
+        console.log("Error while creating fundraise post");
+    }
+});
 
 module.exports = mongoose.model('FundModel', FundPostSchema);

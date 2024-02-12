@@ -49,13 +49,22 @@ const UserSchema = new mongoose.Schema({
         type:Date,
     },
     amountDonated:{
-        type:Number
+        type:Number,
+        default:0
+    },
+    totalEventsHeld:{
+        type:Number,
+        default:0
     },
     eventsHeld:[
         {
             name:{type:String},
         }
     ],
+    totalEventsAttended:{
+        type:Number,
+        default:0,
+    },
     eventsAttended:[
         {
             name:{type:String},
@@ -71,7 +80,20 @@ const UserSchema = new mongoose.Schema({
             type:ObjectId,
             ref:"UserModel"
         }],
-
+    totalFundPostCount:{
+        type:Number,
+        default:0
+    },
+    createdFundPosts:[
+        {
+            type:ObjectId,
+            ref:'FundModel'
+        }
+    ],
+    totalFeedCount:{
+        type:Number,
+        default:0
+    }
 },{timestamps:true}
 );
 

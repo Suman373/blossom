@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
+const UserModel = require('./userModel');
 const {ObjectId} = mongoose.Schema.Types;
 
 const EventSchema = new mongoose.Schema({
     userId: {
         type: ObjectId,
-        ref: 'EventModel',
         required: [true, "Id required"]
     },
     name: {
@@ -15,19 +15,12 @@ const EventSchema = new mongoose.Schema({
     organisation: {
         type: String,
         trim: true,
-        // required: [true, "Organisation name required"]
     },
     description:{
         type: String,
         trim: true,
         required: [true, "Description is required"]
     },
-    requirements:[
-        {
-            type:String,
-            trim:true,
-        }
-    ],
     city: {
         type: String,
         trim: true,
@@ -49,27 +42,14 @@ const EventSchema = new mongoose.Schema({
     imageURL: {
         type: String,
         trim: true,
-        required: [true, "Image required"]
+        required: [true, "Image required"],
+        validate:{
+            validator:function(val){
+                return /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/.test(val);
+            },
+            message: props=> `${props.value} is not valid URL`
+        }
     },
-    // totalLikes:{
-    //     type:Number
-    // },
-    // likedBy:[
-    //     {
-    //         type:ObjectId,
-    //         ref:"UserModel"
-    //     }
-    // ],
-    // totalComments:{
-    //     type:Number
-    // },
-    // comments:[
-    //     {
-    //         userId:{type:ObjectId},
-    //         text:{type:String},
-    //         createdAt:Date.now(),
-    //     }
-    // ],
     attendees:[
         {
             type:ObjectId,
@@ -77,5 +57,18 @@ const EventSchema = new mongoose.Schema({
         }
     ]
 }, { timestamps: true });
+
+// MIDDLEWARES
+EventSchema.post('save',async function(doc){
+    try {
+        const savedUser = await UserModel.findById(doc.userId);
+        if(!savedUser) throw new Error("User not found");
+        savedUser.totalEventsHeld +=1;
+        await savedUser.save();
+    } catch (error) {
+        console.log(error);
+        console.log("Error while creating event");
+    }
+});
 
 module.exports = new mongoose.model("EventModel", EventSchema);

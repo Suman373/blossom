@@ -19,7 +19,7 @@ const FundPostSchema = new mongoose.Schema({
     },
     cause:{
         type:String,
-        trim:true,
+        trim:true, 
         required:[true,"Cause required"]
     },
     orgName:{
@@ -54,13 +54,11 @@ const FundPostSchema = new mongoose.Schema({
 );
 
 // MIDDLEWARES
-// handle document update of associated user
 FundPostSchema.post('save', async function(doc){
     try {
         const savedUser = await UserModel.findById(doc.userId);
         if(!savedUser) throw new Error("User not found");
         savedUser.totalFundPostCount += 1; 
-        savedUser.createdFundPosts.push(doc._id);
         await savedUser.save();
     } catch (error) {
         console.log(error);

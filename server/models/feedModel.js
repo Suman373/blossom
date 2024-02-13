@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const UserModel = require('./userModel');
 const {ObjectId} = mongoose.Schema.Types;
 
-const feedSchema = new mongoose.Schema({
+const FeedSchema = new mongoose.Schema({
     userId:{
         type:ObjectId,
         required:true,
@@ -37,4 +38,17 @@ const feedSchema = new mongoose.Schema({
     }
 },{timestamps:true});
 
-module.exports = mongoose.model('FeedModel',feedSchema);
+// MIDDLEWARES
+FeedSchema.post('save',async function(doc){
+    try {
+        const savedUser = await UserModel.findById(doc.userId);
+        if(!savedUser) throw new Error("User not found");
+        savedUser.totalFeedCount += 1;
+        await savedUser.save();
+    } catch (error) {
+        console.log(error);
+        console.log("Error while creating feed");
+    }
+});
+
+module.exports = mongoose.model('FeedModel',FeedSchema);

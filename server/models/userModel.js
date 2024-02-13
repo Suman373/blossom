@@ -56,18 +56,14 @@ const UserSchema = new mongoose.Schema({
         type:Number,
         default:0
     },
-    eventsHeld:[
-        {
-            name:{type:String},
-        }
-    ],
     totalEventsAttended:{
         type:Number,
         default:0,
     },
     eventsAttended:[
         {
-            name:{type:String},
+            type:ObjectId,
+            ref:'EventModel'
         }
     ],
     followers:[
@@ -84,12 +80,6 @@ const UserSchema = new mongoose.Schema({
         type:Number,
         default:0
     },
-    createdFundPosts:[
-        {
-            type:ObjectId,
-            ref:'FundModel'
-        }
-    ],
     totalFeedCount:{
         type:Number,
         default:0

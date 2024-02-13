@@ -49,7 +49,7 @@ app.get('/', (req,res)=>  {
 
 const connectToDB = async()=>{
     try {
-           await mongoose.connect(process.env.MONGO_DB_URI, {useNewUrlParser:true});
+           await mongoose.connect(process.env.MONGO_DB_URI);
            console.log(`MongoDB is connected successfully`);
         
     } catch (error) {

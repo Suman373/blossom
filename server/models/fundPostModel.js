@@ -1,11 +1,13 @@
 const mongoose = require('mongoose');
 const {ObjectId} = mongoose.Schema.Types;
 const UserModel = require('./userModel');
+const fundPostEventEmitter = require('../events/fundpostEventEmitter');
 
 const FundPostSchema = new mongoose.Schema({
     userId:{
         type:ObjectId,
-        ref:'FundModel'
+        ref:'FundModel',
+        required:[true,"UserId is required"]
     },
     title:{
         type:String,
@@ -41,14 +43,20 @@ const FundPostSchema = new mongoose.Schema({
         required:[true,"ImageURL required"]
     },
     amountRaised:{
-        type:Number
+        type:Number,
+        default:0
     },
     donors:[
         {
-            userId:{type:ObjectId,ref:"FundModel"},
-            donationAmount:{type:Number}
+          type:ObjectId,
+          ref:'UserModel'
         }
-    ]
+    ],
+    status:{
+        type:String,
+        enum:["Open","Close","Hold"],
+        default:"Open"
+    }
 },
 {timestamps:true}
 );
@@ -60,9 +68,10 @@ FundPostSchema.post('save', async function(doc){
         if(!savedUser) throw new Error("User not found");
         savedUser.totalFundPostCount += 1; 
         await savedUser.save();
+        // emit fundpost creation
+        fundPostEventEmitter.emit('fundPostCreated',{user:savedUser,fundPost:doc});
     } catch (error) {
-        console.log(error);
-        console.log("Error while creating fundraise post");
+        console.log("Error while creating fundraise post",error);
     }
 });
 

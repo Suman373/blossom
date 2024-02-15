@@ -1,4 +1,4 @@
-export default keys = {
+export default {
     firebase: {
         apiKey: import.meta.env.VITE_FB_APIKEY,
         authDomain:import.meta.env.VITE_FB_AUTH_DOMAIN,

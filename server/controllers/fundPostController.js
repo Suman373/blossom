@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const FundModel = require('../models/fundPostModel');
+const UserModel = require('../models/userModel');
 
 // getting all fund posts made
 const getFundPosts = async (req, res) => {
@@ -82,12 +83,19 @@ const donateFund = async (req, res) => {
 const deleteFundPost = async (req, res) => {
     try {
         const { id: _id } = await req.params;
+        const {userId} = await req.body;
         if (!mongoose.Types.ObjectId.isValid(_id) || !_id) {
-            return res.status(401).json({ message: "ObjectId is invalid" });
+            return res.status(401).json({ message: "Invalid id" });
         }
-        if (await FundModel.findByIdAndRemove({ _id })) {
-            res.status(200).json({ message:"Fundraise post deleted successfully!"});
-        }
+        const fundPost = await FundModel.findById(_id);
+        const user = await UserModel.findById(userId);
+        if(!fundPost) return res.status(404).json({message:"Fundraise post not found"});
+        if(!user) return res.status(404).json({message:"User not found"});
+        await FundModel.findByIdAndDelete({_id});
+        user.totalFundPostCount -= 1;
+        await user.save();
+        res.status(200).json({ message:"Fundraise post deleted successfully!"});
+
     } catch (error) {
         console.log(error.message);
         res.status(400).json({ message: error.message });

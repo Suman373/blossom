@@ -62,7 +62,7 @@ const EventList = () => {
         <h1>Events you can attend</h1>
         <ul className='event-list'>
           {
-            fetchedEvents?.length > 0 ?
+            fetchedEvents?.length >=1 ?
               fetchedEvents?.map((event, index) => (
                 event?.name?.toLowerCase().includes((eventSearch.toLowerCase())) ?
                   <EventCard

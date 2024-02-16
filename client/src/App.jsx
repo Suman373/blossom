@@ -11,6 +11,7 @@ import Landing from './pages/nonuser/Landing/Landing';
 import Signup from './pages/nonuser/Signup/Signup';
 import useAuth from './hooks/useAuth';
 import FundDetails from './pages/user/FundDetails/FundDetails';
+import EventDetails from './pages/user/EventDetails/EventDetails';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -52,6 +53,7 @@ const App = () => {
                   <Route path="/profile/:type/:id" element={<UserDetails />}>
                   </Route>
                   <Route path="/fundraise/details/:id" element={<FundDetails/>}></Route>
+                  <Route path="/event/details/:id" element={<EventDetails/>}></Route>
                   <Route path="*" element={<Navigate to="/" />}></Route>
                 </Routes>
               </>

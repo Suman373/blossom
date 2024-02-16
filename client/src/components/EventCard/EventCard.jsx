@@ -25,7 +25,7 @@ const EventCard = ({ event }) => {
             </div>
 
             <div style={{ padding:'0.8rem'}}>
-                <Link to={`/event/details?id=${event?._id}`}>Know more</Link>
+                <Link to={`event/details/${event?._id}`}>Know more</Link>
             </div>
 
         </div>

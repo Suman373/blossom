@@ -1,26 +1,27 @@
 import React from 'react';
-import './FundDetails.scss';
+import './EventDetails.scss';
 import { useNavigate, useParams } from 'react-router-dom';
 import BlueButton from '../../../components/BlueButton/BlueButton';
 
-const FundDetails = () => {
-    const {id:fundId} = useParams();
+const EventDetails = () => {
+    // const {id:fundId} = useParams();
     const navigate = useNavigate();
     const goback=()=>navigate('/');
 
-    const fetchFundDetails = async()=>{
+    const fetchEventDetails = async()=>{
 
-    }
+    };
+
 
     return (
-        <div className='fund-details-wrapper'>
+        <div className='event-details-wrapper'>
             <BlueButton 
             text={"⬅️ Back"}
             handleClick={goback}
             />
-            <h1>Fund Details page</h1>
+            <h1>Event details page</h1>
         </div>
     )
 }
 
-export default FundDetails;
+export default EventDetails;

@@ -4,6 +4,7 @@ import defaultCover from '../../assets/blossom_fallback.jpg';
 import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const ProfileCard = () => {
 
@@ -22,8 +23,10 @@ const ProfileCard = () => {
                     console.log(e.message);
                 }
             });
-        console.log(data?.data);
-        console.log(data?.data?.message);
+        if(!data?.data?.result){
+            toast.error("Failed to load profile");
+            return;
+        }
         setProfileDetails(data?.data?.result);
     }
 

@@ -12,6 +12,7 @@ import Signup from './pages/nonuser/Signup/Signup';
 import useAuth from './hooks/useAuth';
 import FundDetails from './pages/user/FundDetails/FundDetails';
 import EventDetails from './pages/user/EventDetails/EventDetails';
+import DetailsForm from './pages/user/DetailsForm/DetailsForm';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -45,13 +46,11 @@ const App = () => {
             user ?
               <>
                 <Routes>
-                  <Route path="/" element={<UserHome user={user} setUser={setUser} />}>
-                  </Route>
-                  <Route path="/new/fundraise" element={<AddFundRaise />}>
-                  </Route>
+                  <Route path="/" element={<UserHome user={user} setUser={setUser}/>}></Route>
+                  <Route path='/user-details' element={<DetailsForm setUser={setUser}/>}></Route>
+                  <Route path="/new/fundraise" element={<AddFundRaise />}></Route>
                   <Route path="/new/event" element={<AddEvent />}></Route>
-                  <Route path="/profile/:type/:id" element={<UserDetails />}>
-                  </Route>
+                  <Route path="/profile/:type/:id" element={<UserDetails />}></Route>
                   <Route path="/fundraise/details/:id" element={<FundDetails/>}></Route>
                   <Route path="/event/details/:id" element={<EventDetails/>}></Route>
                   <Route path="*" element={<Navigate to="/" />}></Route>

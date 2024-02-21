@@ -9,9 +9,9 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
-const Signup = ({setUser}) => {
+const Signup = ({ setUser }) => {
 
-    const navigator = useNavigate();
+    const navigate = useNavigate();
 
     // control signup or login button
     const [isSignup, setIsSignup] = useState(true);
@@ -35,7 +35,7 @@ const Signup = ({setUser}) => {
             const data = await axios.post(`${import.meta.env.VITE_API_ENDPOINT}/auth/registration`, {
                 name, email, password
             });
-            if(!data){
+            if (!data) {
                 throw new Error("Registration failed");
             }
             toast.success("Registration success");
@@ -67,21 +67,23 @@ const Signup = ({setUser}) => {
             }
             const data = await axios.post(`${import.meta.env.VITE_API_ENDPOINT}/auth/login`, {
                 email, password
-            },{withCredentials:true});
+            }, { withCredentials: true });
 
             // failed
-            if(!data?.data?.user){
-                throw new Error()
+            if (!data?.data?.user) {
+                throw new Error();
             }
             // success
-            console.log(data?.data?.user);
             setUser(data?.data?.user);
             setLoading(false);
             toast.success("Login success");
             localStorage.setItem('blossomUserObj', JSON.stringify(data?.data?.user));
             setEmail(""); setPassword("");
-            navigator('/');
-
+            if (!data?.data?.user?.completedDetails) {
+                navigate('/user-details');
+                return;
+            }
+            navigate('/');
         } catch (error) {
             if (error.response) {
                 console.log(error.response);

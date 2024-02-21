@@ -15,7 +15,7 @@ const Warning = ({ text }) => {
             }}
         >
             <p>
-                <AiFillWarning />
+                <AiFillWarning />{" "}
                 {text}
             </p>
         </div>

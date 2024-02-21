@@ -140,4 +140,28 @@ const deleteUser = async (req, res) => {
     }
 }
 
-module.exports = { getUsers, getOneUser, updateUser, followUser, unfollowUser, deleteUser };
+
+// @POST Complete user details form
+const completeDetails = async(req,res)=>{
+    try {
+        const {id:_id} = await req.params;
+        const {bio,dob,profileImage,phoneNumber,profession} = await req.body;
+        if (!mongoose.Types.ObjectId.isValid(_id) || !_id) {
+            return res.status(422).json({ message: "Id is invalid" });
+        }
+        const user = await UserModel.findById(_id);
+        if(!user) return res.status(404).json({message:"User not found"});
+        if(!bio || !dob || !profileImage || !phoneNumber || !profession) return res.status(422).json({message:"Fill the details correctly"});
+        await UserModel.findByIdAndUpdate(_id,req.body,{new:true});
+        user.completedDetails = true;
+        await user.save();
+        res.status(200).json({message:"Details updated successfully"});
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({ message: error.message });
+    }
+}
+
+module.exports = { getUsers, getOneUser, 
+    updateUser, followUser, unfollowUser,
+    deleteUser, completeDetails };

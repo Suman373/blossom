@@ -9,6 +9,7 @@ import { HiPencilAlt } from 'react-icons/hi';
 import { FaBirthdayCake } from 'react-icons/fa';
 import { BiRupee } from 'react-icons/bi';
 import toast from 'react-hot-toast';
+import moment from 'moment';
 
 // this page is common for self(user) and other profiles(public)
 const UserDetails = () => {
@@ -64,10 +65,10 @@ const UserDetails = () => {
           <div className="info">
             <div className="info-left-wrap">
               <p className="name">{userDetails?.name}</p>
-              <p className="bio">I am a student, aspiring remote software developer</p>
+              <p className="bio">{userDetails?.bio}</p>
               <p className="email"><span><MdEmail /></span> {userDetails?.email}</p>
               <p className='profession'><span><MdWork /></span> {userDetails?.profession ? userDetails?.profession : "Just chilling here"}</p>
-              <p className="dob"><span><FaBirthdayCake /></span> 26-06-2001</p>
+              <p className="dob"><span><FaBirthdayCake /></span> {moment(userDetails?.dob).format('DD-MM-yyyy')}</p>
             </div>
             <div className="info-right-wrap">
               <div className="numeric-items">

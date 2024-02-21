@@ -1,0 +1,64 @@
+@use '../../../utils/variables';
+
+.details-form-wrapper {
+    min-height: 100vh;
+    width: 100vw;
+    display: grid;
+    place-content: center;
+    padding-top: 4rem;
+
+    img.logo {
+        height: 3rem;
+        margin: 0.7rem auto;
+    }
+
+    h1,&>p {
+        font-size: 3rem;
+        margin: 0.2rem 0;
+        text-align: center;
+    }
+    &>p{
+        font-size: 1.5rem;
+    }
+
+    .display-pfp{
+        border: 2px solid variables.$blue-accent;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        margin:0 auto;
+        position: relative;
+
+        #upload-img{
+            object-fit:cover;
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+            margin:0 auto;
+            position: relative;
+        }
+       
+
+        svg{
+            position: absolute;
+            left:3rem;
+            top:3rem;
+            font-size: 2rem;
+            font-weight: 600;
+            z-index: 1;
+            cursor: pointer;
+            color:#fff;
+            background: variables.$blue-light;
+            border-radius: 50%;
+        }
+    }
+
+    .details-form form {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 1rem;
+        padding:1rem;
+        margin:1rem 0;
+    }
+}

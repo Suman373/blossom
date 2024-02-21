@@ -28,6 +28,7 @@ const UserSchema = new mongoose.Schema({
     },
     profileImage:{
         type:String,
+        trim:true,
     },
     profession:{
         type:String,
@@ -114,8 +115,6 @@ UserSchema.statics.login = async function(email,password){
        if(!savedUser){
            throw new Error("Email is not registered");
        }
-       console.log(email,password);
-       console.log(savedUser);
        // verify
        const match = await bcrypt.compare(password,savedUser.password);
        if(!match){

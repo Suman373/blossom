@@ -9,7 +9,7 @@ import useAuth from '../../../hooks/useAuth';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { storage } from '../../../config/firebase';
 import { v4 } from 'uuid';
-
+import Warning from '../../../components/Warning/Warning';
 
 const style = {
     position: 'absolute',
@@ -122,9 +122,7 @@ const AddFeed = ({ modalOpen, setModalOpen }) => {
                                 )
                             }
                         </form>
-                        <p
-                            style={{ color: "#e0bc1a" }}>
-                            Warning! Only image files are accepted</p>
+                        <Warning text={"Only images with png/jpeg/jpg/avif are accepted"}/>
                     </div>
                 </Box>
             </Modal>

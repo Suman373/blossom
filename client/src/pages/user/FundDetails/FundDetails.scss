@@ -2,10 +2,106 @@
 
 .fund-details-wrapper{
     min-height: 100vh;
-    width: 100%;
+    width: 100vw;
+    display: grid;
+    place-content: center;
+    position: relative;
+    padding: 5rem 0;
+    background: #ffffff71;
+
+    &::before{
+        content:"";
+        position:absolute;
+        left:5rem;
+        top:20%;
+        height: 20rem;
+        width: 20rem;
+        background: rgb(83, 83, 162);
+        border-radius: 50%;
+        z-index: -1;
+        filter: blur(50px);
+    }
+    &::after{
+        content:"";
+        position:absolute;
+        right:4rem;
+        top:50%;
+        height: 20rem;
+        width: 20rem;
+        background: blue;
+        border-radius: 50%;
+        z-index: -1;
+        filter: blur(50px);
+    }
+
+    &>button{
+        position: absolute;
+        top:1rem;
+        left:2rem;
+    }
 
     &>h1{
         font-size: 3rem;
         text-align: center;
+    }
+    &>h2{
+        font-size: 1.8rem;
+        text-align: center;
+        color:grey;
+    }
+    .main-content{
+        width: fit-content;
+        max-width: 30rem;
+        padding:1rem 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        background: variables.$blue-light;
+        border-radius: 3rem 1rem 3rem 1rem;
+
+        img{
+            height: auto;
+            width: 20rem;
+            margin:1rem 0;
+            object-fit: contain;
+            border-radius: 1rem 0 1rem 0;
+            box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000;
+        }
+        p{
+            padding: 0 1rem;
+            font-size: 1.1rem;
+        }
+        h3,h4{
+            padding: 0 1rem;
+            font-size: 1.4rem;
+        }
+
+        svg {
+            font-size: 1.4rem; 
+            margin:0 0.3rem;
+            padding-top: 0.5rem;
+        }
+
+        .text-content{
+            background: #fff;
+            color:variables.$blue-accent;
+            padding:0.8rem;
+            border-radius: 0 0 2rem 0;
+        }
+
+        .status{
+          margin:0.5rem 1rem;
+          padding: 0.3rem 2rem;
+          width: fit-content;
+          color:#fff;
+          border-radius: 0.8rem;
+          font-size: 0.8rem;
+        }
+        .open{background:green;}
+        .close{background: red;}
+        .hold{background:variables.$gold;}
+
+
     }
 }

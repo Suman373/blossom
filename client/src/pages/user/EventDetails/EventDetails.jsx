@@ -7,7 +7,6 @@ import toast from 'react-hot-toast';
 import { GoLocation } from 'react-icons/go';
 import { BsClock } from 'react-icons/bs';
 import moment from 'moment';
-import { FaAngleDoubleLeft } from "react-icons/fa";
 import useAuth from '../../../hooks/useAuth';
 
 const EventDetails = () => {

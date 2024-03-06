@@ -1,0 +1,24 @@
+@use '../../utils/variables';
+
+.notifications-wrapper {
+    position: absolute;
+    height: 20rem;
+    width: 18rem;
+    background: #fff;
+    box-shadow: 0 0 20px #1c1b1b4d;
+    top: 7rem;
+    left: -18rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+
+    .notification-item {
+        font-size: 0.9rem;
+        border-bottom: 1px solid grey;
+        padding: 1rem;
+        display: flex;
+        color: #000;
+        width: 100%;
+        background: #ececec;
+    }
+}

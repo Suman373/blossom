@@ -15,7 +15,7 @@
         height:100%;
     }
 
-    ul{
+    &>div>ul{
         width:60%;
         height:100%;
         display:flex;
@@ -46,17 +46,34 @@
             }
         }
     }
-    .logout{
+    .right-icons{
         height:100%;
         width:5rem;
         position:absolute;
         right:1rem;
-        display:grid;
-        place-content: center;
-        cursor:pointer;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        gap:1.6rem;
+        margin-right: 1rem;
+    
         i{
-            font-size:2rem;
+            font-size:1.8rem;
             color:#000;
+            cursor: pointer;
+            position: relative;
+        }
+        #notif-count{
+            height: 1.4rem;
+            width: 1.4rem;
+            text-align: center;
+            position: absolute;
+            font-size: 0.8rem;
+            color:#fff;
+            background: red;
+            border-radius: 50%;
+            right:-0.7rem;
+            padding-top: 0.1rem;
         }
     }
 }

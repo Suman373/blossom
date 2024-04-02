@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './FundCard.scss';
-import BlueButton from '../BlueButton/BlueButton';
 import fallback from '../../assets/blossom_fallback.jpg';
 import moment from 'moment';
 import { Link } from 'react-router-dom';

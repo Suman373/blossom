@@ -7,9 +7,61 @@ import { useParams } from 'react-router-dom';
 import { MdWork, MdEmail } from 'react-icons/md';
 import { HiPencilAlt } from 'react-icons/hi';
 import { FaBirthdayCake } from 'react-icons/fa';
-import { BiRupee } from 'react-icons/bi';
 import toast from 'react-hot-toast';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
+import FundCard from '../../../components/FundCard/FundCard';
+
+// fundraise section
+const FundRaiseSection = () => {
+  const [fundraises, setFundRaises] = useState([]);
+  const { id: profileId } = useParams();
+
+  // const [events, setEvents] = useState([]);
+  // const [feeds, setFeeds] = useState([]);
+  // const [followers, setFollowers] = useState([]);
+  // const [following, setFollowing] = useState([]);
+
+
+  const fetchFundRaise = async () => {
+    try {
+      const data = await axios.get(`${import.meta.env.VITE_API_ENDPOINT}/funds?userId=${profileId}`);
+      if (!data?.data?.result) {
+        console.log(data?.data?.message);
+        console.log("Failed to fetch fundraises");
+      }
+      setFundRaises(data?.data?.result);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchFundRaise();
+  }, []);
+
+  return (
+    <>
+      <div className="fundraise-section">
+        <h1>Fundraises created by you</h1>
+        {
+          fundraises?.length >= 1 ?
+            fundraises?.map((fund, index) => (
+              <>
+                <FundCard fund={fund} key={index} />
+              </>
+            ))
+            :
+            <p>Nothing to show here •—•</p>
+        }
+      </div>
+    </>
+  );
+}
+
+// events section
+
+
 
 // this page is common for self(user) and other profiles(public)
 const UserDetails = () => {
@@ -17,6 +69,17 @@ const UserDetails = () => {
   const [userDetails, setUserDetails] = useState({});
   // get type and id from route param
   const { id: profileId, type } = useParams();
+  const [activeOption, setActiveOption] = useState("Fundraises");
+  // profile sections
+  const compoentsMap = {
+    "Fundraises": <FundRaiseSection />,
+    "Events": <>Events</>,
+    "Feeds": <>Feeds</>,
+    "Followers": <>Followers</>,
+    "Following": <>Following</>,
+    "Donations": <>Donations</>
+  };
+  const selectedComponent = compoentsMap[activeOption] || <><FundRaiseSection /></>;
 
   const fetchUserDetails = async () => {
     try {
@@ -38,6 +101,8 @@ const UserDetails = () => {
   }
 
 
+  document.title = `${userDetails?.name}`;
+
   useEffect(() => {
     fetchUserDetails();
   }, []);
@@ -45,6 +110,7 @@ const UserDetails = () => {
   return (
     <>
       <div className='user-details-wrapper'>
+        <Link id='back' to="/">←</Link>
         <div className="user-header">
           <div className="cover">
             <img
@@ -89,6 +155,26 @@ const UserDetails = () => {
               </div>
             </div>
           </div>
+        </div>
+        <ul className='profile-sections-ul'>
+          <li onClick={() => setActiveOption("Fundraises")}>Fundraises</li>
+          <li onClick={() => setActiveOption("Events")}>Events</li>
+          <li onClick={() => setActiveOption("Feeds")}>Feeds</li>
+          <li onClick={() => setActiveOption("Followers")}>Followers</li>
+          <li onClick={() => setActiveOption("Following")}>Following</li>
+          <li onClick={() => setActiveOption("Donations")}>Donations</li>
+        </ul>
+        <div className="options-analytics-flexbox">
+          <section className="profile-options">
+            {
+              selectedComponent
+            }
+          </section>
+          <section className="profile-analytics">
+            <h1>
+              {userDetails?.name}'s Analytics
+            </h1>
+          </section>
         </div>
 
       </div>

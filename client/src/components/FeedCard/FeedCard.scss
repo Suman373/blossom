@@ -18,7 +18,7 @@
         position: relative;
 
         .feed-meta {
-            padding-left: 0.5rem;
+            padding-left: 0.8rem;
 
             #name {
                 font-weight: 600;
@@ -28,8 +28,8 @@
 
         img {
             border-radius: 50%;
-            height: 4.5rem;
-            width: 4.5rem;
+            height: 4.2rem;
+            width: 4.2rem;
             box-shadow: 0 0 0 2px #fff, 0 0 0 4px #276ecc;
         }
 
@@ -40,13 +40,36 @@
             font-size: 1.5rem;
             cursor: pointer;
         }
+
+        .feed-three-dots{
+            position: absolute;
+            right:-4rem;
+            top:0.7rem;
+            background-color: white;
+            padding:0.6rem 1rem;
+            box-shadow: 0 0 5px grey;
+            border-radius: 0.5rem;
+
+            li{
+                cursor: pointer;
+                list-style: none;
+                font-size: 0.9rem;
+                margin-bottom: 0.4rem;
+
+                &:hover{
+                    color:variables.$blue-accent;
+                }
+            }
+        }
     }
 
     .feed-body {
         padding: 0.5rem;
 
         img {
-            max-width: 100%;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
             margin: 0.8rem auto;
         }
     }

@@ -2,14 +2,30 @@ const mongoose = require('mongoose');
 const FundModel = require('../models/fundPostModel');
 const UserModel = require('../models/userModel');
 
-// getting all fund posts made
+// get fundraise posts created by user or everyone
 const getFundPosts = async (req, res) => {
     try {
-        const fundPosts = await FundModel.find({}); // return all posts
-        if (!fundPosts) {
-            throw Error("Fundraise posts not found!");
+        let filter={};
+        const query = await req.query;
+        if(query.userId){
+            const {userId} = query;
+            if(mongoose.Types.ObjectId.isValid(userId)){
+                const fundPosts = await FundModel.find({userId}); // return userId posts
+                if (!fundPosts) {
+                    throw Error("Fundraise posts not found!");
+                }
+                return res.status(200).json({message:"Fetched user's fundraise posts",result:fundPosts});
+            }else{
+                throw new Error("Invalid ObjectId");
+            }
         }
-        res.status(200).json(fundPosts);
+        if(!query.userId){
+            const fundPosts = await FundModel.find({});  // return all posts 
+            if (!fundPosts) {
+                throw Error("Fundraise posts not found!");
+            }
+            return res.status(200).json(fundPosts);
+        }
     } catch (error) {
         console.log(error);
         res.status(400).json({ message: error.message });

@@ -5,10 +5,22 @@
     width: 90vw;
     margin: 0 auto;
     padding-top: 1rem;
+    padding-bottom: 2rem;
+
+    a#back {
+        background: variables.$blue-light;
+        color: #fff;
+        padding: 0.3rem 0.7rem;
+        border-radius: 0.4rem;
+        font-size: 1.2rem;
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+    }
 
     .user-header {
         height: 30rem;
-        width: 95%;
+        width: 100%;
         margin: 0 auto;
         border: 1px solid variables.$dark-grey;
         border-radius: 0.7rem;
@@ -29,7 +41,7 @@
                 width: 100%;
                 object-fit: cover;
                 object-position: center;
-                border-radius: 0.7rem 0.7rem 0 0 ;
+                border-radius: 0.7rem 0.7rem 0 0;
             }
 
             // profile picture
@@ -40,7 +52,7 @@
                 position: absolute;
                 left: 2rem;
                 bottom: -4rem;
-                box-shadow: 0 0 0 2px #fff , 0 0 0 4px variables.$blue-light;
+                box-shadow: 0 0 0 2px #fff, 0 0 0 4px variables.$blue-light;
             }
 
             // edit icon
@@ -97,4 +109,84 @@
             }
         }
     }
+
+    .profile-sections-ul {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        height: 3rem;
+        margin: 1rem 0;
+        gap: 1rem;
+        padding: 1rem 0.7rem;
+        background: #fff;
+        border-radius: 0.8rem;
+
+        li {
+            list-style: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+
+            &:hover {
+                color: variables.$blue-light;
+            }
+        }
+    }
+
+    .options-analytics-flexbox {
+        width: 90vw;
+        min-height: 100vh;
+        background: magenta;
+        display: flex;
+        justify-content: space-around;
+
+        h1 {
+            text-align: center;
+            margin: 1rem 0;
+            font-size: 2rem;
+        }
+
+        // user profile analytics
+        .profile-analytics{
+            height:60rem;
+            width: 60%;
+            background: moccasin;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        // profile selectedComponents
+        .profile-options {
+            height: 100rem;
+            width: 40%;
+            padding: 1rem;
+            background-color: red;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+
+            // fundraise-section
+            .fundraise-section {
+                .fund-item {
+                    height: 22rem !important;
+                    margin: 1rem 0;
+                }
+
+                a {
+                    display: none;
+                }
+
+                p {
+                    line-height: 1;
+                }
+            }
+        }
+
+    }
+
+
 }

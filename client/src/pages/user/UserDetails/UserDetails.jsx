@@ -11,13 +11,116 @@ import toast from 'react-hot-toast';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 import FundCard from '../../../components/FundCard/FundCard';
+import EventCard from '../../../components/EventCard/EventCard';
+import { Line, LineChart, Tooltip, CartesianGrid,XAxis,YAxis } from 'recharts';
+
+
+const donationChartData = [
+  {
+    month:"Jan",
+    donated:2000,
+  },
+  {
+    month:"Feb",
+    donated:400,
+  },
+  {
+    month:"Mar",
+    donated:5999,
+  },
+  {
+    month:"Apr",
+    donated:2000,
+  },
+  {
+    month:"May",
+    donated:1440,
+  },
+  {
+    month:"Jun",
+    donated:0,
+  },
+  {
+    month:"Jul",
+    donated:2000,
+  },
+  {
+    month:"Aug",
+    donated:0,
+  },
+  {
+    month:"Sep",
+    donated:0,
+  },
+  {
+    month:"Oct",
+    donated:5999,
+  },
+  {
+    month:"Nov",
+    donated:3000,
+  },
+  {
+    month:"Dec",
+    donated:1300,
+  },
+
+]
+const eventsChartData = [
+  {
+    month:"Jan",
+    eventsHeld:2,
+  },
+  {
+    month:"Feb",
+    eventsHeld:4,
+  },
+  {
+    month:"Mar",
+    eventsHeld:5,
+  },
+  {
+    month:"Apr",
+    eventsHeld:2,
+  },
+  {
+    month:"May",
+    eventsHeld:0,
+  },
+  {
+    month:"Jun",
+    eventsHeld:0,
+  },
+  {
+    month:"Jul",
+    eventsHeld:2,
+  },
+  {
+    month:"Aug",
+    eventsHeld:0,
+  },
+  {
+    month:"Sep",
+    eventsHeld:0,
+  },
+  {
+    month:"Oct",
+    eventsHeld:5,
+  },
+  {
+    month:"Nov",
+    eventsHeld:3,
+  },
+  {
+    month:"Dec",
+    eventsHeld:1,
+  },
+];
 
 // fundraise section
 const FundRaiseSection = () => {
   const [fundraises, setFundRaises] = useState([]);
   const { id: profileId } = useParams();
-
-  // const [events, setEvents] = useState([]);
   // const [feeds, setFeeds] = useState([]);
   // const [followers, setFollowers] = useState([]);
   // const [following, setFollowing] = useState([]);
@@ -60,6 +163,46 @@ const FundRaiseSection = () => {
 }
 
 // events section
+const EventsSection = () => {
+  const [events, setEvents] = useState([]);
+  const { id: profileId } = useParams();
+
+  const fetchEvents = async () => {
+    try {
+      const data = await axios.get(`${import.meta.env.VITE_API_ENDPOINT}/events?userId=${profileId}`);
+      if (!data?.data?.result) {
+        console.log(data?.data?.message);
+        console.log("Failed to fetch events");
+      }
+      setEvents(data?.data?.result);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
+
+  return (
+    <>
+      <div className="events-section">
+        <h1>Events created by you</h1>
+        {
+          events?.length >= 1 ?
+            events?.map((event, index) => (
+              <>
+                <EventCard event={event} key={index} />
+              </>
+            ))
+            :
+            <p>Nothing to show here •—•</p>
+        }
+      </div>
+    </>
+  );
+}
+
 
 
 
@@ -73,7 +216,7 @@ const UserDetails = () => {
   // profile sections
   const compoentsMap = {
     "Fundraises": <FundRaiseSection />,
-    "Events": <>Events</>,
+    "Events": <EventsSection/>,
     "Feeds": <>Feeds</>,
     "Followers": <>Followers</>,
     "Following": <>Following</>,
@@ -174,6 +317,24 @@ const UserDetails = () => {
             <h1>
               {userDetails?.name}'s Analytics
             </h1>
+            <div className="chart-holder">
+              <h2>Donations in 2023</h2>
+              <LineChart width={600} height={300} data={donationChartData}>
+                <Line type="monotone" dataKey="donated" stroke="#0b0b9b" />
+                <CartesianGrid stroke="#ccc" />
+                <XAxis dataKey="month" />
+                <Tooltip/>
+                <YAxis />
+              </LineChart>
+              <h2>Events Held in 2023</h2>
+              <LineChart width={600} height={300} data={eventsChartData}>
+                <Line type="monotone" dataKey="eventsHeld" stroke="#0b0b9b" />
+                <CartesianGrid stroke="#ccc" />
+                <XAxis dataKey="month" />
+                <Tooltip/>
+                <YAxis />
+              </LineChart>
+            </div>
           </section>
         </div>
 

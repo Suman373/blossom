@@ -28,7 +28,6 @@ const sendNotification = async (type, payload) => {
             default:
                 console.log(`Invalid notification type ${type}`);
                 throw new Error("Invalid notification type");
-                break;
         }
     } catch (error) {
         console.log(`Error while sending notification. Type ${type}`, error);

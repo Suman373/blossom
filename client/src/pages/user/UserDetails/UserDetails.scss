@@ -136,8 +136,9 @@
     .options-analytics-flexbox {
         width: 90vw;
         min-height: 100vh;
-        background: magenta;
+        // background: magenta;
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-around;
 
         h1 {
@@ -149,13 +150,22 @@
         // user profile analytics
         .profile-analytics{
             height:60rem;
-            width: 60%;
-            background: moccasin;
+            width: 35rem;
+            // background: moccasin;
             padding: 1rem;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
+
+            .chart-holder{
+                display: flex;
+                background: #fff;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items:center;
+                gap:1rem;
+            }
         }
 
         // profile selectedComponents
@@ -163,7 +173,7 @@
             height: 100rem;
             width: 40%;
             padding: 1rem;
-            background-color: red;
+            // background-color: red;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -181,6 +191,18 @@
                 }
 
                 p {
+                    line-height: 1;
+                }
+            }
+            // events-section
+            .events-section{
+                .event-item {
+                    height: 22rem !important;
+                    margin: 1rem 0;
+                }
+                a {
+                    display: none;
+                }p{
                     line-height: 1;
                 }
             }

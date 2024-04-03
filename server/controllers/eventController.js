@@ -4,25 +4,40 @@ const EventModel = require('../models/eventModel');
 //  @GET All events
 const getEvents = async (req, res) => {
     try {
-        let filters = {};
-        if (req.query.orgName) {
-            filters.organisation = req.query.orgName;
+        // let filters = {};
+        // if (req.query.orgName) {
+        //     filters.organisation = req.query.orgName;
+        // }
+        // if (req.query.date) {
+        //     filters.date = { $gte: new Date(req.query.date) }; // on or after date
+        // }
+        // if (req.query.place) {
+        //     filters.place = req.query.place;
+        // }
+        // if (req.query.city) {
+        //     filters.city = req.query.city;
+        // }
+        // const events = await EventModel.find(filters);
+        const query = await req.query;
+        if(query.userId){
+            const {userId} = query;
+            if(mongoose.Types.ObjectId.isValid(userId)){
+                const events = await EventModel.find({userId}); // return userId events
+                if (!events) {
+                    throw Error("Events not found!");
+                }
+                return res.status(200).json({message:"Fetched user's events",result:events});
+            }else{
+                throw new Error("Invalid ObjectId");
+            }
         }
-        if (req.query.date) {
-            filters.date = { $gte: new Date(req.query.date) }; // on or after date
+        if(!query.userId){
+            const events = await EventModel.find({});  // return all events 
+            if (!events) {
+                throw Error("Events not found!");
+            }
+            return res.status(200).json(events);
         }
-        if (req.query.place) {
-            filters.place = req.query.place;
-        }
-        if (req.query.city) {
-            filters.city = req.query.city;
-        }
-        const events = await EventModel.find(filters);
-        if (!events) {
-            res.status(404).json({ message: "Events not found!" });
-            return;
-        }
-        res.status(200).json({ message: "Events found", result: events });
     } catch (error) {
         console.log(error);
         res.status(400).json({ message: error.message });

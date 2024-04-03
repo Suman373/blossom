@@ -24,7 +24,7 @@ const getUserFeeds = async(req,res)=>{
             return res.status(422).json({message:"Invalid ObjectId"});
         }
         // get all docs having userId of _id
-        const data = await FeedModel.findById({userId:_id}).exec();
+        const data = await FeedModel.find({userId:_id}).exec();
         if(!data){
             return res.status(404).json({message:"Not found"});
         }

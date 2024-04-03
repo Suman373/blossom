@@ -4,7 +4,7 @@ const {getAllFeeds,getUserFeeds,addNewFeed, updateUserFeed, likeFeed} = require(
 
 // get all public feeds
 router.get('/', getAllFeeds);
-// get specific user feeds with @params id
+// get specific user feeds 
 router.get('/:id', getUserFeeds);
 // add new feed
 router.post('/', addNewFeed);

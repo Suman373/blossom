@@ -18,15 +18,12 @@ const EventList = () => {
 
   const fetchEvents = async()=>{
     setLoading(true);
-    const data = await axios.get(`${import.meta.env.VITE_API_ENDPOINT}/events/`,{withCredentials:true})
-    .catch((e)=>{
-      if(e.response){
-        console.log(e.response);
-      }else{
-        console.log(e.message);
-      }
-    });
-    setFetchedEvents(data?.data?.result);
+    const data = await axios.get(`${import.meta.env.VITE_API_ENDPOINT}/events`,{withCredentials:true});
+    if(!data?.data){
+      console.log(data?.data?.message);
+    }
+    console.log(data);
+    setFetchedEvents(data?.data);
     setLoading(false);
   }
 

@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 import FundCard from '../../../components/FundCard/FundCard';
 import EventCard from '../../../components/EventCard/EventCard';
 import { Line, LineChart, Tooltip, CartesianGrid,XAxis,YAxis } from 'recharts';
+import FeedCard from '../../../components/FeedCard/FeedCard';
 
 
 const donationChartData = [
@@ -203,6 +204,47 @@ const EventsSection = () => {
   );
 }
 
+// feeds section
+const FeedSection = () => {
+  const [feeds, setFeeds] = useState([]);
+  const { id: profileId } = useParams();
+
+  const fetchFeeds = async () => {
+    try {
+      const data = await axios.get(`${import.meta.env.VITE_API_ENDPOINT}/feeds/${profileId}`);
+      if (!data?.data?.result) {
+        console.log(data?.data?.message);
+        console.log("Failed to fetch feeds");
+      }
+      setFeeds(data?.data?.result);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchFeeds();
+  }, []);
+
+  return (
+    <>
+      <div className="feeds-section">
+        <h1>Feeds created by you</h1>
+        {
+          feeds?.length >= 1 ?
+            feeds?.map((feed, index) => (
+              <>
+                <FeedCard item={feed} key={index} />
+              </>
+            ))
+            :
+            <p>Nothing to show here •—•</p>
+        }
+      </div>
+    </>
+  );
+}
+
 
 
 
@@ -217,7 +259,7 @@ const UserDetails = () => {
   const compoentsMap = {
     "Fundraises": <FundRaiseSection />,
     "Events": <EventsSection/>,
-    "Feeds": <>Feeds</>,
+    "Feeds": <FeedSection/>,
     "Followers": <>Followers</>,
     "Following": <>Following</>,
     "Donations": <>Donations</>

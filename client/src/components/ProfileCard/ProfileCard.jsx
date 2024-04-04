@@ -44,7 +44,8 @@ const ProfileCard = () => {
             <div className="details">
                 <h3 className="name">{profileDetails?.name}</h3>
                 <p className="email">{profileDetails?.email}</p>
-                <div className="count">
+                <p className="profession">{profileDetails?.profession}</p>
+                {/* <div className="count">
                     <div className="count-slots">
                         Amount donated <span>{profileDetails?.amountDonated}</span>
                     </div>
@@ -57,7 +58,7 @@ const ProfileCard = () => {
                     <div className="count-slots">
                         Following <span>{profileDetails?.following?.length}</span>
                     </div>
-                </div>
+                </div> */}
                 <button onClick={()=> navigate(`/profile/self/${_id}`)}>
                     Show Profile
                 </button>

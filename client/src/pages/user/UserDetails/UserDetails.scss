@@ -206,10 +206,35 @@
                     line-height: 1;
                 }
             }
-            // feeds-section
-                .feed-footer{
-                    // display: none;
+            // followers-following section
+            .following-section{
+                display: flex;
+                flex-direction: column;
+
+                .following-card{
+                    height: 5rem;
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 0.8rem 1rem;
+                    gap:1rem;
+                    background: #fff;
+                    border-radius: 1rem;
+
+                    a{
+                        color:variables.$blue-accent;
+                        font-size:1.5rem;
+                    }
+    
+                    img{
+                        height: 3.7rem;
+                        width: 3.7rem;
+                        border-radius: 50%;
+                    }
                 }
+            }
+           
         }
 
     }

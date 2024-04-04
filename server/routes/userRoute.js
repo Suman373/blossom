@@ -18,5 +18,9 @@ router.post('/:userId/follow', controllers.followUser);
 router.post('/:userId/unfollow', controllers.unfollowUser);
 // delete user
 router.delete('/delete/:id', controllers.deleteUser);
+// get followers
+router.get('/followers/:id', controllers.getFollowers);
+// get following 
+router.get('/following/:id', controllers.getFollowing);
 
 module.exports = router;

@@ -162,6 +162,40 @@ const completeDetails = async(req,res)=>{
     }
 }
 
+// @GET  followers
+const getFollowers = async(req,res)=>{
+    try {
+        const {id:_id} = await req.params;
+        if(!mongoose.Types.ObjectId.isValid(_id) || !_id){
+            return res.status(422).json({message:"Invalid ObjectId"});
+        }
+        const followers = await UserModel.findById(_id).populate('followers',['_id','name','profileImage']).select('followers').exec();
+        if(!followers) throw new Error("Failed to get followers");
+        console.log(followers);
+        res.status(200).json({message:"Fetched followers",result:followers?.followers});
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({message:error?.message});
+    }
+}
+
+// @GET following
+const getFollowing = async(req,res)=>{
+    try {
+        const {id:_id} = await req.params;
+        if(!mongoose.Types.ObjectId.isValid(_id) || !_id){
+            return res.status(422).json({message:"Invalid ObjectId"});
+        }
+        const following = await UserModel.findById(_id).populate('following',['_id','name','profileImage']).select('following').exec();
+        if(!following) throw new Error("Failed to get following");
+        console.log(following);
+        res.status(200).json({message:"Fetched following",result:following?.following});
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({message:error?.message});
+    }
+}
+
 module.exports = { getUsers, getOneUser, 
     updateUser, followUser, unfollowUser,
-    deleteUser, completeDetails };
+    deleteUser, completeDetails, getFollowers, getFollowing };

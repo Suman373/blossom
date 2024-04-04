@@ -6,7 +6,7 @@ $profile-left-offset: calc($card-width / 3.3333);
  .profile{
     width:$card-width;
     margin-top:1.8rem;
-    height:33rem;
+    height:fit-content;
     background:variables.$blue-light;
     border:none;
     border-radius: 1.2rem;
@@ -17,7 +17,7 @@ $profile-left-offset: calc($card-width / 3.3333);
         position:relative;
 
         .cover-pic{
-            max-height:7rem;
+            height:7rem;
             width:100%;
             object-fit: cover;
             border-radius:1.2rem 1.2rem 0 0 ;
@@ -34,11 +34,11 @@ $profile-left-offset: calc($card-width / 3.3333);
         }
     }
     .details{
-        padding:2.2rem  1rem;
+        padding:2rem 0.5rem 0.5rem 1rem;
         display:flex;
         flex-direction: column;
         align-items: center;
-        gap:0.5rem;
+        gap:0.3rem;
 
         h3{
             font-size: 1.5rem;
@@ -74,9 +74,9 @@ $profile-left-offset: calc($card-width / 3.3333);
         button{
             border:none;
             border-radius: 1rem;
-            margin:1rem auto;
-            padding:1rem 1.2rem;
-            font-size: 1.1rem;
+            margin:0.8rem auto;
+            padding:0.8rem 1.2rem;
+            font-size: 1rem;
             color:variables.$blue-accent;
 
             cursor:pointer;

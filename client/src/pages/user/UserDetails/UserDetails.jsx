@@ -12,109 +12,110 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 import FundCard from '../../../components/FundCard/FundCard';
 import EventCard from '../../../components/EventCard/EventCard';
-import { Line, LineChart, Tooltip, CartesianGrid,XAxis,YAxis } from 'recharts';
+import { Line, LineChart, Tooltip, CartesianGrid, XAxis, YAxis } from 'recharts';
 import FeedCard from '../../../components/FeedCard/FeedCard';
+import { IoEye } from "react-icons/io5";
 
 
 const donationChartData = [
   {
-    month:"Jan",
-    donated:2000,
+    month: "Jan",
+    donated: 2000,
   },
   {
-    month:"Feb",
-    donated:400,
+    month: "Feb",
+    donated: 400,
   },
   {
-    month:"Mar",
-    donated:5999,
+    month: "Mar",
+    donated: 5999,
   },
   {
-    month:"Apr",
-    donated:2000,
+    month: "Apr",
+    donated: 2000,
   },
   {
-    month:"May",
-    donated:1440,
+    month: "May",
+    donated: 1440,
   },
   {
-    month:"Jun",
-    donated:0,
+    month: "Jun",
+    donated: 0,
   },
   {
-    month:"Jul",
-    donated:2000,
+    month: "Jul",
+    donated: 2000,
   },
   {
-    month:"Aug",
-    donated:0,
+    month: "Aug",
+    donated: 0,
   },
   {
-    month:"Sep",
-    donated:0,
+    month: "Sep",
+    donated: 0,
   },
   {
-    month:"Oct",
-    donated:5999,
+    month: "Oct",
+    donated: 5999,
   },
   {
-    month:"Nov",
-    donated:3000,
+    month: "Nov",
+    donated: 3000,
   },
   {
-    month:"Dec",
-    donated:1300,
+    month: "Dec",
+    donated: 1300,
   },
 
 ]
 const eventsChartData = [
   {
-    month:"Jan",
-    eventsHeld:2,
+    month: "Jan",
+    eventsHeld: 2,
   },
   {
-    month:"Feb",
-    eventsHeld:4,
+    month: "Feb",
+    eventsHeld: 4,
   },
   {
-    month:"Mar",
-    eventsHeld:5,
+    month: "Mar",
+    eventsHeld: 5,
   },
   {
-    month:"Apr",
-    eventsHeld:2,
+    month: "Apr",
+    eventsHeld: 2,
   },
   {
-    month:"May",
-    eventsHeld:0,
+    month: "May",
+    eventsHeld: 0,
   },
   {
-    month:"Jun",
-    eventsHeld:0,
+    month: "Jun",
+    eventsHeld: 0,
   },
   {
-    month:"Jul",
-    eventsHeld:2,
+    month: "Jul",
+    eventsHeld: 2,
   },
   {
-    month:"Aug",
-    eventsHeld:0,
+    month: "Aug",
+    eventsHeld: 0,
   },
   {
-    month:"Sep",
-    eventsHeld:0,
+    month: "Sep",
+    eventsHeld: 0,
   },
   {
-    month:"Oct",
-    eventsHeld:5,
+    month: "Oct",
+    eventsHeld: 5,
   },
   {
-    month:"Nov",
-    eventsHeld:3,
+    month: "Nov",
+    eventsHeld: 3,
   },
   {
-    month:"Dec",
-    eventsHeld:1,
+    month: "Dec",
+    eventsHeld: 1,
   },
 ];
 
@@ -122,10 +123,6 @@ const eventsChartData = [
 const FundRaiseSection = () => {
   const [fundraises, setFundRaises] = useState([]);
   const { id: profileId } = useParams();
-  // const [feeds, setFeeds] = useState([]);
-  // const [followers, setFollowers] = useState([]);
-  // const [following, setFollowing] = useState([]);
-
 
   const fetchFundRaise = async () => {
     try {
@@ -245,6 +242,100 @@ const FeedSection = () => {
   );
 }
 
+// followers section
+const FollowerSection = () => {
+  const [followers, setFollowers] = useState([]);
+  const { id: profileId } = useParams();
+
+  const fetchFollowers = async () => {
+    try {
+      const data = await axios.get(`${import.meta.env.VITE_API_ENDPOINT}/user/followers/${profileId}`);
+      if (!data?.data?.result) {
+        console.log(data?.data?.message);
+        console.log("Failed to fetch followers");
+      }
+      setFollowers(data?.data?.result);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchFollowers();
+  }, []);
+
+  return (
+    <>
+      <div className="followers-section">
+        <h1>People you inspire</h1>
+        {
+          followers?.length >= 1 ?
+            followers?.map((follower, index) => (
+              <>
+                <div className='follower-card' key={index}>
+                  <img src={follower?.profileImage ? follower?.profileImage : fallback} alt="follower-profile" />
+                </div>
+              </>
+            ))
+            :
+            <p>Nothing to show here •—•</p>
+        }
+      </div>
+    </>
+  );
+}
+
+// following section
+const FollowingSection = () => {
+  const [following, setFollowing] = useState([]);
+  const { id: profileId } = useParams();
+
+  const fetchFollowing = async () => {
+    try {
+      const data = await axios.get(`${import.meta.env.VITE_API_ENDPOINT}/user/following/${profileId}`);
+      if (!data?.data?.result) {
+        console.log(data?.data?.message);
+        console.log("Failed to fetch following");
+      }
+      setFollowing(data?.data?.result);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchFollowing();
+  }, []);
+
+  return (
+    <>
+      <div className="following-section">
+        <h1>People who inspire you</h1>
+        {
+          following?.length >= 1 ?
+            following?.map((item, index) => (
+              <>
+                <div className='following-card' key={index}>
+                  <div style={{
+                    display:'flex',
+                    alignItems:'center',
+                    gap:'0.6rem'
+                  }}>
+                    <img src={item?.profileImage ? item?.profileImage : fallback} alt="following-profile" />
+                    <p style={{fontWeight:'600'}}>{item?.name}</p>
+                  </div>
+                  <Link to={``}><IoEye/></Link>
+                </div>
+              </>
+            ))
+            :
+            <p>Nothing to show here •—•</p>
+        }
+      </div>
+    </>
+  );
+}
+
 
 
 
@@ -258,10 +349,10 @@ const UserDetails = () => {
   // profile sections
   const compoentsMap = {
     "Fundraises": <FundRaiseSection />,
-    "Events": <EventsSection/>,
-    "Feeds": <FeedSection/>,
-    "Followers": <>Followers</>,
-    "Following": <>Following</>,
+    "Events": <EventsSection />,
+    "Feeds": <FeedSection />,
+    "Followers": <FollowerSection />,
+    "Following": <FollowingSection />,
     "Donations": <>Donations</>
   };
   const selectedComponent = compoentsMap[activeOption] || <><FundRaiseSection /></>;
@@ -365,7 +456,7 @@ const UserDetails = () => {
                 <Line type="monotone" dataKey="donated" stroke="#0b0b9b" />
                 <CartesianGrid stroke="#ccc" />
                 <XAxis dataKey="month" />
-                <Tooltip/>
+                <Tooltip />
                 <YAxis />
               </LineChart>
               <h2>Events Held in 2023</h2>
@@ -373,7 +464,7 @@ const UserDetails = () => {
                 <Line type="monotone" dataKey="eventsHeld" stroke="#0b0b9b" />
                 <CartesianGrid stroke="#ccc" />
                 <XAxis dataKey="month" />
-                <Tooltip/>
+                <Tooltip />
                 <YAxis />
               </LineChart>
             </div>

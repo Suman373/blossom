@@ -51,7 +51,7 @@ const getEventById = async (req, res) => {
         if (!mongoose.Types.ObjectId.isValid(_id)) {
             throw Error("Invalid object id");
         }
-        const event = await EventModel.findById(_id).populate('attendees',['_id','name','profileImage']);
+        const event = await EventModel.findById(_id).populate('attendees',['_id','name','profileImage']); // send event along with populated list of attendees
         if(!event)return res.status(404).json({message:"Event not found"});
         res.status(200).json({message:"Fetched event",result:event});
     } catch (error) {

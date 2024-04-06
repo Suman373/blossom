@@ -12,7 +12,7 @@ router.post('/', addFundPost);
 // update a fundraise post
 router.put('/:id', updateFundPost);
 // donation to a fundraise
-router.put('/donate/fundraise/:id',donateFund);
+router.post('/donation/payment/:id',donateFund);
 // delete a fund post
 router.delete('/:id', deleteFundPost);
 

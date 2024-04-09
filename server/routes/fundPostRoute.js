@@ -7,13 +7,11 @@ const {getFundPosts, getOneFundPost,
 router.get('/', getFundPosts);
 // get one fundraise post
 router.get('/:id',getOneFundPost);
-// add a fund post
+// add a fundraise post
 router.post('/', addFundPost);
 // update a fundraise post
 router.put('/:id', updateFundPost);
-// donation to a fundraise
-router.post('/donation/payment/:id',donateFund);
-// delete a fund post
+// delete a fundraise post
 router.delete('/:id', deleteFundPost);
 
 module.exports = router;

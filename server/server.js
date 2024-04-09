@@ -10,6 +10,7 @@ const event = require('./routes/eventRoute');
 const user = require('./routes/userRoute');
 const auth = require('./routes/authRoute');
 const feed = require('./routes/feedRoute');
+const donation = require('./routes/donationRoute');
 const passportSetup = require('./config/passportSetup');
 const cookieParser = require('cookie-parser');
 const cookieAuth = require('./middlewares/cookieAuth');
@@ -40,6 +41,7 @@ app.use('/funds',fundPost);
 app.use('/events',event);
 app.use('/user',user);
 app.use('/feeds',feed);
+app.use('/donations',donation);
 
 app.get('/', (req,res)=>  {
     if(req.accepts('html')){

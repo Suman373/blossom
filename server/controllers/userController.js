@@ -68,7 +68,6 @@ const followUser = async (req, res) => {
         const { followId } = await req.body; // followId is the id of the person to be followed by our user
         if (!mongoose.Types.ObjectId.isValid(userId) || !mongoose.Types.ObjectId.isValid(followId)
             || !userId || !followId) {
-            console.log('userId', userId);
             return res.status(422).json({ message: "Invalid id" });
         }
 
@@ -171,7 +170,6 @@ const getFollowers = async(req,res)=>{
         }
         const followers = await UserModel.findById(_id).populate('followers',['_id','name','profileImage']).select('followers').exec();
         if(!followers) throw new Error("Failed to get followers");
-        console.log(followers);
         res.status(200).json({message:"Fetched followers",result:followers?.followers});
     } catch (error) {
         console.log(error);
@@ -188,7 +186,6 @@ const getFollowing = async(req,res)=>{
         }
         const following = await UserModel.findById(_id).populate('following',['_id','name','profileImage']).select('following').exec();
         if(!following) throw new Error("Failed to get following");
-        console.log(following);
         res.status(200).json({message:"Fetched following",result:following?.following});
     } catch (error) {
         console.log(error);

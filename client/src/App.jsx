@@ -13,28 +13,17 @@ import useAuth from './hooks/useAuth';
 import FundDetails from './pages/user/FundDetails/FundDetails';
 import EventDetails from './pages/user/EventDetails/EventDetails';
 import DetailsForm from './pages/user/DetailsForm/DetailsForm';
+import Success from './pages/user/Success/Success';
 
 const App = () => {
   const [user, setUser] = useState(null);
-  // user details
-  // const getUser = async () => {
-  //   try {
-  //     const url = `${import.meta.env.VITE_API_ENDPOINT}/auth/login/success`;
-  //     const { data } = await axios.get(url, { withCredentials: true });
-  //     console.log("User data", data);
-  //     setUser(data.user);
-  //     localStorage.setItem('blossomUserObj', JSON.stringify(data.user));
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
 
   useEffect(() => {
     const userData = useAuth();
-    if (userData === null) {
-      setUser(null);
-    } else {
+    if (userData) {
       setUser(userData);
+    } else {
+      setUser(null);
     }
   }, []);
 
@@ -53,6 +42,7 @@ const App = () => {
                   <Route path="/profile/:type/:id" element={<UserDetails />}></Route>
                   <Route path="/fundraise/details/:id" element={<FundDetails/>}></Route>
                   <Route path="/event/details/:id" element={<EventDetails/>}></Route>
+                  <Route path="/success" element={<Success/>}></Route>
                   <Route path="*" element={<Navigate to="/" />}></Route>
                 </Routes>
               </>
@@ -60,7 +50,6 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Landing />}></Route>
                 <Route path="/signup" element={<Signup setUser={setUser} />}></Route>
-                <Route path="*" element={<Navigate to="/" />}></Route>
               </Routes>
           }
           <Footer />

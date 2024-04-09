@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const FundModel = require('../models/fundPostModel');
 const UserModel = require('../models/userModel');
-const stripe = require('stripe')(`${process.env.STRIPE_SECRET_KEY}`);
-const uuid = require('uuid').v4;
 
 // get fundraise posts created by user or everyone
 const getFundPosts = async (req, res) => {
@@ -87,51 +85,6 @@ const updateFundPost = async (req, res) => {
     }
 }
 
-
-// donation to the fundraise
-const donateFund = async (req, res) => {
-    try {
-        const { fundraise, customer } = await req.body;
-        const { id: fundraiseId } = await req.params;
-        const idempotencyKey = uuid();
-
-        if(!mongoose.Types.ObjectId.isValid(fundraiseId) || !fundraiseId){
-            return res.status(422).json({message:"Invalid ObjectId"});
-        }
-
-        const fundraiseExist = await FundModel.exists({_id:fundraiseId}).select('_id');
-        if(!fundraiseExist) return res.status(404).json({message:"Fundraise not found"});
-
-        const newCustomer = await stripe.customers.create({
-            name: customer?.name,
-            email: customer?.email,
-        });
-
-        console.log(newCustomer);
-
-        // collection of payment from customer 
-        const paymentIntent = await stripe.paymentIntents.create({
-            amount: fundraise?.amount * 1000, // takes in lowest currency rate i.e., paisa/cents etc
-            currency: 'inr',
-            customer:customer?._id,
-            description: `Donation for ${fundraise?.name}`,
-            automatic_payment_methods: {
-                enabled: true,
-            },
-            receipt_email:customer?.email,
-        });
-        
-        return res.status(200).json({message:'Payment successful',result:paymentIntent});
-
-
-    } catch (error) {
-        console.log(error);
-        res.status(400).json({ message: error?.message });
-    }
-}
-
-
-
 // delete a fund post
 const deleteFundPost = async (req, res) => {
     try {
@@ -156,4 +109,5 @@ const deleteFundPost = async (req, res) => {
 }
 
 
-module.exports = { getFundPosts, getOneFundPost, addFundPost, updateFundPost, donateFund, deleteFundPost };
+module.exports = { getFundPosts, getOneFundPost, 
+    addFundPost, updateFundPost, deleteFundPost };

@@ -8,6 +8,7 @@ import { BsClock } from 'react-icons/bs';
 import moment from 'moment';
 import axios from 'axios';
 import Warning from '../../../components/Warning/Warning';
+import {loadStripe} from '@stripe/stripe-js';
 
 const FundDetails = () => {
 
@@ -18,6 +19,7 @@ const FundDetails = () => {
     // states
     const [fundDetails, setFundDetails] = useState({});
     const [showDonate, setShowDonate] = useState(false);
+    const [donationAmount, setDonationAmount] = useState(20);
 
     const goback = () => navigate('/');
 
@@ -36,6 +38,49 @@ const FundDetails = () => {
             console.log(error);
             toast.error("Something went wrong");
         }
+    }
+
+    // stripe session 
+    const stripeSession = async()=>{
+        try {
+            const stripe = await loadStripe('pk_test_51MlRJwSDV6AzbVi4iwYrMxespwNseOFgq1MGCMeqpIPxstec7l83Clo3Bv4VDXDlgKtGwtNPLWq0w4kSbH7cXHko00ymT73D4f');
+            const data = await axios.post(`${import.meta.env.VITE_API_ENDPOINT}/donations/checkout-session/${fundDetails?._id}`,{
+              product:{
+                name: fundDetails?.title,
+                amount: donationAmount,
+                userId: selfId,
+              },
+            },{withCredentials:true});
+            console.log(data);
+            if(!data?.data?.sessionId){
+                toast.error("Session failed");
+            }
+            const result = await stripe.redirectToCheckout({
+                sessionId:data?.data?.sessionId
+            });
+            if(!result){
+                toast.error("Donation failed. Please try again later");
+            }
+            console.log(result);
+            // navigate(`success/${sessionId}`);
+        } catch (error) {
+            console.log(error);
+            toast.error("Something went wrong");
+        }
+    }
+
+    // donation amount and invoke checkout session
+    const makePayment = (e)=>{
+        e.preventDefault();
+        if(donationAmount < 20){
+            toast.error("Minimum donation amount is INR 20");
+            return;
+        }
+        if(donationAmount > (fundDetails?.amount - fundDetails?.amountRaised)){
+            toast.error("Amount exceeds acceptance limit");
+            return;
+        }
+        stripeSession();
     }
 
     useEffect(() => {
@@ -59,8 +104,26 @@ const FundDetails = () => {
                         <p><b>Deadline</b> : <BsClock />{moment(fundDetails?.date).format("MMM Do")}</p>
                         <p className={fundDetails?.status === "Open" ? "status open" : fundDetails?.status === "Close" ? "status close" : 'status hold'}>{fundDetails?.status}</p>
                         <h3>Amount Raising : {fundDetails?.amount}</h3>
-                        <div style={{ textAlign: 'center' }}>
-                            {showDonate && (<BlueButton text={"Donate"} />)}
+                        <div>
+                            {/* {showDonate && (<BlueButton text={"Donate"} />)} */}
+                            <form
+                            style={{
+                                display:'flex',
+                                justifyContent:'flex-start',
+                                alignItems:'center',
+                                height:'5rem',
+                            }}
+                            onSubmit={makePayment}>
+                                 <span>&#8377;</span>
+                                <input
+                                type="number" 
+                                value={donationAmount}
+                                onChange={(e)=> setDonationAmount(e.target.value)}
+                                />
+                            <BlueButton 
+                            text={"Donate"}/>
+                            </form>
+                        
                         </div>
                     </div>
                 </div>

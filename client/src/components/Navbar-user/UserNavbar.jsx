@@ -19,9 +19,9 @@ const UserNavbar = ({ activeLink, setActiveLink, setUser }) => {
 
   const getNotificationCount = async()=>{
     try {
-      const data = await axios.get(`${import.meta.env.VITE_API_ENDPOINT}/${_id}/count`);
-      if(!data?.data) throw new Error("Failed to fetch notification count");
-      setNotificationCount(data?.data?.notifCount);
+      // const data = await axios.get(`${import.meta.env.VITE_API_ENDPOINT}/${_id}/count`);
+      // if(!data?.data) throw new Error("Failed to fetch notification count");
+      // setNotificationCount(data?.data?.notifCount);
     } catch (error) {
       console.log(error);
       toast.error("Notification error");

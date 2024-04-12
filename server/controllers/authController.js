@@ -85,4 +85,4 @@ const logoutUser = async (req, res) => {
 }
 
 
-module.exports = { registerUser, loginUser, logoutUser };
+module.exports = { createToken, registerUser, loginUser, logoutUser };

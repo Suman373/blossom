@@ -29,6 +29,12 @@ const req = {
     }
 }
 
+// Clear mocks before each test
+beforeEach(() => {
+    jest.clearAllMocks();
+});
+
+
 // test create token 
 test('Create JWT token for auth ', async () => {
     //  mock implementation for jwt.sign

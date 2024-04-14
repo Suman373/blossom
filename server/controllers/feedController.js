@@ -99,15 +99,11 @@ const likeFeed = async(req,res)=>{
         const userAlreadyLiked = await FeedModel.exists({_id,likes:{ $in: [likeId] }});
         if(userAlreadyLiked){
             // unlike
-            const feed = await FeedModel.findByIdAndUpdate(_id, {$pull:{likes:likeId}},{new:true});
-            feed.likeCount -= 1;
-            await feed.save();
-            return res.status(422).json({message:"Unliked successfully",feed});
+            const feed = await FeedModel.findByIdAndUpdate(_id, { $pull:{likes:likeId},$inc:{likeCount: -1} },{new:true});
+            return res.status(200).json({message:"Unliked successfully",feed});
         }
         // like
-        const feed = await FeedModel.findByIdAndUpdate(_id,{$push:{likes:likeId}},{new:true});
-        feed.likeCount += 1;
-        await feed.save();
+        const feed = await FeedModel.findByIdAndUpdate(_id,{ $push:{likes:likeId}, $inc: { likeCount: 1 } },{new:true});
         res.status(200).json({message:"Liked successfully", feed});
     } catch (error) {
         console.log(error);

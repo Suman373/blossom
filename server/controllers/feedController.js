@@ -41,7 +41,7 @@ const addNewFeed = async(req,res)=>{
     try {
         const {name,userId:_id} = await req.body;
         // validate if user exists
-        if(!await UserModel.find({name:name}).exec()){
+        if(!await UserModel.findOne({name})){
             return res.status(404).json({message:"User not found"});
         }
         // validate mongoose id
@@ -66,7 +66,7 @@ const updateUserFeed = async(req,res)=>{
         const {id:_id} = await req.params;
         const {name,userId} = await req.body;
         // validate if user exists
-        if(!await UserModel.find({name:name}).exec()){
+        if(!await UserModel.findOne({name})){
             return res.status(404).json({message:"User not found"});
         }
         // validate mongoose id
@@ -86,40 +86,34 @@ const updateUserFeed = async(req,res)=>{
     }
 }
 
-// @PUT like feed
+// @PUT like/unlike feed 
 const likeFeed = async(req,res)=>{
     try {
-        const {id:_id} = await req.params; // this is the feed id
-        const {likeId} = await req.body; // likeId is _id of the user who is liking
-        // validate mongoose object id
+        const {id:_id} = await req.params; // feed id
+        const {likeId} = await req.body; // userid (liker)
         if(!mongoose.Types.ObjectId(_id) || !mongoose.Types.ObjectId(likeId)){
             return res.status(422).json({message:"ObjectId is invalid"});
         }
-        // check if user has already liked the post or not
-        const userAlreadyLiked = await FeedModel.findById()
         // update likes arr and likeCount
-        await FeedModel.findByIdAndUpdate(_id,
-            {
-                $push:{likes:likeId}
-            },{new:true},
-            (err,result)=>{
-                if(err) return res.status(422).json({message:err.message});
-                console.log(result);
-                UserModel.findByIdAndUpdate(_id,
-                    {
-                        $inc:{likeCount: 1}
-                    },{new:true}
-                )
-                .then((res)=> res.status(200).json({message:"Feed liked successfully"}))
-                .catch((err)=> res.status(400).json({message:err.message}));
-            }  
-        )
+        // already like count 
+        const userAlreadyLiked = await FeedModel.exists({_id,likes:{ $in: [likeId] }});
+        if(userAlreadyLiked){
+            // unlike
+            const feed = await FeedModel.findByIdAndUpdate(_id, {$pull:{likes:likeId}},{new:true});
+            feed.likeCount -= 1;
+            await feed.save();
+            return res.status(422).json({message:"Unliked successfully",feed});
+        }
+        // like
+        const feed = await FeedModel.findByIdAndUpdate(_id,{$push:{likes:likeId}},{new:true});
+        feed.likeCount += 1;
+        await feed.save();
+        res.status(200).json({message:"Liked successfully", feed});
     } catch (error) {
         console.log(error);
         res.status(400).json({message:error.message});
     }
 }
 
-// @PUT unlike a feed
 
 module.exports = {getAllFeeds, getUserFeeds, addNewFeed, updateUserFeed, likeFeed};

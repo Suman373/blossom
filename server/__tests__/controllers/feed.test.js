@@ -9,7 +9,8 @@ jest.mock('../../models/feedModel');
 // stubs
 const req = {
     body: {
-
+        userId:'507f1f77bcf86cd799439011',
+        name:'fakename',
     },
     params:{
         id:'507f1f77bcf86cd799439011'
@@ -71,6 +72,38 @@ test('Return specific user feeds with 200', async () => {
     expect(res.json).toHaveBeenCalledWith({message:"Fetched feeds",result:mockArr});
 });
 
+// add new feed
+test('Add new feed with 201', async()=>{
+    await UserModel.findOne.mockImplementation((query)=>{
+        // req.body.name = "fakename" 
+        if(query && query.name == "fakename") return mockFeed;
+        else return null;
+    });
+    await FeedModel.create.mockImplementation(()=> Promise.resolve(mockFeed));
+    const res = mockRes();
+    await feedController.addNewFeed(req,res);
+    expect(UserModel.findOne).toHaveBeenCalled();
+    expect(FeedModel.create).toHaveBeenCalled();
+    expect(res.status).toHaveBeenCalledWith(201);
+    expect(res.json).toHaveBeenCalledWith({message:"Feed created successfully",result:mockFeed});
+});
 
 
+// update feed with userid
+test('Update user feed with id, 200', async()=>{
+    await UserModel.findOne.mockImplementation((query)=>{
+        if(query && query.name === "fakename") return mockFeed;
+        else return null;
+    });
+    await FeedModel.findByIdAndUpdate.mockImplementation((_id,update,options)=>{
+        if(_id === "507f1f77bcf86cd799439011" && update && options) return mockFeed;
+        else return null;
+    });
+    const res = mockRes();
+    await feedController.updateUserFeed(req,res);
+    expect(UserModel.findOne).toHaveBeenCalled();
+    expect(FeedModel.findByIdAndUpdate).toHaveBeenCalled();
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.json).toHaveBeenCalledWith({message:"Feed updated successfully",result:mockFeed});
+});
 

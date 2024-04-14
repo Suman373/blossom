@@ -10,7 +10,7 @@ router.get('/:id', getUserFeeds);
 router.post('/', addNewFeed);
 // update a feed
 router.put('/:id', updateUserFeed);
-// like a feed publicly
+// like a feed or unlike
 router.put('/like/:id', likeFeed);
 
 module.exports = router;

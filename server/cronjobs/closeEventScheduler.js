@@ -11,7 +11,7 @@ month          1-12 (or names, see below)
 day of week    0-7 (0 or 7 is Sunday, or use names)
 */
 
-const job = new CronJob('0 * * * * *', async function checkDate() {
+const job = new CronJob('0 0 0 * * *', async function checkDate() {
     try {
         const currDate = new Date();
         // find all events which has expired
@@ -21,7 +21,7 @@ const job = new CronJob('0 * * * * *', async function checkDate() {
             await event.save();
             console.log(`Event status updated for event ${event.name}`);
         }
-        console.log("Checked expired event every min");
+        // console.log("Checked expired event every day");
     } catch (error) {
         console.log(error);
     }

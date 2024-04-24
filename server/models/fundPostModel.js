@@ -54,7 +54,7 @@ const FundPostSchema = new mongoose.Schema({
     ],
     status:{
         type:String,
-        enum:["Open","Close","Hold"],
+        enum:["Open","Closed","Hold"],
         default:"Open"
     }
 },
@@ -69,7 +69,7 @@ FundPostSchema.post('save', async function(doc){
         savedUser.totalFundPostCount += 1; 
         await savedUser.save();
         // emit fundpost creation
-        fundPostEventEmitter.emit('fundPostCreated',{user:savedUser,fundPost:doc});
+        // fundPostEventEmitter.emit('fundPostCreated',{user:savedUser,fundPost:doc});
     } catch (error) {
         console.log("Error while creating fundraise post",error);
     }

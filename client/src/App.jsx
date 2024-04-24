@@ -5,7 +5,6 @@ import UserHome from './pages/user/UserHome/UserHome';
 import AddFundRaise from './pages/user/AddFundRaise/AddFundRaise';
 import AddEvent from './pages/user/AddEvent/AddEvent';
 import Footer from './components/Footer/Footer';
-import axios from 'axios';
 import UserDetails from './pages/user/UserDetails/UserDetails';
 import Landing from './pages/nonuser/Landing/Landing';
 import Signup from './pages/nonuser/Signup/Signup';

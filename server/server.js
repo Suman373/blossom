@@ -14,6 +14,7 @@ const donation = require('./routes/donationRoute');
 const passportSetup = require('./config/passportSetup');
 const cookieParser = require('cookie-parser');
 const cookieAuth = require('./middlewares/cookieAuth');
+const closeEventSchedular = require('./cronjobs/closeEventScheduler');
 const app = express();
 const PORT = process.env.PORT || 5000;
 

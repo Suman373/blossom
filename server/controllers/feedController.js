@@ -41,7 +41,7 @@ const addNewFeed = async(req,res)=>{
     try {
         const {name,userId:_id} = await req.body;
         // validate if user exists
-        if(!await UserModel.findOne({name})){
+        if(!await UserModel.findOne({_id})){
             return res.status(404).json({message:"User not found"});
         }
         // validate mongoose id

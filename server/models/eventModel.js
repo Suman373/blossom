@@ -39,6 +39,12 @@ const EventSchema = new mongoose.Schema({
         type: String,
         required: [true, "Time required"]
     },
+    status:{
+        type:String,
+        trim:true,
+        enum:["Open","Closed"],
+        default:"Open"
+    },
     imageURL: {
         type: String,
         trim: true,

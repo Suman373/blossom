@@ -7,6 +7,7 @@ import EventList from '../../../components/EventList/EventList';
 import Feeds from '../../../components/Feeds/Feeds';
 import Settings from '../Settings-page/Settings';
 import { useNavigate } from 'react-router-dom';
+import SuggestedProfiles from '../../../components/SuggestedProfiles/SuggestedProfiles';
 
 const UserHome = ({ user, setUser }) => {
   const navigate = useNavigate();
@@ -14,13 +15,13 @@ const UserHome = ({ user, setUser }) => {
 
   // key values against the activeLink state 
   const componentsMap = {
-    "Fundraises":<FundList/>,
-    "Events":<EventList/>,
-    "Feeds":<Feeds/>,
-    "Settings":<Settings/>
+    "Fundraises": <FundList />,
+    "Events": <EventList />,
+    "Feeds": <Feeds />,
+    "Settings": <Settings />
   };
 
-  const selectedComponent = componentsMap[activeLink] || <FundList/>
+  const selectedComponent = componentsMap[activeLink] || <FundList />
 
   useEffect(() => {
     if (!user?.completedDetails) {
@@ -35,7 +36,10 @@ const UserHome = ({ user, setUser }) => {
         activeLink={activeLink}
         setActiveLink={setActiveLink}
       />
-      <ProfileCard />
+      <div>
+        <ProfileCard />
+        <SuggestedProfiles />
+      </div>
       {
         selectedComponent
       }

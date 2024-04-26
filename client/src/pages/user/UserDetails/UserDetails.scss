@@ -50,6 +50,8 @@
                 width: 8rem;
                 border-radius: 50%;
                 position: absolute;
+                object-fit: cover;
+                object-position: center;
                 left: 2rem;
                 bottom: -4rem;
                 box-shadow: 0 0 0 2px #fff, 0 0 0 4px variables.$blue-light;

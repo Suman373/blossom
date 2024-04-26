@@ -1,0 +1,63 @@
+@use '../../utils/variables';
+
+.suggested-profile-section {
+    display: flex;
+    flex-direction: column;
+    background: variables.$blue-light;
+    width: 19rem;
+    height: 17rem;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    overflow-y: scroll;
+    color: #fff;
+    border-radius: 0.8rem 0 0 0.8rem;
+
+    // scrollbar
+    &::-webkit-scrollbar{
+        width:0.3rem;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: variables.$blue-light;
+        border-radius: 0.5rem;
+        
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color:#fff;
+        border-radius: 6px;
+    }
+
+
+    h3 {
+        font-size: 1.5rem;
+        text-align: center;
+        margin: 1rem auto;
+    }
+
+
+    .suggested-profile-card {
+        height: 5rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0.2rem 0;
+        padding: 0.8rem 1rem;
+        gap: 1rem;
+        background:transparent;
+        border: 1px solid #fff;
+        border-radius: 1rem;
+
+        a {
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        img {
+            height: 3.7rem;
+            width: 3.7rem;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    }
+}

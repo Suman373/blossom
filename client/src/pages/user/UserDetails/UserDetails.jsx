@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import './UserDetails.scss';
 import axios from 'axios';
 import fallback from '../../../assets/blossom_fallback.jpg';
-import useAuth from '../../../hooks/useAuth';
 import { useParams } from 'react-router-dom';
 import { MdWork, MdEmail } from 'react-icons/md';
 import { HiPencilAlt } from 'react-icons/hi';

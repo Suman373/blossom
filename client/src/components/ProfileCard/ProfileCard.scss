@@ -1,7 +1,7 @@
 @use '../../utils/variables';
 
-$card-width:23rem;
-$profile-left-offset: calc($card-width / 3.3333);
+$card-width:19rem;
+$profile-left-offset: calc($card-width / 2.78);
 
  .profile{
     width:$card-width;
@@ -26,6 +26,8 @@ $profile-left-offset: calc($card-width / 3.3333);
         .profile-pic{
             height:5rem;
             width:5rem;
+            object-fit: cover;
+            object-position: center center;
             border-radius: 50%;
             position:absolute;
             top:4rem;

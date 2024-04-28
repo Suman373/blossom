@@ -110,7 +110,7 @@ router.get('/payment-verification/:sessionId', async (req, res) => {
         if(!fundAmtPromise) throw new Error("Fundraise amount update failed");
         
         // insert donor in arr
-        const donorArrPromise = await FundModel.findByIdAndUpdate(product.metadata.fundraiseId, {$push:{donors: product.metadata.userId}},
+        const donorArrPromise = await FundModel.findByIdAndUpdate(product.metadata.fundraiseId, {$addToSet:{donors: product.metadata.userId}},
         {new:true, session: mongoSession});
         if(!donorArrPromise) throw new Error("Donor array update failed");
 
@@ -123,6 +123,18 @@ router.get('/payment-verification/:sessionId', async (req, res) => {
         await mongoSession.abortTransaction();
         mongoSession.endSession();
         res.status(400).json({ message: error?.message });
+    }
+});
+
+// get all donations
+router.get('/',async(req,res)=>{
+    try {
+        const donations = await DonationModel.find({});
+        if(!donations) throw new Error("Failed to fetch donations");
+        res.status(200).json({message:"Fetched donations successfully",result:donations});
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({message:error?.message});
     }
 });
 

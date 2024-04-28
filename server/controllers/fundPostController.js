@@ -108,6 +108,21 @@ const deleteFundPost = async (req, res) => {
     }
 }
 
+// get donors on fund post
+const getDonors = async(req,res)=>{
+    try {
+        const {id:_id} = await req.params; // fundpost Id
+        if(!mongoose.Types.ObjectId.isValid(_id) || !_id){
+            return res.status(422).json({message:"Id invalid"});
+        }
+        const donorsObj = await FundModel.findById(_id).populate({path:'donors', select:'_id name profileImage'});
+        if(!donorsObj) throw new Error("Failed to fetch donors");
+        return res.status(200).json({message:"Fetched fundraise donors successfully",result:donorsObj.donors});
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({message:error.message});
+    }
+}
 
 module.exports = { getFundPosts, getOneFundPost, 
-    addFundPost, updateFundPost, deleteFundPost };
+    addFundPost, updateFundPost, deleteFundPost, getDonors };

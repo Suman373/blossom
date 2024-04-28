@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const {getFundPosts, getOneFundPost, 
-    addFundPost, updateFundPost, donateFund, deleteFundPost} = require('../controllers/fundPostController');
+    addFundPost, updateFundPost, donateFund, deleteFundPost,
+    getDonors} = require('../controllers/fundPostController');
 
 // get all fundraise posts
 router.get('/', getFundPosts);
@@ -13,5 +14,6 @@ router.post('/', addFundPost);
 router.put('/:id', updateFundPost);
 // delete a fundraise post
 router.delete('/:id', deleteFundPost);
-
+// get donors of fundraise post
+router.get('/donors/:id', getDonors);
 module.exports = router;

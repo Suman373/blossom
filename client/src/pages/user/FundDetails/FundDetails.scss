@@ -51,89 +51,146 @@
         text-align: center;
         color: grey;
     }
-
-    .main-content {
-        width: 25rem;
-        padding:1rem 0.8rem;
+    .details-subparent{
         display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        background: variables.$blue-light;
-        border-radius: 3rem 1rem 3rem 1rem;
-
-        img {
-            height: auto;
+        justify-content: center;
+        align-items: flex-start;
+        gap:2rem;
+        margin-top: 1rem;
+        .donors-list{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
             width: 20rem;
-            margin: 1rem 0;
-            object-fit: contain;
-            border-radius: 1rem 0 1rem 0;
-            box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000;
-        }
+            height: 30rem;
+            background:variables.$glass;
+            overflow-y: scroll;
+            padding: 0 0.6rem;
 
-        p {
-            padding: 0 1rem;
-            font-size: 1.1rem;
-        }
 
-        h3,
-        h4 {
-            padding: 0 1rem;
-            font-size: 1.4rem;
-        }
-
-        svg {
-            font-size: 1.4rem;
-            margin: 0 0.3rem;
-            padding-top: 0.5rem;
-        }
-
-        .text-content {
-            background: #fff;
-            color: variables.$blue-accent;
-            padding: 0.8rem;
-            border-radius: 0 0 2rem 0;
-        }
-
-        .status {
-            margin: 0.5rem 1rem;
-            padding: 0.3rem 2rem;
-            width: fit-content;
-            color: #fff;
-            border-radius: 0.8rem;
-            font-size: 0.8rem;
-        }
-
-        .open {
-            background: green;
-        }
-
-        .close {
-            background: red;
-        }
-
-        .hold {
-            background: variables.$gold;
-        }
-
-        // form
-        form {
-            font-size: 2rem;
-            span{
-                margin:0 0.4rem;
-                font-weight: 600;
+            &::-webkit-scrollbar{
+                width: 0.4rem;
+            }
+            &::-webkit-scrollbar-track{
+                background: #ececec ;
+            }
+            &::-webkit-scrollbar-thumb{
+                color: variables.$blue-accent;
             }
 
-            input {
-                height: 3rem;
+            .donor-card{
+                height: 4.5rem;
                 width: 100%;
-                border: 1px solid grey;
-                outline: none;
-                font-size: 1.5rem;
-                text-indent: 0.2rem;
-                padding: 0.3rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.8rem 1rem;
+                gap:1rem;
+                background: variables.$blue-light;
+                border-radius: 1rem;
+                color: #fff;
+
+                a{
+                    color:#fff;
+                    font-size:1.5rem;
+                }
+
+                img{
+                    height: 3.7rem;
+                    width: 3.7rem;
+                    object-fit: cover;
+                    object-position: center;
+                    border-radius: 50%;
+                }
             }
+        }
+
+        .main-content {
+            width: 25rem;
+            padding:1rem 0.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background: variables.$blue-light;
+            border-radius: 3rem 1rem 3rem 1rem;
+    
+            img {
+                height: auto;
+                width: 20rem;
+                margin: 1rem 0;
+                object-fit: contain;
+                border-radius: 1rem 0 1rem 0;
+                box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000;
+            }
+    
+            p {
+                padding: 0 1rem;
+                font-size: 1.1rem;
+            }
+    
+            h3,
+            h4 {
+                padding: 0 1rem;
+                font-size: 1.4rem;
+            }
+    
+            svg {
+                font-size: 1.4rem;
+                margin: 0 0.3rem;
+                padding-top: 0.5rem;
+            }
+    
+            .text-content {
+                background: #fff;
+                color: variables.$blue-accent;
+                padding: 0.8rem;
+                border-radius: 0 0 2rem 0;
+            }
+    
+            .status {
+                margin: 0.5rem 1rem;
+                padding: 0.3rem 2rem;
+                width: fit-content;
+                color: #fff;
+                border-radius: 0.8rem;
+                font-size: 0.8rem;
+            }
+    
+            .open {
+                background: green;
+            }
+    
+            .close {
+                background: red;
+            }
+    
+            .hold {
+                background: variables.$gold;
+            }
+    
+            // form
+            form {
+                font-size: 2rem;
+                span{
+                    margin:0 0.4rem;
+                    font-weight: 600;
+                }
+    
+                input {
+                    height: 3rem;
+                    width: 100%;
+                    border: 1px solid grey;
+                    outline: none;
+                    font-size: 1.5rem;
+                    text-indent: 0.2rem;
+                    padding: 0.3rem;
+                }
+            }
+    
         }
 
     }
+    
 }

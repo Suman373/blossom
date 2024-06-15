@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {getAllFeeds,getUserFeeds,addNewFeed, updateUserFeed, likeFeed} = require('../controllers/feedController');
+const {getAllFeeds,getUserFeeds,addNewFeed, updateUserFeed, likeFeed} = require('../controllers/feed.controller');
 
 // get all public feeds
 router.get('/', getAllFeeds);

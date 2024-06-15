@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const FundModel = require("../models/fundPostModel");
+const FundModel = require("../models/fundPost.model");
 const stripe = require('stripe')(`${process.env.STRIPE_SECRET_KEY}`);
 const uuid = require('uuid').v4;
-const DonationModel = require('../models/donationModel');
-const UserModel = require('../models/userModel');
+const DonationModel = require('../models/donation.model');
+const UserModel = require('../models/user.model');
 
 // checkout session for the donation 
 router.post('/checkout-session/:id', async (req, res) => {

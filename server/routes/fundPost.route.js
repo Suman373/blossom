@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {getFundPosts, getOneFundPost, 
     addFundPost, updateFundPost, donateFund, deleteFundPost,
-    getDonors} = require('../controllers/fundPostController');
+    getDonors} = require('../controllers/fundPost.controller');
 
 // get all fundraise posts
 router.get('/', getFundPosts);

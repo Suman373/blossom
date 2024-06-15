@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const FeedModel = require('../models/feedModel');
-const UserModel = require('../models/userModel');
+const FeedModel = require('../models/feed.model');
+const UserModel = require('../models/user.model');
 
 // @GET all feeds
 const getAllFeeds = async(req,res)=>{
@@ -49,9 +49,7 @@ const addNewFeed = async(req,res)=>{
             return res.status(422).json({message:"ObjectId is invalid"});
         }
         const newFeed = await FeedModel.create(req.body);
-        if(!newFeed){
-            throw Error("Could not add feed");
-        }
+        if(!newFeed) return res.status(500).json({message:"Internal Server Error"});
         res.status(201).json({message:"Feed created successfully",result:newFeed});
         
     } catch (error) {

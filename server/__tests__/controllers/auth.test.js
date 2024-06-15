@@ -1,10 +1,10 @@
-const authController = require('../../controllers/authController');
-const UserModel = require('../../models/userModel');
+const authController = require('../../controllers/auth.controller');
+const UserModel = require('../../models/user.model');
 const jwt = require('jsonwebtoken');
 
 // mocks
 jest.mock('jsonwebtoken');
-jest.mock('../../models/userModel');
+jest.mock('../../models/user.model');
 
 // jwt args
 const payload = "fakePAYLOAD";

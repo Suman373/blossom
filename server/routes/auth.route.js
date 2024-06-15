@@ -2,7 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const clientURL = process.env.CLIENT_REDIRECT_URL;
 const router = express.Router();
-const controllers = require('../controllers/authController');
+const controllers = require('../controllers/auth.controller');
 
 // ------ AUTH ROUTES -------
 

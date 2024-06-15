@@ -1,5 +1,5 @@
 const { CronJob } = require('cron');
-const EventModel = require('../models/eventModel');
+const EventModel = require('../models/event.model');
 
 /*field          allowed values
 -----          --------------
@@ -10,7 +10,7 @@ day of month   1-31
 month          1-12 (or names, see below)
 day of week    0-7 (0 or 7 is Sunday, or use names)
 */
-
+// run everyday at midnight 00:00
 const job = new CronJob('0 0 0 * * *', async function checkDate() {
     try {
         const currDate = new Date();

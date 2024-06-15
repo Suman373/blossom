@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const UserModel = require('../models/userModel');
-const FundPostModel = require('../models/fundPostModel');
+const UserModel = require('../models/user.model');
+const FundPostModel = require('../models/fundPost.model');
 
 
 //  @GET all users

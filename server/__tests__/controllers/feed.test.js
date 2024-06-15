@@ -1,10 +1,10 @@
-const feedController = require('../../controllers/feedController');
-const UserModel = require('../../models/userModel');
-const FeedModel = require('../../models/feedModel');
+const feedController = require('../../controllers/feed.controller');
+const UserModel = require('../../models/user.model');
+const FeedModel = require('../../models/feed.model');
 
 // mocks
-jest.mock('../../models/userModel');
-jest.mock('../../models/feedModel');
+jest.mock('../../models/user.model');
+jest.mock('../../models/feed.model');
 
 // stubs
 const req = {
@@ -76,11 +76,11 @@ test('Return specific user feeds with 200', async () => {
 // add new feed
 test('Add new feed with 201', async()=>{
     await UserModel.findOne.mockImplementation((query)=>{
-        // req.body.name = "fakename" 
-        if(query && query.name == "fakename") return mockFeed;
+        // req.body.userId = "507f1..." 
+        if(query && query._id === "507f1f77bcf86cd799439011") return true;
         else return null;
     });
-    await FeedModel.create.mockImplementation(()=> Promise.resolve(mockFeed));
+    await FeedModel.create.mockResolvedValue(mockFeed);
     const res = mockRes();
     await feedController.addNewFeed(req,res);
     expect(UserModel.findOne).toHaveBeenCalled();
@@ -93,7 +93,7 @@ test('Add new feed with 201', async()=>{
 // update feed with userid
 test('Update user feed with id, 200', async()=>{
     await UserModel.findOne.mockImplementation((query)=>{
-        if(query && query.name === "fakename") return mockFeed;
+        if(query && query.name === "fakename") return {name:"FakeUser"};
         else return null;
     });
     await FeedModel.findByIdAndUpdate.mockImplementation((_id,update,options)=>{

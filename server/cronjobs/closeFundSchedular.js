@@ -1,7 +1,7 @@
 const {CronJob} = require('cron');
-const FundModel = require('../models/fundPostModel');
+const FundModel = require('../models/fundPost.model');
 
-const job = new CronJob('* * * * * *', async function(){
+const job = new CronJob('0 0 0 * * *', async function(){
     try {
         const currDate = new Date();
         const expiredFundRaises = await FundModel.find({ deadline:{ $lte:currDate }, status:"Open"});

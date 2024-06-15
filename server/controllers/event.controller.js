@@ -1,5 +1,5 @@
 const { default: mongoose } = require('mongoose');
-const EventModel = require('../models/eventModel');
+const EventModel = require('../models/event.model');
 
 //  @GET All events
 const getEvents = async (req, res) => {

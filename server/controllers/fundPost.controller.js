@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const FundModel = require('../models/fundPostModel');
-const UserModel = require('../models/userModel');
+const FundModel = require('../models/fundPost.model');
+const UserModel = require('../models/user.model');
 
 // get fundraise posts created by user or everyone
 const getFundPosts = async (req, res) => {

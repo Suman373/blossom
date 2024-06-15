@@ -1,6 +1,6 @@
 const EventEmitter = require('events');
 const fundPostEventEmitter = new EventEmitter();
-const UserModel = require('../models/userModel');
+const UserModel = require('../models/user.model');
 
 // on creation
 fundPostEventEmitter.on('fundPostCreated',async({user,fundPost})=>{

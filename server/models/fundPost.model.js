@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const {ObjectId} = mongoose.Schema.Types;
-const UserModel = require('./userModel');
+const UserModel = require('./user.model');
 const fundPostEventEmitter = require('../events/fundpostEventEmitter');
 
 const FundPostSchema = new mongoose.Schema({

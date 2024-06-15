@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const UserModel = require('./userModel');
+const UserModel = require('./user.model');
 const {ObjectId} = mongoose.Schema.Types;
 
 const FeedSchema = new mongoose.Schema({

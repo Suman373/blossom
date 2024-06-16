@@ -49,7 +49,8 @@ app.get('/', (req,res)=>  {
     if(req.accepts('html')){
         res.sendFile(path.join(__dirname, 'view','welcome.html'));
     }
-} )
+} );
+
 
 const connectToDB = async()=>{
     try {

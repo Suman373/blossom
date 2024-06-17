@@ -1,29 +1,27 @@
 const nodemailer = require('nodemailer');
+const generatePDF = require('./generatePDF');
+const fs = require('fs');
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     port: 587,
     secure: false,
     auth: {
-        user: 'sum4formsubmissions404@gmail.com',
-        pass: 'iyug vyzn nukt pcwh'
+        user: process.env.SMTP_UNAME,
+        pass: process.env.SMTP_PASS
     }
 });
 
-// const emailPayload={
-//     recipient:"iamroy53@gmail.com",
-//     subject:"Hi am Mia, from NFS MW 2012",
-//     text:"Test for testing blossom email setup with smtp",
-// }
 
 const sendMail = async (payload) => {
     try {
         const mailOptions = {
             from: "sum4formsubmissions404@gmail.com",
             to: `${payload.recipient}`,
-            subject: payload.subject,
-            text: payload.text,
-            html: payload.html
+            subject: payload?.subject,
+            text: payload?.text,
+            html: payload?.html,
+            attachments: payload?.attachments
         }
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
@@ -36,5 +34,23 @@ const sendMail = async (payload) => {
         console.log(error);
     }
 }
+
+// const pdfName = await generatePDF({ name: "Suman Roy" }, "donation");
+// console.log('PDF Name', pdfName);
+const emailPayload = {
+    // recipient: "iamroy53@gmail.com",
+    // subject: "Blossom: Thank you for your Generous Donation",
+    // text: "Thank you for your generous donation ❤️. Your support is greatly appreciated and will make a significant impact.\n\nPlease find your donation receipt attached to this email.Thank you once again for your kindness and support.\n\nBest regards, Blossom\n https://blossom-web-v1.vercel.app",
+    // attachments: [{
+    //     filename: `${pdfName}`,
+    //     path: `./services/outputs/${pdfName}`,
+    //     contentType: 'application/pdf'
+    // }]
+}
+
+// clear outputs dir
+// setTimeout(() => {
+//     fs.unlinkSync(`./services/outputs/${pdfName}`);
+// }, 5000);
 
 module.exports = sendMail;

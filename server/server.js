@@ -16,7 +16,9 @@ const cookieParser = require('cookie-parser');
 const cookieAuth = require('./middlewares/cookieAuth');
 const closeEventSchedular = require('./cronjobs/closeEventScheduler');
 const closeFundSchedular = require('./cronjobs/closeFundSchedular');
+const sendEmail = require('./services/email');
 const app = express();
+// const generatePDF = require('./services/generatePDF');
 const PORT = process.env.PORT || 5000;
 
 // middlewares

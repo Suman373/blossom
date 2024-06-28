@@ -17,6 +17,7 @@ const DetailsForm = ({ setUser }) => {
 
     const navigate = useNavigate();
     let userObj = useAuth();
+
     const [loading, setLoading] = useState(false);
     // form states
     const [profileImage, setProfileImage] = useState(null);
@@ -59,8 +60,10 @@ const DetailsForm = ({ setUser }) => {
             }
             toast.success("Details saved");
             setBio(""); setProfession(""); setDob(""); setProfession(null); setPhoneNumber(null);
-            userObj.completedDetails = true;
-            setUser(userObj);
+            const newObj = {...userObj,completedDetails:true}
+            localStorage.setItem('blossomUserObj',JSON.stringify(newObj));
+            const newUserObj = useAuth();
+            setUser(newUserObj);
             navigate('/');
         } catch (error) {
             console.log(error);

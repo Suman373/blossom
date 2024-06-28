@@ -3,9 +3,9 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const FundModel = require("../models/fundPost.model");
 const stripe = require('stripe')(`${process.env.STRIPE_SECRET_KEY}`);
-const uuid = require('uuid').v4;
 const DonationModel = require('../models/donation.model');
 const UserModel = require('../models/user.model');
+const donationInvoice = require('../helpers/donationInvoice');
 
 // checkout session for the donation 
 router.post('/checkout-session/:id', async (req, res) => {
@@ -93,7 +93,7 @@ router.get('/payment-verification/:sessionId', async (req, res) => {
             fundraiseId: product.metadata.fundraiseId,
             userId: product.metadata.userId
         };
-        // /*
+        // 
         const donation = await DonationModel.create([docObj],{session:mongoSession});
         if(!donation){
             throw new Error("Donation document create failed");
@@ -114,8 +114,19 @@ router.get('/payment-verification/:sessionId', async (req, res) => {
         {new:true, session: mongoSession});
         if(!donorArrPromise) throw new Error("Donor array update failed");
 
+        // generate invoice
+        await donationInvoice({
+            name:  savedSession.customer_details.name,
+            id: product.metadata.userId,
+            eventName: product?.name,
+            organizationName: "Org name",
+            date: new Date().toLocaleString(),
+            amount: savedSession.amount_subtotal/100,
+        }, "donation", savedSession.customer_details.email);
+
         // successful op
         await mongoSession.commitTransaction();
+        mongoSession.endSession();
         res.status(200).json({message:"Verification successful", result:donation[0]});
         // */
     } catch (error) {

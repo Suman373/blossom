@@ -1,3 +1,25 @@
-<div>
-    <h1>{{name}}</h1>
+<div style="width:100%">
+    <h3 style="font-size:2rem;margin:1rem auto; text-align:center">Blossom</h1>
+    <p style="font-size: 1.2rem; text-align:center">Donation Invoice</p>
+    <p style="font-size:1rem;">Name : {{name}}</h1>
+    <p style="font-size:1rem;">Id : {{id}}</h2>
+    <br />
+    <table class="table" style="width: 100%; margin:1rem auto; border-collapse: collapse; border: 1px solid #000">
+        <thead>
+            <tr style="border:1px solid #000">
+                <th style="border:1px solid black ; text-align:center;">Event Name</th>
+                <th style="border:1px solid black ; text-align:center;">Organization Name</th>
+                <th style="border:1px solid black ; text-align:center;">Date</th>
+                <th style="border:1px solid black ; text-align:center;">Amount(Inr)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="border:1px solid #000">
+                <td style="border:1px solid #000; text-align:center">{{eventName}}</td>
+                <td style="border:1px solid #000; text-align:center">{{organizationName}}</td>
+                <td style="border:1px solid #000; text-align:center">{{date}}</td>
+                <td style="border:1px solid #000; text-align:center">{{amount}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

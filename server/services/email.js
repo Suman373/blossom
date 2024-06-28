@@ -1,6 +1,4 @@
 const nodemailer = require('nodemailer');
-const generatePDF = require('./generatePDF');
-const fs = require('fs');
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -34,23 +32,5 @@ const sendMail = async (payload) => {
         console.log(error);
     }
 }
-
-// const pdfName = await generatePDF({ name: "Suman Roy" }, "donation");
-// console.log('PDF Name', pdfName);
-const emailPayload = {
-    // recipient: "iamroy53@gmail.com",
-    // subject: "Blossom: Thank you for your Generous Donation",
-    // text: "Thank you for your generous donation ❤️. Your support is greatly appreciated and will make a significant impact.\n\nPlease find your donation receipt attached to this email.Thank you once again for your kindness and support.\n\nBest regards, Blossom\n https://blossom-web-v1.vercel.app",
-    // attachments: [{
-    //     filename: `${pdfName}`,
-    //     path: `./services/outputs/${pdfName}`,
-    //     contentType: 'application/pdf'
-    // }]
-}
-
-// clear outputs dir
-// setTimeout(() => {
-//     fs.unlinkSync(`./services/outputs/${pdfName}`);
-// }, 5000);
 
 module.exports = sendMail;

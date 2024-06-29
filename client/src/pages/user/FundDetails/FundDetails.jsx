@@ -137,6 +137,7 @@ const FundDetails = () => {
                                             <span>&#8377;</span>
                                             <input
                                                 type="number"
+                                                max={2000}
                                                 value={donationAmount}
                                                 onChange={(e) => setDonationAmount(e.target.value)}
                                             />
@@ -152,18 +153,17 @@ const FundDetails = () => {
                         </div>
                     </div>
                     <ul className="donors-list">
-                        <h2 style={{fontSize:'1.8rem','textAlign':'center', margin:'1rem 0'}}>Donors 🌈</h2>
+                        <h2 style={{fontSize:'1.8rem','textAlign':'center', margin:'1rem 0', color:'white'}}>Donors</h2>
                         {
                             donors?.length > 0 ?
                                 donors?.map((item, index) => (
-                                    <div className='donor-card' key={index}>
-                                        <img src={item?.profileImage ? item?.profileImage : fallback} alt="donor-profile" />
-                                        <p>{item.name}</p>
-                                        <Link to={`/profile/public/${item?._id}`}><IoEye/></Link>
-                                    </div>
+                                       <li>
+                                        <img src={item?.profileImage} alt="profile"/>
+                                         <Link to={`/profile/public/${item?._id}`}>{item?.name}</Link>
+                                       </li>
                                 ))
                                 :
-                                <p className='result-message' style={{marginTop:'50%'}}>No donations yet ☹️</p>
+                                <p className='result-message' style={{marginTop:'50%',color:'white', fontSize:'1rem'}}>No donors to show</p>
                         }
                     </ul>
                 </div>

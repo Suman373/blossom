@@ -45,20 +45,6 @@ const ProfileCard = () => {
                 <h3 className="name">{profileDetails?.name}</h3>
                 <p className="email">{profileDetails?.email}</p>
                 <p className="profession">{profileDetails?.profession}</p>
-                {/* <div className="count">
-                    <div className="count-slots">
-                        Amount donated <span>{profileDetails?.amountDonated}</span>
-                    </div>
-                    <div className="count-slots">
-                        Events held <span>{profileDetails?.eventsHeld?.length}</span>
-                    </div>
-                    <div className="count-slots">
-                        Followers <span>{profileDetails?.followers?.length}</span>
-                    </div>
-                    <div className="count-slots">
-                        Following <span>{profileDetails?.following?.length}</span>
-                    </div>
-                </div> */}
                 <button onClick={()=> navigate(`/profile/self/${_id}`)}>
                     Show Profile
                 </button>

@@ -31,6 +31,8 @@ const FeedCard = ({ item }) => {
         }
     }
 
+    console.log(item);
+
     const bookMarkClick = () => isSaved ? setIsSaved(false) : setIsSaved(true);
 
     useEffect(()=>{

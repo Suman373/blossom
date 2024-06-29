@@ -29,6 +29,7 @@ $profile-left-offset: calc($card-width / 2.78);
             object-fit: cover;
             object-position: center center;
             border-radius: 50%;
+            background: white;
             position:absolute;
             top:4rem;
             left:$profile-left-offset;

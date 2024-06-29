@@ -55,20 +55,46 @@
         display: flex;
         justify-content: center;
         align-items: flex-start;
-        gap:2rem;
+        gap:1rem;
         margin-top: 1rem;
+
         .donors-list{
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            width: 20rem;
-            height: 30rem;
-            background:variables.$glass;
+            width: 16rem;
+            height: 25rem;
+            background: variables.$blue-light;
+            border: 2px solid #ececec;
+            border-radius: 1rem;
             overflow-y: scroll;
             padding: 0 0.6rem;
+            list-style: none;
 
+            li{
+                text-decoration: none;
+                padding:0.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                gap:1rem;
+                margin:0.1rem 0;
+                &:hover{
+                    background: #00000018;
+                }
+                img{
+                    height: 3rem;
+                    width: 3rem;
+                    border-radius: 50%;
+                    border: 1px solid white;
+                    background: white;
+                }
+            }
 
+            a{
+                color:white;
+            }
             &::-webkit-scrollbar{
                 width: 0.4rem;
             }
@@ -79,31 +105,6 @@
                 color: variables.$blue-accent;
             }
 
-            .donor-card{
-                height: 4.5rem;
-                width: 100%;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0.8rem 1rem;
-                gap:1rem;
-                background: variables.$blue-light;
-                border-radius: 1rem;
-                color: #fff;
-
-                a{
-                    color:#fff;
-                    font-size:1.5rem;
-                }
-
-                img{
-                    height: 3.7rem;
-                    width: 3.7rem;
-                    object-fit: cover;
-                    object-position: center;
-                    border-radius: 50%;
-                }
-            }
         }
 
         .main-content {
@@ -114,26 +115,26 @@
             justify-content: flex-start;
             align-items: center;
             background: variables.$blue-light;
-            border-radius: 3rem 1rem 3rem 1rem;
+            border-radius:1rem;
     
             img {
                 height: auto;
-                width: 20rem;
-                margin: 1rem 0;
+                width: 21rem;
+                margin: 0.8rem 0;
                 object-fit: contain;
-                border-radius: 1rem 0 1rem 0;
+                border-radius: 1rem;
                 box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000;
             }
     
             p {
                 padding: 0 1rem;
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
     
             h3,
             h4 {
                 padding: 0 1rem;
-                font-size: 1.4rem;
+                font-size: 1.3rem;
             }
     
             svg {
@@ -146,7 +147,7 @@
                 background: #fff;
                 color: variables.$blue-accent;
                 padding: 0.8rem;
-                border-radius: 0 0 2rem 0;
+                border-radius: 1rem;
             }
     
             .status {

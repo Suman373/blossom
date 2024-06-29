@@ -42,6 +42,7 @@
                 object-fit: cover;
                 object-position: center;
                 border-radius: 0.7rem 0.7rem 0 0;
+                background: white;
             }
 
             // profile picture
@@ -54,6 +55,7 @@
                 object-position: center;
                 left: 2rem;
                 bottom: -4rem;
+                background: white;
                 box-shadow: 0 0 0 2px #fff, 0 0 0 4px variables.$blue-light;
             }
 
@@ -233,6 +235,7 @@
                         height: 3.7rem;
                         width: 3.7rem;
                         border-radius: 50%;
+                        background: white;
                     }
                 }
             }

@@ -4,7 +4,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const cors = require('cors');
-const session = require('express-session');
+const session = require('cookie-session');
 const fundPost = require('./routes/fundPost.route');
 const event = require('./routes/event.route');
 const user = require('./routes/user.route');
@@ -27,9 +27,9 @@ app.use(cors({
     origin:["http://localhost:3000","https://blossom-web-v1.vercel.app"]
 }));
 app.use(session({
+    name:'blossom-ck-session',
     secret:process.env.EXPRESS_SESSION_SECRET,
-    resave:true,
-    saveUninitialized:true,
+    maxAge: 24*60*60*1000
 }));
 app.use(passport.initialize());
 app.use(passport.session());

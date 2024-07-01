@@ -48,8 +48,8 @@ router.post('/checkout-session/:id', async (req, res) => {
                     message: 'I agree to the [Terms of Service](https://blossom-web-v1.vercel.app/terms-conditions)',
                 },
             },
-            success_url: 'http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url: 'http://localhost:3000'
+            success_url: `${process.env.CLIENT_REDIRECT_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${process.env.CLIENT_REDIRECT_URL}/`
         });
         res.status(200).json({ sessionId: session.id });
 

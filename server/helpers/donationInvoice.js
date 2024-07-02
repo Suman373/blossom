@@ -8,7 +8,7 @@ const fs = require('fs');
 const donationInvoice = async(pdfData, templateType, cust_email) => {
     try {
         const pdfName = await generatePDF(pdfData, templateType);
-        
+        if(!pdfName) throw new Error("PDF generation failed, could not send receipt");        
         const emailPayload = {
             recipient: `${cust_email}`,
             subject: "Blossom: Thank you for your Generous Donation",

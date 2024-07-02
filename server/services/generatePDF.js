@@ -24,7 +24,7 @@ const generatePDF = async (payload, templateType) => {
             headless: true,
             args: ['--no-sandbox', '--disable-setuid-sandbox']
         });
-
+        if(!browser) throw new Error;
         const page = await browser.newPage();
         const uname = uniqueName();
         const pdfName = `donation_receipt${uname}.pdf`

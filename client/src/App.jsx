@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './App.scss';
 import { BrowserRouter as BRouter, Routes, Route, Navigate } from 'react-router-dom';
-import UserHome from './pages/user/UserHome/UserHome';
-import AddFundRaise from './pages/user/AddFundRaise/AddFundRaise';
-import AddEvent from './pages/user/AddEvent/AddEvent';
+import {UserHome, AddFundRaise, AddEvent, UserDetails,
+  FundDetails, EventDetails, DetailsForm, Success
+} from './pages/user/index';
+import {Landing, Signup, About} from './pages/nonuser/index';
 import Footer from './components/Footer/Footer';
-import UserDetails from './pages/user/UserDetails/UserDetails';
-import Landing from './pages/nonuser/Landing/Landing';
-import Signup from './pages/nonuser/Signup/Signup';
 import useAuth from './hooks/useAuth';
-import FundDetails from './pages/user/FundDetails/FundDetails';
-import EventDetails from './pages/user/EventDetails/EventDetails';
-import DetailsForm from './pages/user/DetailsForm/DetailsForm';
-import Success from './pages/user/Success/Success';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -49,6 +43,7 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Landing />}></Route>
                 <Route path="/signup" element={<Signup setUser={setUser} />}></Route>
+                <Route path="/about" element={<About/>}></Route>
               </Routes>
           }
           <Footer />

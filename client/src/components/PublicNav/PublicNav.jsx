@@ -22,7 +22,7 @@ function PublicNav() {
                         whileHover={{
                             scale: 1.1,
                             transition: { duration: 0.2 },
-                        }}><Link to="#">About us</Link>
+                        }}><Link to="/about">About us</Link>
                     </motion.li>
                     <motion.li
                         whileHover={{

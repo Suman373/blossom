@@ -3,13 +3,14 @@ import './Landing.scss';
 import Typed from 'typed.js';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
-import { FaHandHoldingHeart, FaHandHolding, FaHeart, FaHandsHelping } from "react-icons/fa";
+import { FaHandHoldingHeart, FaHeart, FaHandsHelping } from "react-icons/fa";
 import { IoPeople } from "react-icons/io5";
 import { GiEternalLove } from "react-icons/gi";
 import charity from '../../../assets/charity.png';
 import PublicNav from '../../../components/PublicNav/PublicNav';
 import handsBanner from '../../../assets/hands-banner.jpg';
 import Announcement from '../../../components/Announcement/Announcement';
+import { motion } from 'framer-motion';
 
 function Landing() {
 
@@ -47,9 +48,12 @@ function Landing() {
                 <PublicNav />
                 <div className="banner">
                     <Announcement />
-                    <h1>
+                    <motion.h1 
+                        initial={{ y: -80 }}
+                        animate={{ y: 0 }}
+                        transition={{ duration: 2 }} >
                         Cultivating Change through Compassion .
-                    </h1>
+                    </motion.h1>
                     <div style={{ margin: '1rem 0' }}>
                         <span id='typewriter-text' ref={elementRef}>
                         </span>
@@ -77,7 +81,7 @@ function Landing() {
                                 <GiEternalLove />
                                 <h4>Fundraises</h4>
                                 <p>Small contributions from lots of people make a difference.</p>
-                                <Link to="#a">
+                                <Link to="/about">
                                     Know more
                                 </Link>
                             </div>
@@ -87,7 +91,7 @@ function Landing() {
                                 <FaHandHoldingHeart />
                                 <h4>Donations</h4>
                                 <p>Secure online donations with complete transparency. Your help is handled with care.</p>
-                                <Link to="#a">
+                                <Link to="/about">
                                     Know more
                                 </Link>
                             </div>
@@ -97,7 +101,7 @@ function Landing() {
                                 <IoPeople />
                                 <h4>Volunteer</h4>
                                 <p>Get started with volunteering services we provide</p>
-                                <Link to="#a">
+                                <Link to="/about">
                                     Know more
                                 </Link>
                             </div>
@@ -112,12 +116,12 @@ function Landing() {
                         <p>
                             Welcome to Blossom, a transformative initiative dedicated to nurturing positive change in the world through fundraises, charity donations, and volunteer services. Born out of a deep-rooted commitment to creating a better tomorrow, Blossom is more than just a project; it's a movement that harnesses the power of collective goodwill to address pressing social issues.
                         </p>
-                        <h2 style={{color:'#0964da'}}>Mission</h2>
+                        <h2 style={{ color: '#0964da' }}>Mission</h2>
                         <p>
                             At the heart of Blossom lies a mission to cultivate a culture of compassion, generosity, and community involvement. Our aim is to provide a platform that empowers individuals and organizations to make a meaningful impact on the lives of those in need.
                         </p>
 
-                        <Link className='welcome-link' to="#a">
+                        <Link className='welcome-link' to="/about">
                             Know more
                         </Link>
                     </div>

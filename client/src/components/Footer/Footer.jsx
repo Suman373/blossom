@@ -43,7 +43,8 @@ const Footer = () => {
                 </div>
             </div>
             <div className="copyright">
-                &copy; Blossom 2024 | All Rights Reserved
+                <p> Made in 🇮🇳 with ❤️</p>
+               <p> &copy; Blossom 2024 | All Rights Reserved</p>
             </div>
         </div>
     )

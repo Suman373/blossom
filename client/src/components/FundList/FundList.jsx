@@ -5,8 +5,8 @@ import { useState, useEffect } from 'react';
 import FundCard from '../FundCard/FundCard';
 import BlueButton from '../BlueButton/BlueButton';
 import { useNavigate } from 'react-router-dom';
-import { MoonLoader } from 'react-spinners';
 import axios from 'axios';
+import FundEventSk from '../Skeletons/FundEventSk';
 
 
 const FundList = () => {
@@ -29,7 +29,9 @@ const FundList = () => {
       });
     //  console.log(data?.data);
     setFundRaises(data?.data);
-    setLoading(false);
+    setTimeout(()=>{
+      setLoading(false);
+    },2000);
   }
 
   const addNewFundRaise = (e) => {
@@ -62,9 +64,9 @@ const FundList = () => {
 
         <section className="fund-list-container">
           <h1>Fund-raises you can donate to</h1>
-          <ul className='fund-list'>
+          <div className='fund-list'>
             {
-              fundraises?.length > 0 ?
+              fundraises?.length > 0 && !loading ?
                 fundraises?.map((fund, index) => (
                   fund?.title?.toLowerCase().includes((fundRaiseSearch.toLowerCase())) ?
                     <FundCard
@@ -79,14 +81,8 @@ const FundList = () => {
                   {!loading  && (<p className='result-message'>No fundraises to show</p>)}
                 </>
             }
-            {loading && (
-              <>
-                <div style={{ height: "fitContent", display: "grid", placeContent: 'center' }}>
-                  <MoonLoader size={80} color="#067676" />
-                </div>
-              </>)
-            }
-          </ul>
+            {loading && <FundEventSk cards={4}/>}
+          </div>
         </section>
       </section>
     </>

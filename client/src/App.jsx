@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy } from 'react';
 import './App.scss';
 import { BrowserRouter as BRouter, Routes, Route, Navigate } from 'react-router-dom';
 import {UserHome, AddFundRaise, AddEvent, UserDetails,
   FundDetails, EventDetails, DetailsForm, Success
 } from './pages/user/index';
-import {Landing, Signup, About} from './pages/nonuser/index';
+import {Signup, About} from './pages/nonuser/index';
+const Landing = lazy(()=> import('./pages/nonuser/Landing/Landing'));
 import Footer from './components/Footer/Footer';
 import useAuth from './hooks/useAuth';
 

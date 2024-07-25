@@ -6,7 +6,7 @@ import EventCard from '../EventCard/EventCard';
 import BlueButton from '../BlueButton/BlueButton';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-import { MoonLoader } from 'react-spinners';
+import FundEventSk from '../Skeletons/FundEventSk';
 
 const EventList = () => {
   document.title = "HH | Events"
@@ -22,9 +22,11 @@ const EventList = () => {
     if(!data?.data){
       console.log(data?.data?.message);
     }
-    console.log(data);
+    // console.log(data);
     setFetchedEvents(data?.data);
-    setLoading(false);
+    setTimeout(()=>{
+      setLoading(false);
+    },2000);
   }
 
   // navigate to event adding page
@@ -59,7 +61,7 @@ const EventList = () => {
         <h1>Events you can attend</h1>
         <ul className='event-list'>
           {
-            fetchedEvents?.length >=1 ?
+            fetchedEvents?.length >=1 && !loading ?
               fetchedEvents?.map((event, index) => (
                 event?.name?.toLowerCase().includes((eventSearch.toLowerCase())) ?
                   <EventCard
@@ -74,13 +76,7 @@ const EventList = () => {
                 {!loading  && (<p className='result-message'>No events to show</p>)}
               </>
           }
-            {loading && (
-              <>
-                <div style={{ height: "fitContent", display: "grid", placeContent: 'center' }}>
-                  <MoonLoader size={80} color="#067676" />
-                </div>
-              </>)
-            }
+            {loading && <FundEventSk cards={4}/>}
         </ul>
       </section>
     </section>

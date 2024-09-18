@@ -74,7 +74,9 @@ The introductory page featuring an overview of the platform and key features.
 
 <div id="Register">
 <h3>Register and Login</h3>
+  
 ![Reg1](https://github.com/user-attachments/assets/0a1651bc-2cf9-488e-8ba4-2c8e5d9bbfc4)
+  
 ![Reg2](https://github.com/user-attachments/assets/9ff90eb2-7988-413b-9139-5504c5d6be07)
 The page where users can sign up for an account by providing their details or login if they already have an account.
 </div>

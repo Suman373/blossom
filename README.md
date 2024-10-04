@@ -1,4 +1,17 @@
 # Blossom
+This project is a platform for fundraising, charity, organizing events. It also enhances user engagement by incorporating essential social media features such as follow/unfollow, public profiles, liking and bookmarking content. A demo stripe checkout page has been created to mimic real life online transaction. It has 3 tier architecture consisting of client, server and a database.
+
+### Tech Stack
+![html](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![sass](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+![js](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![node](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![express](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
+![mongodb](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+![Firebase](https://img.shields.io/badge/firebase-a08021?style=for-the-badge&logo=firebase&logoColor=ffcd34)
+
+
 ## Cultivating Change through Compassion
 ![Home1](https://github.com/user-attachments/assets/5cd49e3d-206d-407e-adfc-d4d17b1ced37)
 <h5><a href="https://blossom-web-v1.vercel.app/about" target="_blank">Find out more</a></h5>

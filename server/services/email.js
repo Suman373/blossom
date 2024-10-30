@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 const sendMail = async (payload) => {
     try {
         const mailOptions = {
-            from: "sum4formsubmissions404@gmail.com",
+            from: process.env.SMTP_EMAIL,
             to: `${payload.recipient}`,
             subject: payload?.subject,
             text: payload?.text,

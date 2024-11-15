@@ -73,6 +73,10 @@ This project is a platform for fundraising, charity, organizing events. It also 
 └── README.md
 ```
 
+<h3>User Workflow Diagram</h3>
+<img width="3216" alt="blossom workflow" src="https://github.com/user-attachments/assets/3788b590-597a-4782-af23-849837194c54">
+
+
 <div id="Landing">
 <h3>Landing</h3>
   

@@ -1,6 +1,8 @@
 # Blossom
 This project is a platform for fundraising, charity, organizing events. It also enhances user engagement by incorporating essential social media features such as follow/unfollow, public profiles, liking and bookmarking content. A demo stripe checkout page has been created to mimic real life online transaction. It has 3 tier architecture consisting of client, server and a database.
 
+## Live Link - [Click here](https://blossom-web-v1.vercel.app)
+
 ### Tech Stack
 ![html](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![sass](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
@@ -14,10 +16,10 @@ This project is a platform for fundraising, charity, organizing events. It also 
 
 ## Cultivating Change through Compassion
 ![Home1](https://github.com/user-attachments/assets/5cd49e3d-206d-407e-adfc-d4d17b1ced37)
-<h5><a href="https://blossom-web-v1.vercel.app/about" target="_blank">Find out more</a></h5>
+
 
 `Pages`
-<ul>
+<!-- <ul>
 <li><a href="#Landing">Landing</a></li>
 <li><a href="#Register">Register/Login</a></li>
 <li><a href="#HomePage">Home Page</a></li>
@@ -26,7 +28,7 @@ This project is a platform for fundraising, charity, organizing events. It also 
 <li><a href="#Events">Events</a></li>
 <li><a href="#Feeds">Feeds</a></li>
 <li><a href="#UserProfile">User Profile</a></li>
-</ul>
+</ul> -->
 
 `Directory Structure`
 ```md
@@ -76,7 +78,7 @@ This project is a platform for fundraising, charity, organizing events. It also 
 <h3>User Workflow Diagram</h3>
 <img width="3216" alt="blossom workflow" src="https://github.com/user-attachments/assets/3788b590-597a-4782-af23-849837194c54">
 
-
+<!--
 <div id="Landing">
 <h3>Landing</h3>
   
@@ -150,7 +152,7 @@ A real-time stream of updates, posts, and interactions from other users and even
 
 ![Profile11](https://github.com/user-attachments/assets/a625970f-6c80-4a71-91c2-99082c75e5c9)
 
-![Profile2](https://github.com/user-attachments/assets/85347a26-3d68-4d71-9458-161c05f46696)
+![Profile2](https://github.com/user-attachments/assets/85347a26-3d68-4d71-9458-161c05f46696) -->
 
 A profile page displaying personal information, public details, and statistics of user activities.
 </div>

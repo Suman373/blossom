@@ -1,7 +1,9 @@
 # Blossom
-This project is a platform for fundraising, charity, organizing events. It also enhances user engagement by incorporating essential social media features such as follow/unfollow, public profiles, liking and bookmarking content. A demo stripe checkout page has been created to mimic real life online transaction. It has 3 tier architecture consisting of client, server and a database.
+The platform for all your social welfare needs starting from donation to charity events or fundraisers. 
 
-## Live Link - [Click here](https://blossom-web-v1.vercel.app)
+### Websit link (Live demo) - [Click here](https://blossom-web-v1.vercel.app)
+
+### Server link - [Click here](https://blossom-node-server.onrender.com/)
 
 ### Tech Stack
 ![html](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
@@ -154,8 +156,21 @@ A real-time stream of updates, posts, and interactions from other users and even
 
 ![Profile2](https://github.com/user-attachments/assets/85347a26-3d68-4d71-9458-161c05f46696) -->
 
-A profile page displaying personal information, public details, and statistics of user activities.
-</div>
-
-Author : Suman Roy
-Built with ❤️
+### Getting Started Locally
+1. Create a fork of this repository
+2. Clone the repository in your local machine
+```
+git clone <url>.git
+```
+3. Change directory and run npm install in both client and server dir to install the dependencies
+```
+npm install
+```
+4. In the root dir run the following command to start both client and server using docker
+```
+docker-compose up -d
+```
+5. Alternatively, you can run the following command in the individual directories to start the client and server applications
+```
+npm run dev
+```

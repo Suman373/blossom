@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 function PublicNav() {
     return (
-        <div className="landing-nav">
+        <div className="landing-nav glass-card">
             <nav>
                 <ul>
                     <li id="logo">

@@ -9,11 +9,12 @@ const Announcement = () => {
             width:'fit-content',
             height:'fit-content',
             fontSize:'1rem',
-            background:"#fff",
+            background:"#c7dffdff",
             borderRadius:'0.8rem',
             textAlign:'center',
             textOverflow:'clip',
-            border:'1px solid #16a116'
+            border:'1px solid #0964da',
+            boxShadow: '1px 1px 3px #0964da'
         }}>
            Welcome to Blossom ❤️ ! We are excited to have you folks join us 🎉
         </p>

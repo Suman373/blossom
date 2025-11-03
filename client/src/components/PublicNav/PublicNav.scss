@@ -4,6 +4,48 @@
 
 $nav-ht-lg: 6rem;
 
+.glass-card {
+  width: 240px;
+  height: 360px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(48px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  box-shadow:
+    0 4px 30px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Efecto brillante en los bordes */
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top left,
+    rgba(255, 255, 255, 0.25),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Sutil borde animado */
+.glass-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+
 .landing-nav {
     height: $nav-ht-lg;
     width: 100vw;
@@ -14,7 +56,8 @@ $nav-ht-lg: 6rem;
     nav {
         height: $nav-ht-lg;
         width: 100vw;
-        background-color: #fff;
+        background-color: #ffffff9a;
+        border-radius: 20px;
 
         ul {
             height: 100%;
@@ -23,7 +66,8 @@ $nav-ht-lg: 6rem;
             gap: 1rem;
             align-items: center;
             list-style: none;
-            padding: 0 2rem;
+            padding: 0 5rem;
+            border-radius: 20px;
 
             a {
                 color: #000;
@@ -31,7 +75,6 @@ $nav-ht-lg: 6rem;
 
                 &:hover{
                     color:variables.$blue-light;
-                    text-decoration-line: underline;
                 }
 
             }

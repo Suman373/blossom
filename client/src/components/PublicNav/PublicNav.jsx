@@ -51,7 +51,7 @@ function PublicNav() {
 
                     {/* CTA Button */}
                     <li className="cta-button">
-                        <Link to="/join">
+                        <Link to="/login">
   <button className="join-btn">
     <span>Join now</span>
     <span className="emoji">🎉</span>
